@@ -36,3 +36,4 @@ const productRoutes = require('./routes/productRoutes')
 app.use('/', mainRoutes)
 app.use('/users', userRoutes)
 app.use('/products', productRoutes)
+

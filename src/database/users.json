@@ -6,7 +6,7 @@
   "email": "prueba@lexaeus.com",
   "password": "$2a$10$yh4hEp5BFiQ.orVNcGVa8ujoV.JwWlDyjbIHEuNxZyNDHf1VRVvpq",
   "image": "/img/users/default-img.jpg",
-  "esAdmin": false
+  "esAdmin": true
  },
  {
   "id": 1,
