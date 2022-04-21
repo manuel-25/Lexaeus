@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <%- include("../partials/head.ejs") %>
+        <link rel="stylesheet" href="/css/productModify.css">
+
+        <title>Modificar Producto</title>
+</head>
+
+<body>
+    <%- include("../partials/header.ejs") %>
+        <main>
+            <section class="titulo">
+                <a href="/">Volver a Lexaeus</a>
+                <h1>Modificar Producto</h1>
+            </section>
+
+            <form method="POST" action="/products/<%= productoAModificar.id %>?_method=PUT">
+                <section class="superior">
+                    <section class="izquierda">
+
+                        <h2>Nombre</h2>
+
+                        <input type="text" name="nombre" class="campo" value="<%= productoAModificar.nombre %> ">
+
+                        <h2>Categoria</h2>
+
+                        <select name="categoria" class="campo" value="<%= productoAModificar.categoria %>">
+                
+                            <option value="1">Hombre</option>
+                            <option value="2">Mujer</option>
+                            <option value="3">Calzado</option>
+                            <option value="4">Accesorios</option>
+
+                        </select>
+
+                        <h2>Descripción</h2>
+
+                        <input type="text" name="descripcion" class="descr" value="<%= productoAModificar.descripcion %>">
+
+                    </section>
+
+                    <section class="derecha">
+                        <article class="TituloBotonImagen">
+                            <h2>Imagen</h2>
+                            <div class="file-select" id="src-file1">
+                                <input type="file" name="img" aria-label="Archivo">
+                            </div>
+                        </article>
+
+                        <img src="<%= productoAModificar.img %>" alt="ImagenProducto" class="imagen">
+
+                    </section>
+
+                    <section class="detalles">
+                        <section>
+                            <h2>Stock</h2>
+
+                            <input type="text" name="stock" value="<%= productoAModificar.stock %>">
+                        </section>
+
+                        <section>
+                            <h2>Talle</h2>
+
+                            <input type="text" name="talle" value="<%= productoAModificar.talle %>">
+                        </section>
+
+                        <section>
+                            <h2>Color</h2>
+
+                            <input type="text" name="color" value="<%= productoAModificar.color %>">
+                        </section>
+                    </section>
+
+                </section>
+
+                <section class="inferior">
+                    <section class="precio">
+                        <h2>Precio</h2>
+
+                        <input type="text" name="precio" class="campo" value="<%= productoAModificar.precio %>">
+                    </section>
+            </form>
+            <section class="botones">
+                <form method="post" action="/products/<%= productoAModificar.id %>?_method=DELETE">
+                    <button type="submit" class="botonCancelar">Eliminar Producto</button>
+                </form>
+                <button type="submit" class="botonConfirmar">Modificar Producto</button>
+            </section>
+            </section>
+
+        </main>
+        <%- include("../partials/footer.ejs") %>
+</body>
+
+</html>

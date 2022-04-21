@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head.ejs") %>
+    
+    <!-- Hoja de estilos Carrito -->
+    <link rel="stylesheet" href="/css/cart.css">
+
+</head>
+<body>
+    <%- include("../partials/header.ejs") %> 
+    <main>
+        <section class="checkout-pay" id="checkout-pay">
+            <h1>Bolsa de Compra(2)</h1>
+            <div class="line"></div>
+            <button type="submit" class="btn-pay">FINALIZAR LA COMPRA</button>
+        </section>
+        <section class="grid-layout">
+            <section class="product-column">
+                <div class="product-header">SUS PEDIDOS:</div>
+                <article class="product-container">
+                    <div class="img-container">
+                        <img src="/img/products/remera.jpg" alt="Imagen del producto">
+                    </div>
+                    <section class="detail-container">
+                        <h4>Nombre del Producto</h4>
+                        <div class="properties-container">
+                            <p>Color: Negro</p>
+                            <p>Talle: L</p>
+                        </div>
+                        <span class="select-container">
+                            <form type="get" action="#">
+                                <select>
+                                    <option value="0">CANT.:</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </form>
+                            <p> Price $</p>
+                        </span>
+                    </section>
+                    <div class="btn-container">
+                        <button id="btn-edit">Editar</button> 
+                        <button id="btn-delete">Eliminar</button>
+                    </div>
+                </article>
+                <article class="product-container">
+                    <div class="img-container">
+                        <img src="/img/products/remera.jpg" alt="Imagen del producto">
+                    </div>
+                    <section class="detail-container">
+                        <h4>Nombre del Producto</h4>
+                        <div class="properties-container">
+                            <p>Color: Negro</p>
+                            <p>Talle: L</p>
+                        </div>
+                        <span class="select-container">
+                            <form type="get" action="#">
+                                <select>
+                                    <option value="0">CANT.:</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </form>
+                            <p> Price $</p>
+                        </span>
+                    </section>
+                    <div class="btn-container">
+                        <button id="btn-edit">Editar</button> 
+                        <button id="btn-delete">Eliminar</button>
+                    </div>
+                </article>
+                <article class="product-container">
+                    <div class="img-container">
+                        <img src="/img/products/remera.jpg" alt="Imagen del producto">
+                    </div>
+                    <section class="detail-container">
+                        <h4>Nombre del Producto</h4>
+                        <div class="properties-container">
+                            <p>Color: Negro</p>
+                            <p>Talle: L</p>
+                        </div>
+                        <span class="select-container">
+                            <form type="get" action="#">
+                                <select>
+                                    <option value="0">CANT.:</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </form>
+                            <p> Price $</p>
+                        </span>
+                    </section>
+                    <div class="btn-container">
+                        <button id="btn-edit">Editar</button> 
+                        <button id="btn-delete">Eliminar</button>
+                    </div>
+                </article>
+            </section>
+            <section class="order-details-container">
+                <p>RESUMEN DEL PEDIDO:</p>
+                <ul class="order-details"> 
+                    <li class="item">
+                        Subtotal:
+                        <span>
+                            <span>$</span>
+                            14.000
+                        </span>
+                    </li>
+                    <li class="item">
+                        Costo del envio:
+                        <span>
+                            <span>$</span>
+                            419
+                        </span>
+                    </li>
+                    <li class="item">
+                        Total estimado:
+                        <span class="order-total">
+                            <span>$</span>
+                            19621.6
+                        </span>
+                    </li>
+                    <li class="item">
+                        Impuestos:
+                        <span>
+                            <span>$</span>
+                            721
+                        </span>
+                    </li>
+                </ul>
+                <div class="btn-pay-container">
+                    <button type="submit" class="btn-pay">FINALIZAR LA COMPRA</button>
+                </div>
+            </section>
+        </section>
+    </main>
+    <%- include("../partials/footer.ejs") %>
+</body>
+</html>

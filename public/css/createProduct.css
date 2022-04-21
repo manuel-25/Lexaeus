@@ -1,0 +1,146 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+main{
+    font-family: 'Mulish', sans-serif;
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+}
+
+.main-container{
+    background-color: #FAF6ED;
+    /*margin: 20px;*/
+    padding: 20px;
+}
+
+.title-container{
+    text-align: center;
+    font-size: 22px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #c8c6c5;
+}
+
+.child-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 300px;
+}
+
+label{
+    font-size: 18px;
+    font-weight: normal;
+}
+
+input{
+    font-family: 'Oswald', sans-serif;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid #457B9D;
+    padding: 3px;
+    outline: none;
+}
+
+.description{
+    resize: none;
+    height: 100px;
+    padding: 3px 5px;
+    font-size: 16px;
+    border: 1px solid #457B9D;
+    outline: none;
+}
+
+.child-name select{
+    border: none;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #457B9D;
+}
+
+.child-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    width: 100%;
+    height: 80px;
+}
+
+.file-select input{
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.child-image img{
+    width: 100px;
+    height: 100px;
+}
+
+.child-detail{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    gap: 10px
+}
+
+.child-detail input{
+    width: 110px;
+}
+
+.button-create{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    padding: 20px 0 20px 0;
+    text-align: center;
+    height: 100px;
+}
+
+.button-create button{
+    font-family: 'Oswald', sans-serif;
+    width: 140px;
+    border-radius: 6px;
+    height: 2rem;
+    border:none;
+    outline: none;
+}
+
+.btn-confirm{
+    background-color: #1D3557;
+    color: #FAF6ED; 
+    transition: all .2s ease;
+}
+
+.btn-confirm:hover{
+    background-color: #0e4694;
+}
+
+.btn-reset{
+    background-color: #E63946;
+    color: #FAF6ED;
+    transition: all .2s ease;
+}
+
+.btn-reset:hover{
+    background-color: #f6081c;
+}
+
+.text-danger {
+    color:#E63946;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+}

@@ -1,0 +1,401 @@
+[
+ {
+  "id": 1,
+  "name": "Camisa micro print",
+  "category": 1,
+  "price": 3390,
+  "img": "hombre1.jfif",
+  "description": "Camisa micro print",
+  "stock": "10",
+  "size": [
+   "S",
+   "M",
+   "L",
+   "XL"
+  ],
+  "color": "Azul"
+ },
+ {
+  "id": 2,
+  "name": "Camisa print",
+  "category": 1,
+  "price": 4990,
+  "img": "hombre2.jfif",
+  "description": "Camisa print",
+  "stock": "16",
+  "size": [
+   "S",
+   "M",
+   "L",
+   "XL",
+   "XLL"
+  ],
+  "color": "Azul"
+ },
+ {
+  "id": 3,
+  "name": "Malla print",
+  "category": 1,
+  "price": 2790,
+  "img": "hombre3.jfif",
+  "description": "Traje de baño print",
+  "stock": "3",
+  "size": [
+   "S",
+   "M",
+   "L"
+  ],
+  "color": "Celeste"
+ },
+ {
+  "id": 4,
+  "name": "Camisa vintage",
+  "category": 1,
+  "price": 2990,
+  "img": "hombre4.jfif",
+  "description": "Camisa vintage",
+  "stock": "20",
+  "size": [
+   "S",
+   "M",
+   "L",
+   "XL"
+  ],
+  "color": "Rosa y Celeste"
+ },
+ {
+  "id": 5,
+  "name": "BABUCHA LEOPARD VELAVET",
+  "category": 2,
+  "description": "Pantalon confeccionado en velvet de estampa, de calce confortable y ajuste con elástico en la cintura y los puños. Un ítem personal y canchero, para sumar comodidad y máximo estilo a tus outfits.",
+  "img": "ropa-mujer2.jpg",
+  "stock": 10,
+  "size": [
+   "S",
+   "M",
+   "L",
+   "XL"
+  ],
+  "color": "Gris",
+  "price": 26.9
+ },
+ {
+  "id": 6,
+  "name": "BUZO KAMALA",
+  "category": 2,
+  "description": "Buzo mangas 3/4 confeccionado en velvet, con cuello redondo pronunciado y diseños de bordados en lentejuelas a contratono, que protagonizan la prenda y suman brillo y aires boho. Matcheá con una bijou a tono con las lentejuelas para sumar impacto.",
+  "img": "ropa-mujer4.jpg",
+  "stock": 2,
+  "size": [
+   "S",
+   "M",
+   "L",
+   "XL",
+   "XLL"
+  ],
+  "color": "NEGRO",
+  "price": 34.9
+ },
+ {
+  "id": 7,
+  "name": "VESTIDO ONI PRINT PINK",
+  "category": 2,
+  "description": "Vestido largo midi, confeccionado en viscosa estampada con detalles de lúrex. El escote en V tiene detalle de volados, que se repite en la terminación de las mangas 3/4 y en el ruedo. Lleva viso y lazo para ajustar la cintura en la misma tela.",
+  "img": "ropa-mujer5.jpg",
+  "stock": 200,
+  "size": [
+   "S",
+   "L",
+   "XL",
+   "XLL"
+  ],
+  "color": "ROSA",
+  "price": 42.9
+ },
+ {
+  "id": 8,
+  "name": "SACO TANZANIA OTIS SHORT",
+  "category": 2,
+  "description": "Saco corto confeccionado en viscosa con detalles de lúrex y velvet bordado con lentejuelas. Las mangas, largas y amplias, ajustan en los puños generando efecto baloon. Cierra con cordón a tono terminado en tassels. Una prenda hit de la temporada, que suma funk y personalidad a cualquier outfit.",
+  "img": "ropa-mujer6.jpg",
+  "stock": 12,
+  "size": [
+   "S",
+   "M",
+   "L",
+   "XL"
+  ],
+  "color": "CRUDO",
+  "price": 45.9
+ },
+ {
+  "id": 9,
+  "name": "SACO WONDER",
+  "category": 2,
+  "description": "Saco largo a la rodilla confeccionado en satén, full bordado. Abierto adelante, su diseño bordado con canutillos y mostacillas en el frente, ruedo y mangas suman personalidad y aires folk a esta prenda protagonista de cualquier look. Podés combinarlo con jeans y diferentes estampas, en un estilismo de esencia bohemia e inspiración setentera.",
+  "img": "ropa-mujer7.jpg",
+  "stock": 2,
+  "size": [
+   "M",
+   "L",
+   "XL"
+  ],
+  "color": "AMARILLO MOSTAZA",
+  "price": 129.9
+ },
+ {
+  "id": 10,
+  "name": "VESTIDO MANU ANI PRINT",
+  "category": 2,
+  "description": "Vestido largo estampado, de línea evasée y mangas línea A. Escote en V, la pechera está íntegramente bordada en combinación de tonos. El género es translúcido y viene con un viso corto que deja ver brazos y piernas. Perfecto para combinar con botas textanas en un look nochero de inspiración folk.",
+  "img": "ropa-mujer8.jpg",
+  "stock": 29,
+  "size": [
+   "S",
+   "M",
+   "L",
+   "XL"
+  ],
+  "color": "NEGRO",
+  "price": 59.9
+ },
+ {
+  "id": 11,
+  "name": "ZAPATILLA RHYTHM GOLD",
+  "category": 4,
+  "description": " ",
+  "img": "zapatilla-mujer2.jpg",
+  "stock": "13",
+  "size": [
+   "S",
+   "M",
+   "L",
+   "XL"
+  ],
+  "color": "NEGRO",
+  "price": 32.9
+ },
+ {
+  "id": 12,
+  "name": "ZUECO GAYNOR",
+  "category": 4,
+  "description": "Sueco con fondo artesanal de madera . Altura 5cm, capellada de cuero vacuno negro, bordado a tono en el empeine, remaches negros. Un calzado súper icónico que vuelve con todo esta temporada, para combinarlo con vestidos y pantalones.",
+  "img": "zapatilla-mujer3.jpg",
+  "stock": 92,
+  "size": [
+   "S",
+   "M",
+   "XL"
+  ],
+  "color": "NEGRO",
+  "price": 28.9
+ },
+ {
+  "id": 13,
+  "name": "BOTA ELEGANT MOON",
+  "category": 4,
+  "description": "Botas de cuero vacuno grabada a láser con ilustración de una mariposa y detalles con costura de hilo encerado. Taco en forma de cono con folia a tono de una altura de 8 cm. Plantilla interna con 'RAPSODIA' grabado.",
+  "img": "zapatilla-mujer4.jpg",
+  "stock": "1",
+  "size": [
+   "L",
+   "XL",
+   "XLL"
+  ],
+  "color": "MARRON OSCURO",
+  "price": 44.9
+ },
+ {
+  "id": 14,
+  "name": "ZAPATILLA GIPSY GLITTER",
+  "category": 4,
+  "description": "zapatilla confeccionada en cuero vacuno negro,metalizado plata, glitter negro y descarne negro . Los cordones son de algodón gises. Unas zapas re urbanas para combinar con cualquier outfit tanto de dia como de noche.",
+  "img": "zapatilla-mujer5.jpg",
+  "stock": "20",
+  "size": [
+   "S",
+   "L",
+   "XL"
+  ],
+  "color": "NEGRO",
+  "price": 28.9
+ },
+ {
+  "id": 15,
+  "name": "ZAPATILLA ARMY NEW",
+  "category": 4,
+  "description": "Zapatilla de estilo urbano confeccionada en poliuretano en mix de tonos de colores",
+  "img": "zapatilla-mujer6.jpg",
+  "stock": "91",
+  "size": [
+   "S",
+   "M",
+   "L",
+   "XL"
+  ],
+  "color": "BORDEAUX",
+  "price": 28.9
+ },
+ {
+  "id": 16,
+  "name": "BOTA OLIEN",
+  "category": 4,
+  "description": "Bota de cuero vacuno negro con decortes en la puntera y talón . Fondo artesanal con vira con tachas y taco de folia negra. Acceso por laterales internos con cierre metálico negro. En la parte trasera cuelga un tiento decorativo con terminales matálicas.",
+  "img": "zapatilla-mujer9.jpg",
+  "stock": "56",
+  "size": [
+   "S",
+   "M",
+   "L",
+   "XL"
+  ],
+  "color": "NEGRO",
+  "price": 34.9
+ },
+ {
+  "id": 17,
+  "name": "Jean Scratchs",
+  "category": 1,
+  "price": 1290,
+  "img": "hombre5.jfif",
+  "description": "Jean Scratchs",
+  "stock": "3",
+  "size": [
+   "S",
+   "M",
+   "L"
+  ],
+  "color": "Negro"
+ },
+ {
+  "id": 18,
+  "name": "Camisa sport Midprint",
+  "category": 1,
+  "price": "1690",
+  "img": "hombre6.jfif",
+  "description": "Camisa sport Midprint",
+  "stock": "20",
+  "size": [
+   "S",
+   "M",
+   "L"
+  ],
+  "color": "Blanco"
+ },
+ {
+  "id": 19,
+  "name": "Pantalon chino",
+  "category": 1,
+  "price": "3490",
+  "img": "hombre7.jfif",
+  "description": "Pantalon chino con cinturon",
+  "stock": "11",
+  "size": [
+   "S",
+   "M",
+   "L"
+  ],
+  "color": "Beige"
+ },
+ {
+  "id": 20,
+  "name": "Boxer Print",
+  "category": 1,
+  "price": "990",
+  "img": "hombre8.jfif",
+  "description": "Boxer Print",
+  "stock": "19",
+  "size": [
+   "S",
+   "M"
+  ],
+  "color": "Rojo"
+ },
+ {
+  "id": 21,
+  "name": "Saco ambo Navy",
+  "category": 1,
+  "price": "7990",
+  "img": "hombre9.jfif",
+  "description": "Saco ambo Navy ideal para salidas formales y tambien urbanas.",
+  "stock": "0",
+  "size": [
+   "S",
+   "M",
+   "L"
+  ],
+  "color": "Negro"
+ },
+ {
+  "id": 22,
+  "name": "Cinturon Belloux",
+  "category": "3",
+  "description": "Cinto Moda",
+  "stock": "5",
+  "img": "1650423518104accesoriesjpeg.jpeg",
+  "size": [
+   "M"
+  ],
+  "color": "Rosa",
+  "price": 690
+ },
+ {
+  "id": 23,
+  "name": "Medias Largas Reven",
+  "category": 3,
+  "description": "Medias Largas para el invierno con estilo urbano re abrigadas!",
+  "stock": 18,
+  "size": [
+   "S",
+   "M",
+   "L"
+  ],
+  "color": "Amarrilo",
+  "price": 990,
+  "img": "1650474475955accesories2jpg.jpg"
+ },
+ {
+  "id": 24,
+  "name": "Gorro lana rojo",
+  "category": 3,
+  "description": "Gorro de lana rojo ",
+  "stock": 9,
+  "size": [
+   "S",
+   "M"
+  ],
+  "color": "Rojo",
+  "price": 395,
+  "img": "default-img.jpg"
+ },
+ {
+  "id": 25,
+  "name": "Bufanda Carmine TX",
+  "category": 3,
+  "description": "Bufanda de temporada Carmine TX comidisima de nuestra ultima oferta!",
+  "stock": 20,
+  "size": [
+   "M"
+  ],
+  "color": "Beige",
+  "price": 1090,
+  "img": "1650474904132accesories4.jpg"
+ },
+ {
+  "id": 26,
+  "name": "Borcegos Franco Armani",
+  "category": 2,
+  "description": "Nuevos Borcegos de diseño urbano por Franco Armani",
+  "stock": 1,
+  "size": [
+   "S",
+   "M",
+   "L",
+   "XL",
+   "XXL"
+  ],
+  "color": "Negro",
+  "price": 12918,
+  "img": "1650475058356zapatilla-mujer.jpg"
+ }
+]

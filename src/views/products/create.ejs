@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="/css/createProduct.css">
+    <%- include("../partials/head.ejs") %>
+        <title>Nuevo Producto</title>
+</head>
+
+<body>
+    <%- include("../partials/header.ejs") %>
+    <main>
+        <section class="main-container">
+            <section class="title-container">
+                <h1>Nuevo Producto</h1>
+            </section>
+            <form action="/products/create" method="post" enctype="multipart/form-data">
+                <section class="grid-layout">
+                    <section class="child-name">
+                        <label for="name">Nombre del producto</label>
+                        <input 
+                            type="text" 
+                            name="name" 
+                            value="<%= locals.oldData ? oldData.name : null %>"
+                            class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
+                        >
+                        <% if (locals.errors && errors.name) { %>
+                            <div class="text-danger">
+                                <%= errors.name.msg %> 
+                            </div>
+                        <% } %>
+
+
+                        <label for="category">Categoria</label>
+                        <select name="category" required>
+                            <option value="1">Hombre</option>
+                            <option value="2">Mujer</option>
+                            <option value="3">Accesorios</option>
+                            <option value="4">Calzado</option>
+                            <option value="5">Otros</option>
+                        </select>
+
+
+                        <label>Descripción</label>
+                        <textarea 
+                            class="description" 
+                            name="description" 
+                            placeholder="Descripcion del producto.."
+                            class="form-control <%= locals.errors && errors.description ? 'is-invalid' : null %>"
+                        ><%= locals.oldData ? oldData.description : "" %></textarea>
+                    </section>
+
+                    <section class="child-image">
+                        <label for="img">Imagen</label>
+                        <div class="file-select">
+                            <input 
+                                type="file" 
+                                name="img" 
+                                aria-label="Archivo" class="form-control <%= locals.errors && errors.img ? 'is-invalid' : null %>">
+
+                                <% if (locals.errors && errors.img) { %>
+                                    <div class="text-danger">
+                                        <%= errors.img.msg %> 
+                                    </div>
+                                <% } %>
+                        </div>
+                        <!-- <img src="/img/products/default-img.jpg" alt="Imagen del Producto" class="imagen"> -->
+                     </section>
+
+                    <section class="child-detail">
+                        <section class="detail">
+                              <label for="stock">Stock</label>
+                            <input 
+                                type="text" 
+                                name="stock" 
+                                value="<%= locals.oldData ? oldData.stock : null %>"
+                                class="form-control <%= locals.errors && errors.stock ? 'is-invalid' : null %>"
+                            >
+
+                            <% if (locals.errors && errors.stock) { %>
+                                <div class="text-danger">
+                                    <%= errors.stock.msg %> 
+                                </div>
+                            <% } %>
+
+                        </section>
+                        <section class="detail">
+                            <label for="size">Talle</label>
+                                <input 
+                                    type="text" 
+                                    name="size" 
+                                    value="<%= locals.oldData ? oldData.size : null %>"
+                                    class="form-control <%= locals.errors && errors.size ? 'is-invalid' : null %>"
+                                >
+
+                                <% if (locals.errors && errors.size) { %>
+                                    <div class="text-danger">
+                                        <%= errors.size.msg %> 
+                                    </div>
+                                <% } %>
+
+                        </section>
+                        <section class="detail">
+                            <label for="color">Color</label>
+                            <input 
+                                type="text" 
+                                name="color" 
+                                value="<%= locals.oldData ? oldData.color : null %>"
+                                class="form-control <%= locals.errors && errors.color ? 'is-invalid' : null %>"
+                            >
+
+                            <% if (locals.errors && errors.color) { %>
+                                <div class="text-danger">
+                                    <%= errors.color.msg %> 
+                                </div>
+                            <% } %>
+
+                        </section>
+                        <section class="detail">
+                            <label for="price">Precio</label>
+                            <input 
+                                type="text" 
+                                name="price"
+                                placeholder="$" 
+                                class="form-control <%= locals.errors && errors.price ? 'is-invalid' : null %>"
+                                value="<%= locals.oldData ? oldData.price : null %>"
+                            >
+
+                            <% if (locals.errors && errors.price) { %>
+                                <div class="text-danger">
+                                    <%= errors.price.msg %> 
+                                </div>
+                            <% } %>
+
+                        </section>
+                    </section>
+                </section>
+                <section class="button-create">
+                    <button type="submit" class="btn-confirm">Crear</button>
+                    <button type="reset" class="btn-reset">Cancelar</button>
+                </section>
+            </form>
+        </section>
+    </main>
+    <%- include("../partials/footer.ejs") %>
+</body>
+
+</html>

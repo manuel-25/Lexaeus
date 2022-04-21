@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 1023px) {
+    /*Mobile y Tablet*/
+    footer {
+        background-color: #E63946;
+        font-family: 'Mulish', sans-serif;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        width: 100vw;
+    }
+    .parteizq {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+    .parteder {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+        text-align: center;
+    }
+    .columnas {
+        display: flex;
+        width: 85%;
+        flex-direction: column;
+    }
+    .seguinos {
+        width: 100%;
+        margin-top: 6vh;
+        margin-bottom: 4vh;
+        font-size: 25px;
+        text-align: center;
+    }
+    .copyright {
+        text-align: center;
+        margin-top: 2vh;
+        margin-bottom: 1vh;
+        margin-right: 1vw;
+        font-size: 12px;
+    }
+    .copyright i {
+        font-size: 12px;
+        color: white;
+    }
+    .titulos {
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        font-size: 15px;
+        margin-left: 3vw;
+        padding-bottom: 1vh;
+        width: 89%;
+    }
+    .tit {
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        font-size: 20px;
+        margin-left: 3vw;
+        padding-bottom: 1vh;
+        width: 89%;
+    }
+    .seguinos i {
+        margin: 2vh;
+        color: #1D3557;
+    }
+
+    .seguinos i:hover{
+        transition: all .4s ease;
+        color: #0e4694;
+    }
+
+    .parrafo {
+        display: none;
+    }
+    .columnas article ul {
+        display: none;
+        width: 100%;
+        margin-bottom: 2vh;
+        text-align: center;
+        flex-direction: column;
+    }
+    .columnas article ul a {
+        margin-bottom: 2vh;
+        text-align: center;
+        color: white;
+        font-family: 'Mulish', sans-serif;
+        list-style: none;
+        text-decoration: none;
+    }
+    footer section section article {
+        border-bottom: 2px solid white;
+        margin-top: 4vh;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .flecha {
+        text-align: right;
+        color: white;
+        width: 4%;
+    }
+    .newsletter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .newsletter p {
+        text-align: center;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+        width: 70%;
+    }
+    .newsletter button {
+        background-color: #1D3557;
+        border-radius: 50px;
+        border: 1px solid #1D3557;
+        color: white;
+        margin-top: 3vh;
+        margin-bottom: 4vh;
+        font-size: 15px;
+        padding: 5px 15px;
+        font-family: 'Mulish', sans-serif;
+    }
+
+    .newsletter button:hover{
+        transition: all .4s ease;
+        background-color: #0e4694;
+    }
+
+    .newsletter input {
+        background-color: white;
+        color: #837f80;
+        border-radius: 7px;
+        border: 1px solid white;
+        width: 90%;
+        height: 5vh;
+        padding-left: 10px;
+    }
+}
+
+@media (min-width: 1024px) {
+    /*Descktop*/
+    footer {
+        background-color: #E63946;
+        font-family: 'Mulish', sans-serif;
+        display: flex;
+        color: white;
+    }
+    .flecha {
+        display: none;
+    }
+    .parteizq {
+        display: flex;
+        flex-wrap: wrap;
+        width: 65%;
+        flex-direction: column;
+    }
+    .parteder {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 35%;
+    }
+    .columnas {
+        display: flex;
+        justify-content: space-around;
+    }
+    .titulos,
+    .tit {
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        font-size: 25px;
+        text-align: center;
+    }
+    .seguinos {
+        text-align: center;
+        width: 35%;
+        margin-top: 2vh;
+        margin-bottom: 4vh;
+        font-size: 25px;
+    }
+    .seguinos i {
+        margin: 2vh;
+        color: #1D3557;
+    }
+
+    .seguinos i:hover{
+        transition: all .4s ease;
+        color: #0e4694;
+    }
+
+    .columnas article ul a {
+        margin-bottom: 2vh;
+        text-align: center;
+        color: white;
+        font-family: 'Mulish', sans-serif;
+        list-style: none;
+        text-decoration: none;
+    }
+    .columnas article ul {
+        display: flex;
+        flex-direction: column;
+    }
+    .newsletter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .newsletter p {
+        text-align: center;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+        width: 70%;
+    }
+    .newsletter form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .newsletter button {
+        background-color: #1D3557;
+        border-radius: 50px;
+        border: 1px solid #1D3557;
+        color: white;
+        margin-top: 3vh;
+        margin-bottom: 4vh;
+        font-size: 15px;
+        padding: 5px 15px;
+        font-family: 'Mulish', sans-serif;
+        width: 40%;
+    }
+
+    .newsletter button:hover{
+        transition: all .4s ease;
+        background-color: #0e4694;
+    }
+
+    .newsletter input {
+        background-color: white;
+        color: #837f80;
+        border-radius: 7px;
+        border: 1px solid white;
+        width: 75%;
+        height: 5vh;
+        padding-left: 10px;
+    }
+    .copyright {
+        text-align: right;
+        margin-top: 2vh;
+        margin-bottom: 1vh;
+        margin-right: 1vw;
+    }
+}
+
+/*                                      HTML DEL FOOTER - ACTUALIZADO
+    <footer>
+        <section class="parteizq">
+            <section class="columnas">
+                <article>
+                    <p class="titulos">CATEGORIAS</p>
+                    <i class="fas fa-chevron-right flecha"></i>
+                    <ul>
+                        <a href="#">Hombre</a>
+                        <a href="#">Mujer</a>
+                        <a href="#">Accesorios</a>
+                        <a href="#">Zapatillas</a>
+                        <a href="#">Ofertas</a>
+                    </ul>
+                </article>
+                <article>
+                    <p class="titulos">ACERCA DE</p>
+                    <i class="fas fa-chevron-right flecha"></i>
+                    <ul>
+                        <a href="#">Lexaeus</a>
+                        <a href="#">Terminos y Condiciones</a>
+                        <a href="#">Privacidad</a>
+                        <a href="#">Legal</a>
+                    </ul>
+                </article>
+                <article>
+                    <p class="titulos">AYUDA</p>
+                    <i class="fas fa-chevron-right flecha"></i>
+                    <ul>
+                        <a href="#">Contacto</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Mi cuenta</a>
+                        <a href="#">Comprar</a>
+                        <a href="#">Vender</a>
+                    </ul>
+                </article>
+            </section>
+            <section class="seguinos">
+                <p>SEGUINOS</p>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </section>
+        </section>
+        <section class="parteder">
+            <article class="newsletter">
+                <p class="tit">SUSCRIBITE A NUESTRO NEWSLETTER</p>
+                <p class="parrafo">No te pierdas de toda la informacion de la temporada, nuevas prendas y tendencias en Lexaeus</p>
+                <form>
+                    <input type="text" name="newsletter" placeholder="Email">
+                    <button type="button">Enviar</button>
+                </form>
+            </article>
+            <article>
+                <p class="copyright"><i class="far fa-copyright"></i> 2021 Lexaeus | Todos los derechos reservados</p>
+            </article>
+        </section>
+    </footer>
+*/

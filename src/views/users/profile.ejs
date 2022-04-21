@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include("../partials/head.ejs") %>
+
+        <!-- Hoja de estilos del perfil -->
+        <link rel="stylesheet" href="/css/profile.css">
+
+</head>
+
+<body>
+
+    <%- include("../partials/header.ejs") %>
+        <main>
+            <form enctype="multipart/form-data" action="/users/profile?_method=PUT" method="post">
+                <section class="informacion">
+
+                    <div class="secFotoPerfil">
+                        <img src="/img/users/avatar/<%= user.avatar %>" alt="" class="profile-img">
+                        <div class="file-select" id="src-file1">
+                            <input type="file" name="imageProfile" aria-label="Archivo">
+                        </div>
+                    </div>
+                    <div class="secDatos">
+
+                        <article class="profile-data">
+                            <ul>
+                                <li>Nombre:
+                                    <%= user.firstName %>
+                                </li>
+                                <li>Apellido:
+                                    <%= user.lastName %>
+                                </li>
+                                <li>Email:
+                                    <%= user.email %>
+                                </li>
+                                <% if ( user.esAdmin == true) { %>
+                                    <li>Categoria: Vendedor</li>
+                                    <% } else { %>
+                                        <li>Categoria: Comprador</li>
+                                        <% } %>
+                            </ul>
+                        </article>
+
+
+                    </div>
+                </section>
+                <section class="secGuardar">
+                    <button type="submit" class="botonCambiar">Guardar</button>
+                </section>
+            </form>
+
+        </main>
+        <%- include("../partials/footer.ejs") %>
+</body>

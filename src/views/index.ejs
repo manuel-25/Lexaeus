@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs") %>
+
+    <link href="/css/home.css" rel="stylesheet">
+
+</head>
+<body>
+    <%- include("./partials/header.ejs") %> 
+    <main class="main">
+        <section class="banner-container">
+            <a class="left-chevron" href="#"><i class="fas fa-chevron-left"></i></a>
+            <img class="main-banner" src="/img/banner-3.jpg" alt="Banner">
+            <a class="right-chevron" href="#"><i class="fas fa-chevron-right"></i></a>
+        </section>
+        
+        <section class="categorias-container">
+            <article class="article-verano">
+                <section class="textbanner">
+                    <a class="text-btn" href="/products/category/5">Verano</a>
+                </section>
+                <a class="verano" href="/products/category/5"><img src="/img/verano.png"></a>
+            </article>
+
+            <article class="article-accesorios">
+                <section class="textbanner">
+                    <a class="text-btn" >Accesorios</a>
+                </section>
+                <a class="accesorios" href="/products/category"><img src="/img/accesorios.jpg"></a>
+            </article>
+
+            <article class="article-hombre">
+                <section class="textbanner">
+                    <a class="text-btn" >Hombre</a>
+                </section>
+                <a class="hombre" href="/products/category/1"><img src="/img/hombre.jpg"></a>
+            </article>
+
+            <article class="article-mujer">
+                <section class="textbanner">
+                    <a class="text-btn" >Mujer</a>
+                </section>
+                <a class="hombre" href="/products/category/2"><img src="/img/mujer.jpg"></a>
+            </article>
+        </section>
+
+        <section class="bottom-text">
+            <article>
+                <i class="fab fa-instagram"></i>
+                <p>@Lexaeus</p>
+            </article>
+            <div>
+                <span href="#">Seguinos</span>
+            </div>
+        </section>
+        
+        <section class="servicios-container">
+            <article>
+                <i class="fas fa-truck"></i>
+                <h4>Envios a todo el pais</h4>
+                <p>RECIBI TU PEDIDO EN CUALQUIER PARTE DEL PAIS</p>
+            </article>
+
+            <article>
+                <i class="fas fa-credit-card"></i>
+                <h4>9 y 12 Cuotas</h4>
+                <p>SIN INTERES CON TODAS LAS TARJETAS</p>
+            </article>
+
+            <article>
+                <i class="fas fa-shield-alt"></i>
+                <h4>Seguro</h4>
+                <p>TUS DATOS ESTAN SEGUROS</p>
+            </article>
+        </section>
+    </main>
+    <%- include("./partials/footer.ejs") %> 
+    
+</body>
+</html>
