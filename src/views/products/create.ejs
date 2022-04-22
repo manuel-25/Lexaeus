@@ -71,7 +71,7 @@
                                     </div>
                                 <% } %>
                         </div>
-                        <!-- <img src="/img/products/default-img.jpg" alt="Imagen del Producto" class="imagen"> -->
+                        <img src="/img/products/default-img.jpg" alt="Imagen del Producto" class="imagen">
                      </section>
 
                     <section class="child-detail">
@@ -95,7 +95,8 @@
                             <label for="size">Talle</label>
                                 <input 
                                     type="text" 
-                                    name="size" 
+                                    name="size"
+                                    placeholder="S M L XL"
                                     value="<%= locals.oldData ? oldData.size : null %>"
                                     class="form-control <%= locals.errors && errors.size ? 'is-invalid' : null %>"
                                 >

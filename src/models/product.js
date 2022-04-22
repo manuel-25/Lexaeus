@@ -51,26 +51,21 @@ const model = {
         fs.writeFileSync(this.filename, JSON.stringify(allProducts, null, ' '))
         return newProduct
     },
-    update: function(id) {
-        productToUpdate = model.findByPk(id)
+    update: function(productData) {
+        let allProducts = this.findAll()
 
-        productToUpdate.name = req.body.name
-        productToUpdate.category = req.body.category
-        productToUpdate.price = req.body.price
-        productToUpdate.img = req.body.img
-        productToUpdate.description = req.body.description
-        productToUpdate.stock = req.body.stock
-        productToUpdate.size = req.body.size
-        productToUpdate.color = req.body.color
+        productToUpdate = model.findByPk(productData.id)
+        productToUpdate = {productData}
+        
 
-        allProducts = model.getData()
-
-        for(let i = 0; i < allProducts.length(); i++){
-            if(allProducts[i].id === id) {
+        for(let i = 0; i < allProducts.length; i++){
+            if(allProducts[i].id == productData.id) {
                 return allProducts[i] = productToUpdate
             }
         }
+
         fs.writeFileSync(this.filename, JSON.stringify(allProducts, null, ' '))
+        return productToUpdate
     },
 
     delete: function(id){

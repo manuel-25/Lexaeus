@@ -16,7 +16,7 @@ const uploadFile = multer({ storage })
 
 
 //Mostrar Productos
-router.get("/category/:id", userLoggedMiddleware,products.getProducts)
+router.get("/category/:id", userLoggedMiddleware, products.getProducts)
 
 //Detalle de Product
 router.get("/detail/:id", products.detailProduct)
@@ -31,13 +31,14 @@ router.post('/create', uploadFile.single('img'), validateCreateProduct, products
 
 
 //Formulario Editar Producto
-router.get("/:id/edit", authMiddleware, authAdminMiddleware, products.update)
+router.get("/edit/:id",  products.update)
+//authMiddleware, authAdminMiddleware,              ---------------------AGREGAR LUEGO
 
 //Procesar Editar Producto
-router.put('/:id/edit', products.processUpdate)
+router.put('/edit/:id', uploadFile.single('img'), validateCreateProduct, products.processUpdate)
 
 //Procesar Eliminar Producto
-router.delete("/:id/edit", products.delete)
+router.delete("/edit/:id", products.delete)
 
 
 //Carrito

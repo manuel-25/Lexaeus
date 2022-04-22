@@ -24,7 +24,7 @@
                                     $ <%= products[i].price %>
                                 </p>
                                 <% if (locals.userLogged && locals.userLogged.admin) { %>
-                                    <a class="edit-button" href="/products/<%=products[i].id%>/edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a class="edit-button" href="/products/edit/<%=products[i].id%>"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <% } %>
                             </div>
                         </article>
