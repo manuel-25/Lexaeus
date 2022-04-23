@@ -1,8 +1,6 @@
 const path = require('path')
 const fs = require('fs') //Leer y escribir archivo .json
 
-
-
 const model = {
     filename: path.resolve(__dirname, '..', 'database', 'products.json'),
 
@@ -29,30 +27,24 @@ const model = {
         return productFound
     },
 
-    findByField: function(field, text) {
-        let allProducts = this.findAll()
-        let productFound = allProducts.find(oneProduct => oneProduct[field] == text)
-        return productFound
-    },
+    search: (prop, value) => model.findAll().find(element => element[prop] == value),   //Find By Field
 
     findByCategory: function(category) {
-        let allProducts = this.findAll()
-        let finalProducts = allProducts.filter(oneProduct => oneProduct.category == category)
-        return finalProducts
-    },
+        let allProducts = model.findAll()
+        let results = allProducts.filter(oneProduct => oneProduct.category == category)
+        return results.length > 0 ? results : null
+    }, 
 
     write: (data) => fs.writeFileSync(model.filename, JSON.stringify(data, null, 2)),
 
-    search: (prop, value) => model.findAll().find(element => element[prop] == value),
-
     create: function(productData){
-        let allProducts = this.findAll()
+        let allProducts = model.findAll()
         let newProduct = {
-            id: this.generateId(),
+            id: model.generateId(),
             ...productData
         }
         allProducts.push(newProduct)
-        fs.writeFileSync(this.filename, JSON.stringify(allProducts, null, ' '))
+        model.write(allProducts)
         return newProduct
     },
 
@@ -78,6 +70,35 @@ const model = {
         }
 
         return productValidate
+    },    //Agregar Validar Imagen
+
+    validateCreate: (body, file) => {
+        //Validar Imagen
+        if(file){
+            body = {
+                ...body,
+                img: file.filename
+            }
+        } else {
+            body = {
+                ...body,
+                img: "default-img.jpg"
+            }
+        }
+
+        //Parsear Strings a Numeros
+        body.price = parseFloat(body.price)
+        body.stock = parseInt(body.stock)
+        body.category = parseInt(body.category)
+
+        //Validar size
+        body.size = body.size.toUpperCase()
+        if(body.size.includes(",")){
+            body.size = body.size.split(",")
+        } else {
+            body.size = body.size.split(" ")
+        }
+        return body
     },
 
     update: (id, data) => {
@@ -103,9 +124,9 @@ const model = {
     },
 
     delete: function(id){
-        let allProducts = this.findAll()
+        let allProducts = model.findAll()
         let finalProducts = allProducts.filter(oneProduct => oneProduct.id !== id)
-        fs.writeFileSync(this.filename, JSON.stringify(finalProducts, null, ' '))
+        model.write(finalProducts)
         if(allProducts.length() == finalProducts.length()){
             return false
         }

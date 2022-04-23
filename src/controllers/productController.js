@@ -1,13 +1,17 @@
 const product = require('../models/product')
-const fs = require('fs');
 const { validationResult } = require('express-validator');
 
 const controller = {
-    show: (req, res) => res.render("products/category", {
+    show: (req, res) => {
+        let result = product.findByCategory(req.params.id)
+        return result ? res.render("products/category", {
             style: ['category'],
-            title: 'Productos',                                  // agregar variable
-            products: product.findByCategory(req.params.id)
-    }),
+            title: 'Categoria | '+ result[0].category,                                  // agregar variable
+            products: result
+        }) : res.render("error", {
+            msg: "Producto no encontrado!"
+        })
+    },
 
     cart: (req, res) => res.render("products/cart", {
         style: ['cart'],
@@ -27,43 +31,18 @@ const controller = {
 
     processCreate: (req, res) => {
         const resultValidation = validationResult(req)
-
         if (resultValidation.errors.length > 0) {
 			return res.render('products/create', {
 				errors: resultValidation.mapped(),
-				oldData: req.body
+				oldData: req.body,
+                style: ['createProduct'],
+                title: 'Nuevo Producto'
 			})
 		}
 
-        //Validar Imagen
-        if(req.file){
-            req.body = {
-                ...req.body,
-                img: req.file.filename
-            }
-        } else {
-            req.body = {
-                ...req.body,
-                img: "default-img.jpg"
-            }
-        }
-
-        //Parsear Strings a Numeros
-        req.body.price = parseFloat(req.body.price)
-        req.body.stock = parseInt(req.body.stock)
-        req.body.category = parseInt(req.body.category)
-
-
-        //Validar size
-        req.body.size = req.body.size.toUpperCase()
-        if(req.body.size.includes(",")){
-            req.body.size = req.body.size.split(",")
-        } else {
-            req.body.size = req.body.size.split(" ")
-        }
-
-        product.create(req.body)
-        res.redirect('/products/create');
+        let validated = product.validateCreate(req.body, req.file)
+        product.create(validated)
+        res.redirect('/products/create');                       // Redirigir a /products/detail/:id
     },
 
     update: (req, res) => res.render("products/modify",{
@@ -77,9 +56,13 @@ const controller = {
         if (resultValidation.errors.length > 0) {
 			return res.render('products/modify', {
 				errors: resultValidation.mapped(),
-				oldData: req.body
+				oldData: req.body,
+                style: ['createProduct'],
+                title: 'Actualizar',
+                product: product.search("id", req.params.id)
 			})
 		}
+        
         let validated = product.validateUpdate(req.body)
         product.update(req.params.id, validated)
 

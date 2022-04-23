@@ -40,7 +40,7 @@ router.put('/edit/:id', validateCreateProduct, products.processUpdate)
 
 
 //Procesar Eliminar Producto
-router.delete("/edit/:id", products.delete)
+router.delete("/delete/:id", products.delete)
 
 
 //Carrito
