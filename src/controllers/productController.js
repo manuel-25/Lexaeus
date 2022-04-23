@@ -3,14 +3,11 @@ const fs = require('fs');
 const { validationResult } = require('express-validator');
 
 const controller = {
-    show: (req, res) => {
-        category = product.findByCategory(req.params.id)
-        res.render("products/category", {
+    show: (req, res) => res.render("products/category", {
             style: ['category'],
-            title: 'Productos',                      // mejorar
-            products: category
-        })
-    },
+            title: 'Productos',                                  // agregar variable
+            products: product.findByCategory(req.params.id)
+    }),
 
     cart: (req, res) => res.render("products/cart", {
         style: ['cart'],

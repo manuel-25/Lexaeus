@@ -4,9 +4,10 @@ const { validationResult } = require('express-validator');
 const validator = require('express-validator');
 
 const controller = {
-    register: (req, res) => {
-        res.render("users/register")
-    },
+    register: (req, res) => res.render("users/register", {
+        style: ['register'],
+        title: 'Registrate'
+    }),
     processRegister: (req, res) => {
         const resultValidation = validationResult(req)
 
@@ -67,9 +68,11 @@ const controller = {
         return res.redirect('/users/login')
     },
 
-    login: (req, res) => {
-        res.render("users/login")
-    },
+    login: (req, res) => res.render("users/login", {
+        style: ['login'],
+        title: 'Iniciar sesión'
+    })
+    ,
 
     processLogin: (req, res) => {
         const resultValidation = validationResult(req)
@@ -106,14 +109,13 @@ const controller = {
         //return res.send(req.body)
     },
     
-    profile: (req, res) => {
-        return res.render('users/profile', {
-            user: req.session.userLogged
-        })
-    },
+    profile: (req, res) => res.render('users/profile', {
+        style: ['profile'],
+        title: 'Perfil',
+        user: req.session.userLogged
+    }),
 
-    updateProfile: (req, res) => {
-
+    updateProfile: (req, res) => {                          //refactor
         user.editar(req, res);
         let urlARedireccionar = '/users/profile';
         res.redirect(urlARedireccionar);

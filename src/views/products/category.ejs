@@ -4,7 +4,7 @@
         <main>
             <section>
                 <% if (products.length > 0) { %>
-                    <h1><%= locals.title ? title : 'Productos' %> </h1>
+                    <h1><%= locals.title ? title : 'Producto' %> </h1>
                     <% for(let i = 0; i < products.length; i++) { %>
                         <article>
                             <a class="a-homesecundario" href="/products/detail/<%= products[i].id %>">
