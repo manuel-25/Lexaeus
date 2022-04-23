@@ -17,7 +17,7 @@ app.use(userLoggedMiddleware)
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static('./public'))
-app.use(method('_method'))
+app.use(method('m')) // ?m=PUT  || ?m=DELETE
 
 //Seteo Puerto
 app.set("port", 3000);

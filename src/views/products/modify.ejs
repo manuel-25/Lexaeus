@@ -1,27 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
-
-    <link rel="stylesheet" href="/css/createProduct.css">
-    <%- include("../partials/head.ejs") %>
-        <title>Editar Producto</title>
-</head>
-
+<%- include("../partials/head") %>
 <body>
-    <%- include("../partials/header.ejs") %>
+    <%- include('../partials/header') %>
     <main>
         <section class="main-container">
             <section class="title-container">
-                <h1>Editar Producto</h1>
+                <h1><%= locals.title ? title : null %></h1>
             </section>
-            <form method="put" enctype="multipart/form-data" action="/products/edit/23?_method=PUT">
+            <form action="/products/edit/<%= product ? product.id : ""%>?m=PUT" method="post">  <!-- enctype="multipart/form-data" -->
                 <section class="grid-layout">
                     <section class="child-name">
                         <label for="name">Nombre del producto</label>
@@ -46,11 +31,11 @@
 								let categories = ['Hombre', 'Mujer', 'Accesorios', 'Otros'];
 							%>
 							<% for (const [i, oneCategory] of categories.entries()) { %>
-							    <option 
-									value="<%=oneCategory%>"
+							    <option
+                                    <% let categoryId = (i + 1)%>
+									value="<%= categoryId %>"
                                     <% if (product) { %>
-                                        <% let categoryId = (i + 1)%>
-                                        <%=(categoryId === product.category) ? 'selected' : null %> 
+                                        <%=(categoryId == product.category) ? 'selected' : null %> 
                                     <% } %>
 								> <%= oneCategory %></option>
 							<% } %>
@@ -164,5 +149,4 @@
     </main>
     <%- include("../partials/footer.ejs") %>
 </body>
-
 </html>

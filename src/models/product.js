@@ -41,6 +41,10 @@ const model = {
         return finalProducts
     },
 
+    write: (data) => fs.writeFileSync(model.filename, JSON.stringify(data, null, 2)),
+
+    search: (prop, value) => model.findAll().find(element => element[prop] == value),
+
     create: function(productData){
         let allProducts = this.findAll()
         let newProduct = {
@@ -51,21 +55,51 @@ const model = {
         fs.writeFileSync(this.filename, JSON.stringify(allProducts, null, ' '))
         return newProduct
     },
-    update: function(productData) {
-        let allProducts = this.findAll()
 
-        productToUpdate = model.findByPk(productData.id)
-        productToUpdate = {productData}
+    validateUpdate: (data) => {
+        let productValidate = JSON.parse(JSON.stringify(data))
         
+        //Parsear Strings a Numeros
+        productValidate.price = parseFloat(data.price)
+        productValidate.stock = parseInt(data.stock)
+        productValidate.category = parseInt(data.category)
 
-        for(let i = 0; i < allProducts.length; i++){
-            if(allProducts[i].id == productData.id) {
-                return allProducts[i] = productToUpdate
-            }
+        if(productValidate.category && !Number.isInteger(productValidate.category)){
+            data.category = 4
         }
 
-        fs.writeFileSync(this.filename, JSON.stringify(allProducts, null, ' '))
-        return productToUpdate
+
+        //Validar size
+        productValidate.size = data.size.toUpperCase()
+        if(productValidate.size.includes(",")){
+            productValidate.size = data.size.split(",")
+        } else {
+            productValidate.size = data.size.split(" ")
+        }
+
+        return productValidate
+    },
+
+    update: (id, data) => {
+        let allProducts = model.getData()
+
+        let updated = allProducts.map(e => {
+            if(e.id == id){
+                e.name = data.name
+                e.category = data.category
+                e.description = data.description
+                e.stock = data.stock
+                e.size = data.size
+                e.color = data.color
+                e.price = data.price
+                data.img ? e.img = data.img : null
+                return e
+            }
+            return e
+        })
+        model.write(updated)
+        let product = model.search('id', id)
+        return product
     },
 
     delete: function(id){

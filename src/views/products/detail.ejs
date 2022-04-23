@@ -1,28 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <%- include("../partials/head.ejs") %>
-
-        <link href="/css/producto.css" rel="stylesheet">
-</head>
-
+<%- include("../partials/head") %>
 <body>
     <%- include("../partials/header.ejs") %>
         <main>
-
             <section>
 
-                <% if (productoAMostrar) { %>
+                <% if (product) { %>
                     <article class="secimag">
-                        <img src="/img/products/<%= productoAMostrar.img %>" alt="Imagen del Producto" class="imagenprod">
+                        <img src="/img/products/<%= product %>" alt="Imagen del Producto" class="imagenprod">
                     </article>
                     <article class="detallescompra">
                         <section class="titulo">
-                            <p> <%= productoAMostrar.name %> </p>
+                            <p> <%= product.name %> </p>
                         </section>
                         <section class="precio">
-                            <p> <%= productoAMostrar.price %>$ </p>
+                            <p> <%= product.price %>$ </p>
                         </section>
 
                         <section class="combos">
@@ -67,7 +58,7 @@
             </section>
             <h3>Descripcion</h3>
             <p class="descripcion">
-                <%= productoAMostrar.description %>
+                <%= product.description %>
             </p>
             <% } else {%>
                 <section class="titulo">
