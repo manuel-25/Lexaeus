@@ -8,7 +8,7 @@ const products = require('../controllers/productController');
 const authMiddleware = require('../middlewares/authMiddleware')
 const authAdminMiddleware = require('../middlewares/authAdminMiddleware');
 const userLoggedMiddleware = require('../middlewares/userLoggedMiddleware');
-const validateCreateProduct = require('../middlewares/validateCreateProduct')
+const { validateCreateForm } = require('../models/product')
 
 //Multer 
 const storage = require('../middlewares/multerProductMiddleware')
@@ -21,7 +21,7 @@ router.get("/create", products.create)
 // authMiddleware, authAdminMiddleware,            -------------------AGREGAR LUEGO
 
 //Procesar Crear Producto
-router.post('/create', uploadFile.single('img'), validateCreateProduct, products.processCreate)
+router.post('/create', uploadFile.single('img'), validateCreateForm, products.processCreate)
 
 //Mostrar Productos
 router.get("/category/:id", userLoggedMiddleware, products.show)
@@ -35,7 +35,7 @@ router.get("/edit/:id",  products.update)
 //authMiddleware, authAdminMiddleware,              ---------------------AGREGAR LUEGO
 
 //Procesar Editar Producto
-router.put('/edit/:id', validateCreateProduct, products.processUpdate)
+router.put('/edit/:id', validateCreateForm, products.processUpdate)
 //uploadFile.single('img')
 
 

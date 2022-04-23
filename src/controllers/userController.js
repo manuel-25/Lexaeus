@@ -8,18 +8,20 @@ const controller = {
         title: 'Registrate'
     }),
     processRegister: (req, res) => {
-        const resultValidation = validationResult(req)
 
-        //Validacion hay Errores 
+        // Express Validator Results
+        const resultValidation = validationResult(req)
         if (resultValidation.errors.length > 0) {
 			return res.render('users/register', {
 				errors: resultValidation.mapped(),		//.mapped() convierte el Array en un Objeto literal
-				oldData: req.body
+				oldData: req.body,
+                style: ['register'],
+                title: 'Registrate'
 			})
 		}
 
-        //Validacion email ya esta en uso
-        let userInDB = user.findByField('email', req.body.email)
+        //Validacion email already in use
+        let userInDB = user.search('email', req.body.email)
         if(userInDB) {
             return res.render('users/register', {
                 errors: {
@@ -27,11 +29,13 @@ const controller = {
                         msg: 'Este email ya esta registrado'
                     }
                 },
-                oldData: req.body
+                oldData: req.body,
+                style: ['register'],
+                title: 'Registrate'
             })
         }
 
-        //Validacion contrasenas iguales
+        //Validacion confirm password
         if(req.body.password !== req.body.confirm){
             return res.render('users/register', {
                 errors: {
@@ -39,17 +43,15 @@ const controller = {
                         msg: 'Las Contraseñas no coinciden'
                     }
                 },
-                oldData: req.body
+                oldData: req.body,
+                style: ['register'],
+                title: 'Registrate'
             })
         }
+        delete req.body.confirm
+        let userToCreate = req.body
 
-        let userToCreate = {
-            ...req.body,
-            password: bcrypt.hashSync(req.body.password, 10)
-        }
-        delete userToCreate.confirm
-
-        //Validacion avatar
+        //Validacion image
         if(req.file){
             userToCreate = {
                 ...userToCreate,
@@ -62,32 +64,30 @@ const controller = {
             }
         }
 
-        let userCreated = user.create(userToCreate)
-        console.log(userCreated)
+        user.create(userToCreate)
         return res.redirect('/users/login')
     },
 
     login: (req, res) => res.render("users/login", {
         style: ['login'],
         title: 'Iniciar sesión'
-    })
-    ,
+    }),
 
     processLogin: (req, res) => {
         const resultValidation = validationResult(req)
-
         if (resultValidation.errors.length > 0) {
 			return res.render('users/login', {
 				errors: resultValidation.mapped(),
 				oldData: req.body
 			})
 		}
-        let userToLogin = user.findByField('email', req.body.email)
 
+        let userToLogin = user.search('email', req.body.email)
         if(userToLogin){
             let isOkPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
             if(isOkPassword){
                 delete userToLogin.password                 //Elimina una propiedad
+                delete req.body.password
                 req.session.userLogged = userToLogin
 
                 if(req.body.remember_user){

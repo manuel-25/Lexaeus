@@ -1,15 +1,16 @@
 const path = require('path')
 const fs = require('fs') //Leer y escribir archivo .json
+const validator = require('express-validator')
 
 const model = {
     filename: path.resolve(__dirname, '..', 'database', 'products.json'),
-
-    getData: function() {
-        return JSON.parse(fs.readFileSync(this.filename, 'utf-8'))      //Transforma en un array
-    },
+    read: () => fs.readFileSync(model.filename, 'utf-8'),
+    all: () => JSON.parse(model.read()),
+    write: (data) => fs.writeFileSync(model.filename, JSON.stringify(data, null, 2)),
+    search: (prop, value) => model.all().find(element => element[prop] == value),   //Find By Field
 
     generateId: function() {
-        let allProducts = this.findAll()
+        let allProducts = model.all()
         let lastProduct = allProducts.pop()
         if(lastProduct){
             return lastProduct.id + 1
@@ -17,36 +18,17 @@ const model = {
         return 1
     },
 
-    findAll: function(){
-        return this.getData()
-    },
-
     findByPk: function(id) {
-        let allProducts = this.findAll()
+        let allProducts = model.all()
         let productFound = allProducts.find(oneProduct => oneProduct.id == id)
         return productFound
     },
 
-    search: (prop, value) => model.findAll().find(element => element[prop] == value),   //Find By Field
-
     findByCategory: function(category) {
-        let allProducts = model.findAll()
+        let allProducts = model.all()
         let results = allProducts.filter(oneProduct => oneProduct.category == category)
         return results.length > 0 ? results : null
     }, 
-
-    write: (data) => fs.writeFileSync(model.filename, JSON.stringify(data, null, 2)),
-
-    create: function(productData){
-        let allProducts = model.findAll()
-        let newProduct = {
-            id: model.generateId(),
-            ...productData
-        }
-        allProducts.push(newProduct)
-        model.write(allProducts)
-        return newProduct
-    },
 
     validateUpdate: (data) => {
         let productValidate = JSON.parse(JSON.stringify(data))
@@ -101,8 +83,41 @@ const model = {
         return body
     },
 
+    validateCreateForm: [
+        validator.body('name').notEmpty().withMessage('Escribe el Nombre del Producto'),
+        validator.body('stock').notEmpty().withMessage('Completa el Stock'),
+        validator.body('color').notEmpty().withMessage('Completa el Color'),
+        validator.body('price').notEmpty().withMessage('Completa el Precio'),
+        validator.body('size').notEmpty().withMessage('Completa el Talle'),
+        validator.body('img').custom((value, {req}) =>{
+            let file = req.file
+            let acceptedExtensions = ['.jpg', '.gif', '.png', '.jfif', '.jpeg']
+    
+            if(!file){
+                //throw new Error('Tienes que subir una imagen') 
+            } else {
+                let fileExtension = path.extname(file.originalname)
+                if(!acceptedExtensions.includes(fileExtension)){
+                    throw new Error(`Las extensiones permitidas son ${acceptedExtensions.join(', ')}`)
+                }
+            }
+            return true
+        })
+    ],
+
+    create: function(productData){
+        let allProducts = model.all()
+        let newProduct = {
+            id: model.generateId(),
+            ...productData
+        }
+        allProducts.push(newProduct)
+        model.write(allProducts)
+        return newProduct
+    },
+
     update: (id, data) => {
-        let allProducts = model.getData()
+        let allProducts = model.all()
 
         let updated = allProducts.map(e => {
             if(e.id == id){
@@ -124,7 +139,7 @@ const model = {
     },
 
     delete: function(id){
-        let allProducts = model.findAll()
+        let allProducts = model.all()
         let finalProducts = allProducts.filter(oneProduct => oneProduct.id !== id)
         model.write(finalProducts)
         if(allProducts.length() == finalProducts.length()){
