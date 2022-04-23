@@ -29,9 +29,9 @@ const model = {
     validateRegisterForm: [
         validator.body('firstName').notEmpty().withMessage('Tienes que escribir el Nombre'),
         validator.body('lastName').notEmpty().withMessage('Tienes que escribir el Apellido'),
-        validator.body('email').notEmpty().withMessage('Tienes que escribir el Email').bail().isEmail().withMessage('Tiene que ser un Email valido'),
+        validator.body('email').notEmpty().withMessage('Tienes que escribir el Email').bail().isEmail().withMessage('Invalid Email'),
         validator.body('password').notEmpty().withMessage('Tienes que escribir una contraseña').bail()
-        .isLength({min: 8}).withMessage('Debe contener al menos 8 caracteres'),
+        .isLength({min: 8}).withMessage('Min 8 characters'),
         validator.body('avatar').custom((value, {req}) =>{
             let file = req.file
             let acceptedExtensions = ['.jpg', '.gif', '.png', '.jfif', '.jpeg']
@@ -47,8 +47,9 @@ const model = {
         })
     ],
     validateLoginForm: [
-        validator.body('email').notEmpty().withMessage('Tienes que escribir el Email').bail().isEmail().withMessage('Tiene que ser un Email valido'),
-        validator.body('password').notEmpty().withMessage('Tienes que escribir una contraseña').bail().isLength({min: 3}).withMessage('Debe contener al menos 3 caracteres')
+        validator.body('email').notEmpty().withMessage('Tienes que escribir el Email').bail().isEmail().withMessage('Invalid Email'),
+        validator.body('password').notEmpty().withMessage('Tienes que escribir una contraseña')
+            .bail().isLength({min: 3}).withMessage('Min 8 characters')
     ],
 
     generateId: function() {
@@ -77,7 +78,6 @@ const model = {
         for (let i = 0; i < all.length; i++) {
             if (all[i].id == req.params.idPerfil) {
                 all[i] = usuarioAEditar;
-                console.log(usuarioAEditar)
             }
         }
         fs.writeFileSync(path.resolve(__dirname, '..', 'database', 'users.json'), JSON.stringify(all, null, 2));

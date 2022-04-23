@@ -8,12 +8,11 @@ const controller = {
         title: 'Registrate'
     }),
     processRegister: (req, res) => {
-
         // Express Validator Results
-        const resultValidation = validationResult(req)
+        const resultValidation = validationResult(req).mapped()	//.mapped() convierte el Array en un Objeto literal
         if (resultValidation.errors.length > 0) {
 			return res.render('users/register', {
-				errors: resultValidation.mapped(),		//.mapped() convierte el Array en un Objeto literal
+				errors: resultValidation,
 				oldData: req.body,
                 style: ['register'],
                 title: 'Registrate'
@@ -74,38 +73,37 @@ const controller = {
     }),
 
     processLogin: (req, res) => {
-        const resultValidation = validationResult(req)
+        const resultValidation = validationResult(req).mapped()
         if (resultValidation.errors.length > 0) {
 			return res.render('users/login', {
-				errors: resultValidation.mapped(),
+				errors: resultValidation,
 				oldData: req.body
 			})
 		}
 
         let userToLogin = user.search('email', req.body.email)
+        
         if(userToLogin){
             let isOkPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
             if(isOkPassword){
-                delete userToLogin.password                 //Elimina una propiedad
+                delete userToLogin.password
                 delete req.body.password
                 req.session.userLogged = userToLogin
-
-                if(req.body.remember_user){
-                    res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60})
-                }
-
-                return res.redirect('/users/profile')
+            } else {
+                return res.render('users/login', {
+                    errors: {
+                        email: {
+                            msg: 'Credenciales invalidas'
+                        }
+                    }
+                })
             }
         }
-        return res.render('users/login', {
-            errors: {
-                email: {
-                    msg: 'Credenciales invalidas'
-                }
-            }
-        })
 
-        //return res.send(req.body)
+        if(req.body.remember_user){
+            res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60 * 24 * 30})
+        }
+        return res.redirect('/users/profile')
     },
     
     profile: (req, res) => res.render('users/profile', {
