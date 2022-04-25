@@ -13,7 +13,8 @@
       "L",
       "XL"
     ],
-    "color": "Azul"
+    "color": "Azul",
+    "offert": false
   },
   {
     "id": 2,
@@ -30,7 +31,8 @@
       "XL",
       "XLL"
     ],
-    "color": "Azul"
+    "color": "Azul",
+    "offert": false
   },
   {
     "id": 3,
@@ -45,7 +47,8 @@
       "M",
       "L"
     ],
-    "color": "Celeste"
+    "color": "Celeste",
+    "offert": false
   },
   {
     "id": 4,
@@ -61,7 +64,8 @@
       "L",
       "XL"
     ],
-    "color": "Rosa y Celeste"
+    "color": "Rosa y Celeste",
+    "offert": false
   },
   {
     "id": 5,
@@ -77,7 +81,8 @@
       "XL"
     ],
     "color": "Gris",
-    "price": 26.9
+    "price": 26.9,
+    "offert": false
   },
   {
     "id": 6,
@@ -94,7 +99,8 @@
       "XLL"
     ],
     "color": "NEGRO",
-    "price": 34.9
+    "price": 34.9,
+    "offert": false
   },
   {
     "id": 7,
@@ -110,7 +116,8 @@
       "XLL"
     ],
     "color": "ROSA",
-    "price": 42.9
+    "price": 42.9,
+    "offert": false
   },
   {
     "id": 8,
@@ -126,7 +133,8 @@
       "XL"
     ],
     "color": "CRUDO",
-    "price": 45.9
+    "price": 45.9,
+    "offert": false
   },
   {
     "id": 9,
@@ -141,7 +149,8 @@
       "XL"
     ],
     "color": "AMARILLO MOSTAZA",
-    "price": 129.9
+    "price": 129.9,
+    "offert": false
   },
   {
     "id": 10,
@@ -157,7 +166,8 @@
       "XL"
     ],
     "color": "NEGRO",
-    "price": 59.9
+    "price": 59.9,
+    "offert": false
   },
   {
     "id": 11,
@@ -173,7 +183,8 @@
       "XL"
     ],
     "color": "NEGRO",
-    "price": 32.9
+    "price": 32.9,
+    "offert": false
   },
   {
     "id": 12,
@@ -188,7 +199,8 @@
       "XL"
     ],
     "color": "NEGRO",
-    "price": 28.9
+    "price": 28.9,
+    "offert": false
   },
   {
     "id": 13,
@@ -203,7 +215,8 @@
       "XLL"
     ],
     "color": "MARRON OSCURO",
-    "price": 44.9
+    "price": 44.9,
+    "offert": false
   },
   {
     "id": 14,
@@ -218,7 +231,8 @@
       "XL"
     ],
     "color": "NEGRO",
-    "price": 28.9
+    "price": 28.9,
+    "offert": false
   },
   {
     "id": 15,
@@ -234,7 +248,8 @@
       "XL"
     ],
     "color": "BORDEAUX",
-    "price": 28.9
+    "price": 28.9,
+    "offert": false
   },
   {
     "id": 16,
@@ -250,7 +265,8 @@
       "XL"
     ],
     "color": "NEGRO",
-    "price": 34.9
+    "price": 34.9,
+    "offert": false
   },
   {
     "id": 17,
@@ -265,7 +281,8 @@
       "M",
       "L"
     ],
-    "color": "Negro"
+    "color": "Negro",
+    "offert": false
   },
   {
     "id": 18,
@@ -280,7 +297,8 @@
       "M",
       "L"
     ],
-    "color": "Blanco"
+    "color": "Blanco",
+    "offert": false
   },
   {
     "id": 19,
@@ -295,7 +313,8 @@
       "M",
       "L"
     ],
-    "color": "Beige"
+    "color": "Beige",
+    "offert": false
   },
   {
     "id": 20,
@@ -309,7 +328,8 @@
       "S",
       "M"
     ],
-    "color": "Rojo"
+    "color": "Rojo",
+    "offert": false
   },
   {
     "id": 21,
@@ -324,7 +344,8 @@
       "M",
       "L"
     ],
-    "color": "Negro"
+    "color": "Negro",
+    "offert": false
   },
   {
     "id": 22,
@@ -337,7 +358,8 @@
       "M"
     ],
     "color": "Rosa",
-    "price": 690
+    "price": 690,
+    "offert": false
   },
   {
     "id": 23,
@@ -352,7 +374,8 @@
     ],
     "color": "Amarillo",
     "price": 890,
-    "img": "1650474475955accesories2jpg.jpg"
+    "img": "1650474475955accesories2jpg.jpg",
+    "offert": true
   },
   {
     "id": 24,
@@ -366,7 +389,8 @@
     ],
     "color": "Rojo",
     "price": 395,
-    "img": "accesories3.jpg"
+    "img": "accesories3.jpg",
+    "offert": false
   },
   {
     "id": 25,
@@ -379,7 +403,8 @@
     ],
     "color": "Beige",
     "price": 1090,
-    "img": "1650474904132accesories4.jpg"
+    "img": "1650474904132accesories4.jpg",
+    "offert": false
   },
   {
     "id": 26,
@@ -396,6 +421,35 @@
     ],
     "color": "Negro",
     "price": 12918,
-    "img": "1650475058356zapatilla-mujer.jpg"
+    "img": "1650475058356zapatilla-mujer.jpg",
+    "offert": false
+  },
+  {
+    "id": 27,
+    "name": "Gorra Matelasse",
+    "category": 3,
+    "description": "Gorra de cuero",
+    "img": "1650915576923_mg_7271_2_2_copia_1650657781.jpg",
+    "stock": 2,
+    "size": [
+      "U"
+    ],
+    "color": "Negro",
+    "price": 1250,
+    "offert": false
+  },
+  {
+    "id": 28,
+    "name": "Pañuelo de seda",
+    "category": 3,
+    "description": "Pañuelo de seda cuadrado con estampado diseño exclusivo. Medidas: 50 x 50cm\r\n",
+    "img": "1650917142745_mg_7300_2_copia_1650911108.jpg",
+    "stock": 12,
+    "size": [
+      "U"
+    ],
+    "color": "Negro",
+    "price": 300,
+    "offert": false
   }
 ]

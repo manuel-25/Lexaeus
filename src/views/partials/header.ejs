@@ -13,7 +13,7 @@
         </h1>
         <section class="main-header-right-bar">
             <% if (locals.isLogged) { %>
-                <% if (locals.userLogged.admin) { %>
+                <% if (locals.user && locals.user.isAdmin) { %>
                     <a class="profile" href="/products/create">Create</a>
                 <% } %>
                 <a class="profile" href="/users/profile">Profile</a>
@@ -32,7 +32,7 @@
                 <a href="/products/category/2">Mujer</a>
                 <a href="/products/category/3">Accesorios</a>
                 <a href="/products/category/4">Calzado</a>
-                <a href="/">Ofertas</a>
+                <a href="/products/sale">Ofertas</a>
                 <a href="/">Ayuda</a>
             </ul>
         </nav>

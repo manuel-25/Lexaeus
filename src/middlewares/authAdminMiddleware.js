@@ -1,5 +1,5 @@
 function authAdminMiddleware(req, res, next) {
-    if (req.session.userLogged.esAdmin == false) {
+    if (req.session.user.isAdmin == false) {
         return res.redirect('/')
     }
     next();

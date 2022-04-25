@@ -6,10 +6,19 @@ const controller = {
         let result = product.findByCategory(req.params.id)
         return result ? res.render("products/category", {
             style: ['category'],
-            title: 'Categoria | '+ result[0].category,                                  // agregar variable
+            title: 'Categoria | '+ result[0].category,
             products: result
         }) : res.render("error", {
             msg: "Producto no encontrado!"
+        })
+    },
+
+    showSale: (req, res) => {
+        let result = product.findByOffert()
+        res.render("products/category", {
+            style: ['category'],
+            title: 'Ofertas',
+            products: result
         })
     },
 
@@ -66,15 +75,13 @@ const controller = {
         let validated = product.validateUpdate(req.body)
         product.update(req.params.id, validated)
 
-        let url = '/products/detail/' + req.params.id;
+        let url = '/products/detail/' + req.params.id
         return res.redirect(url);
     },
 
     delete: (req, res) => {
-
-        product.delete(req, res);
-        res.redirect('/products');
-
+        product.delete(req.body.id)
+        res.redirect('/products/category/'+req.params.id)
     }
 }
 

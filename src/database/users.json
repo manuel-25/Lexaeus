@@ -6,7 +6,7 @@
     "email": "naalonso29@gmail.com",
     "password": "$2a$10$yh4hEp5BFiQ.orVNcGVa8ujoV.JwWlDyjbIHEuNxZyNDHf1VRVvpq",
     "avatar": "/img/users/default-img.jpg",
-    "esAdmin": true,
+    "admin": true,
     "isActive": false
   },
   {
@@ -16,7 +16,7 @@
     "email": "ignaciomontaldi@gmail.com",
     "password": "$2a$10$fO39Ybhdb/HgXV30h3T.Wum/areExDc65TWPv64Q1Mo88A43F4Jhy",
     "avatar": "/img/users/default-img.jpg",
-    "esAdmin": false,
+    "admin": false,
     "isActive": false
   },
   {
@@ -26,7 +26,7 @@
     "email": "usuario@prueba.com",
     "password": "$2a$10$ykafg71JbRKg/NuY48G97ehqk6Qc2yBhfw/6g0aA3BA.c2rf0LhM2",
     "avatar": "1649721449937_imgavatars.jfif",
-    "admin": true,
+    "isAdmin": true,
     "isActive": true
   },
   {
@@ -46,6 +46,16 @@
     "email": "javiPinola@hotmail.com",
     "password": "$2a$10$E9TtpjTG0wBj4gFJYZ.jlOExcxtybQ/8bjF7y8VgLYbm8v4xGNXUa",
     "avatar": "1650751958920images (2).png",
+    "isAdmin": false,
+    "isActive": true
+  },
+  {
+    "id": 10,
+    "firstName": "usuario",
+    "lastName": "de prueba 2",
+    "email": "usuario@prueba2.com",
+    "password": "$2a$10$InH529lhPmp5jSoi5fX7VueNRa4UNyR/9SANge0tf0pARn7Hu7A.a",
+    "avatar": "1650919264703images.jfif",
     "isAdmin": false,
     "isActive": true
   }

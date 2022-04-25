@@ -30,6 +30,8 @@ const model = {
         return results.length > 0 ? results : null
     }, 
 
+    findByOffert: () => model.all().filter(e => e.offert ),
+
     validateUpdate: (data) => {
         let productValidate = JSON.parse(JSON.stringify(data))
         
@@ -105,15 +107,25 @@ const model = {
         })
     ],
 
-    create: function(productData){
-        let allProducts = model.all()
-        let newProduct = {
-            id: model.generateId(),
-            ...productData
-        }
-        allProducts.push(newProduct)
-        model.write(allProducts)
-        return newProduct
+    generated: data => Object({
+        id: model.all().length == 0 ? 1 : model.all().pop().id + 1,
+        name: String(data.name),
+        category: data.category,
+        description: data.description,
+        img: String(data.img),
+        stock: data.stock,
+        size: data.size,
+        color: data.color,
+        price: data.price,
+        offert: data.offert ? true : false
+    }),
+
+    create: data => {
+        let all = model.all()
+        let product = model.generated(data)
+        all.push(product)
+        model.write(all)
+        return product
     },
 
     update: (id, data) => {
@@ -129,6 +141,7 @@ const model = {
                 e.color = data.color
                 e.price = data.price
                 data.img ? e.img = data.img : null
+                e.offert = data.offert ? true : false
                 return e
             }
             return e
@@ -138,19 +151,10 @@ const model = {
         return product
     },
 
-    delete: function(id){
-        let allProducts = model.all()
-        let finalProducts = allProducts.filter(oneProduct => oneProduct.id !== id)
-        model.write(finalProducts)
-        if(allProducts.length() == finalProducts.length()){
-            return false
-        }
-        return true
-    }
+    delete: id => model.write(model.all().filter(e => e.id != id))
 }
 
 module.exports = model
 
 // node models/product.js   
-//path.resolve(__dirname, '..', 'data', 'products.json'
 

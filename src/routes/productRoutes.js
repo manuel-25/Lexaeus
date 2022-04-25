@@ -17,11 +17,13 @@ const uploadFile = multer({ storage })
 
 
 //Formulario Crear Producto
-router.get("/create", products.create)
-// authMiddleware, authAdminMiddleware,            -------------------AGREGAR LUEGO
+router.get("/create", authMiddleware, authAdminMiddleware, products.create)
 
 //Procesar Crear Producto
 router.post('/create', uploadFile.single('img'), validateCreateForm, products.processCreate)
+
+//Mostrar Ofertas
+router.get("/sale", products.showSale)
 
 //Mostrar Productos
 router.get("/category/:id", userLoggedMiddleware, products.show)
@@ -31,8 +33,7 @@ router.get("/detail/:id", products.detail)
 
 
 //Formulario Editar Producto
-router.get("/edit/:id",  products.update)
-//authMiddleware, authAdminMiddleware,              ---------------------AGREGAR LUEGO
+router.get("/edit/:id", authMiddleware, authAdminMiddleware, products.update)
 
 //Procesar Editar Producto
 router.put('/edit/:id', validateCreateForm, products.processUpdate)
@@ -40,7 +41,7 @@ router.put('/edit/:id', validateCreateForm, products.processUpdate)
 
 
 //Procesar Eliminar Producto
-router.delete("/delete/:id", products.delete)
+router.delete("/category/:id", authMiddleware, authAdminMiddleware, products.delete)
 
 
 //Carrito

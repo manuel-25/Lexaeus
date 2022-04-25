@@ -9,10 +9,10 @@ const controller = {
     }),
     processRegister: (req, res) => {
         // Express Validator Results
-        const resultValidation = validationResult(req).mapped()	//.mapped() convierte el Array en un Objeto literal
+        const resultValidation = validationResult(req)
         if (resultValidation.errors.length > 0) {
 			return res.render('users/register', {
-				errors: resultValidation,
+				errors: resultValidation.mapped(),	//.mapped() convierte el Array en un Objeto literal
 				oldData: req.body,
                 style: ['register'],
                 title: 'Registrate'
@@ -73,11 +73,13 @@ const controller = {
     }),
 
     processLogin: (req, res) => {
-        const resultValidation = validationResult(req).mapped()
+        const resultValidation = validationResult(req)
         if (resultValidation.errors.length > 0) {
 			return res.render('users/login', {
-				errors: resultValidation,
-				oldData: req.body
+				errors: resultValidation.mapped(),
+				oldData: req.body,
+                style: ['login'],
+                title: 'Iniciar sesión'
 			})
 		}
 
@@ -88,14 +90,16 @@ const controller = {
             if(isOkPassword){
                 delete userToLogin.password
                 delete req.body.password
-                req.session.userLogged = userToLogin
+                req.session.user = userToLogin
             } else {
                 return res.render('users/login', {
                     errors: {
                         email: {
                             msg: 'Credenciales invalidas'
                         }
-                    }
+                    },oldData: req.body,
+                    style: ['login'],
+                    title: 'Iniciar sesión'
                 })
             }
         }
@@ -109,7 +113,7 @@ const controller = {
     profile: (req, res) => res.render('users/profile', {
         style: ['profile'],
         title: 'Perfil',
-        user: req.session.userLogged
+        user: req.session.user
     }),
 
     updateProfile: (req, res) => {                          //refactor

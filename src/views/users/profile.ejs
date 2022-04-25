@@ -7,7 +7,7 @@
                 <section class="informacion">
 
                     <div class="secFotoPerfil">
-                        <img src="/img/users/avatar/<%= user.avatar %>" alt="" class="profile-img">
+                        <img src="/img/users/avatar/<%= user ? user.avatar : 'default-img.jpg' %>" alt="" class="profile-img">
                         <div class="file-select" id="src-file1">
                             <input type="file" name="imageProfile" aria-label="Archivo">
                         </div>
@@ -25,7 +25,7 @@
                                 <li>Email:
                                     <%= user.email %>
                                 </li>
-                                <% if ( user.esAdmin == true) { %>
+                                <% if ( user.isAdmin == true) { %>
                                     <li>Categoria: Vendedor</li>
                                     <% } else { %>
                                         <li>Categoria: Comprador</li>
