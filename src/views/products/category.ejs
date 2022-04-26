@@ -9,7 +9,11 @@
                     <% for(let i = 0; i < products.length; i++) { %>
                         <article>
                             <a class="a-homesecundario" href="/products/detail/<%= products[i].id %>">
-                                <img src=/img/products/<%=products[i].img %> alt="<%= products[i].description %>">
+                                <% if (products[i].image) { %>
+                                    <img src="/uploads/products/<%= products[i].image.url %>" alt="<%= products[i].description %>">
+                                <% } else {%>
+                                    <img src="/img/products/<%= products[i].img %>" alt="<%= products[i].description %>">
+                                <% } %>
                             </a>
                             <div>
                                 <p class="descr"><b><%= products[i].name %></b></p>

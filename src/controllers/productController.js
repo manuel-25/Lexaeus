@@ -19,7 +19,7 @@ const controller = {
         res.render("products/category", {
             style: ['category'],
             title: 'Ofertas',
-            products: result
+            products: result.map(p => Object({...p, image: file.search('id',p.img[0])}))     // cambiar image por img =--------------
         })
     },
 

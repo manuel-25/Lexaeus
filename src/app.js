@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const path = require('path')
 const method = require('method-override')
 const session = require('express-session')
 const cookies = require('cookie-parser')
@@ -17,6 +18,7 @@ app.use(userLoggedMiddleware)
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static('./public'))
+app.use('/uploads', express.static(path.resolve(__dirname, './uploads')))
 app.use(method('m')) // ?m=PUT  || ?m=DELETE
 
 //Seteo Puerto

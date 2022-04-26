@@ -375,7 +375,7 @@
     "color": "Amarillo",
     "price": 890,
     "img": "1650474475955accesories2jpg.jpg",
-    "offert": true
+    "offert": false
   },
   {
     "id": 24,
@@ -453,17 +453,22 @@
     "offert": false
   },
   {
-    "id": 29,
-    "name": "dasa",
-    "category": 1,
-    "description": "asd",
-    "img": 10,
+    "id": 30,
+    "name": "borrar",
+    "category": 5,
+    "description": "sadad",
+    "img": [
+      1,
+      2,
+      3,
+      4
+    ],
     "stock": null,
     "size": [
-      "DSA"
+      "ASD"
     ],
     "color": "das",
     "price": null,
-    "offert": false
+    "offert": true
   }
 ]

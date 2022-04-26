@@ -26,7 +26,7 @@ router.post('/create', uploadFile.any(), validateCreateForm, products.processCre
 router.get("/sale", products.showSale)
 
 //Mostrar Productos
-router.get("/category/:id", userLoggedMiddleware, products.show)
+router.get("/category/:id", products.show)        //userLoggedMiddleware??
 
 //Detalle de Product
 router.get("/detail/:id", products.detail)
