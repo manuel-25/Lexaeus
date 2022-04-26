@@ -1,4 +1,5 @@
 const product = require('../models/product')
+const file = require('../models/file')
 const { validationResult } = require('express-validator');
 
 const controller = {
@@ -49,9 +50,10 @@ const controller = {
 			})
 		}
 
-        let validated = product.validateCreate(req.body, req.file)
-        product.create(validated)
-        res.redirect('/products/create');                       // Redirigir a /products/detail/:id
+        req.body.files = req.files
+        req.body = product.validateCreate(req.body)
+        product.create(req.body)
+        res.redirect('/products/create');                       // Redirigir a /products/detail/:id------------------------
     },
 
     update: (req, res) => res.render("products/modify",{

@@ -451,5 +451,19 @@
     "color": "Negro",
     "price": 300,
     "offert": false
+  },
+  {
+    "id": 29,
+    "name": "dasa",
+    "category": 1,
+    "description": "asd",
+    "img": 10,
+    "stock": null,
+    "size": [
+      "DSA"
+    ],
+    "color": "das",
+    "price": null,
+    "offert": false
   }
 ]

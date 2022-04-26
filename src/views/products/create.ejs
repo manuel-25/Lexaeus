@@ -48,7 +48,9 @@
                             <input 
                                 type="file" 
                                 name="img" 
-                                aria-label="Archivo" class="form-control <%= locals.errors && errors.img ? 'is-invalid' : null %>">
+                                aria-label="Archivo" class="form-control <%= locals.errors && errors.img ? 'is-invalid' : null %>"
+                                multiple
+                            >
 
                                 <% if (locals.errors && errors.img) { %>
                                     <div class="text-danger">

@@ -20,7 +20,7 @@ const uploadFile = multer({ storage })
 router.get("/create", authMiddleware, authAdminMiddleware, products.create)
 
 //Procesar Crear Producto
-router.post('/create', uploadFile.single('img'), validateCreateForm, products.processCreate)
+router.post('/create', uploadFile.any(), validateCreateForm, products.processCreate)
 
 //Mostrar Ofertas
 router.get("/sale", products.showSale)
@@ -30,7 +30,6 @@ router.get("/category/:id", userLoggedMiddleware, products.show)
 
 //Detalle de Product
 router.get("/detail/:id", products.detail)
-
 
 //Formulario Editar Producto
 router.get("/edit/:id", authMiddleware, authAdminMiddleware, products.update)

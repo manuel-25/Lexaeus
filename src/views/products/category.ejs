@@ -16,7 +16,7 @@
                                 <p class="precios">
                                     $ <%= products[i].price %>
                                 </p>
-                                <% if (locals.user && locals.user.admin) { %>
+                                <% if (locals.user && locals.user.isAdmin) { %>
                                     <a class="edit-button" href="/products/edit/<%= products[i].id %>"><i class="fa-solid fa-pen-to-square"></i></a>
                                     <form action="/products/category/<%= products[i].category %>?m=DELETE" method="post">
                                         <input type="hidden" name="id" value="<%= products[i].id %>">

@@ -1,6 +1,7 @@
 const path = require('path')
-const fs = require('fs') //Leer y escribir archivo .json
+const fs = require('fs')
 const validator = require('express-validator')
+const file = require('./file')
 
 const model = {
     filename: path.resolve(__dirname, '..', 'database', 'products.json'),
@@ -8,15 +9,6 @@ const model = {
     all: () => JSON.parse(model.read()),
     write: (data) => fs.writeFileSync(model.filename, JSON.stringify(data, null, 2)),
     search: (prop, value) => model.all().find(element => element[prop] == value),   //Find By Field
-
-    generateId: function() {
-        let allProducts = model.all()
-        let lastProduct = allProducts.pop()
-        if(lastProduct){
-            return lastProduct.id + 1
-        }
-        return 1
-    },
 
     findByPk: function(id) {
         let allProducts = model.all()
@@ -56,20 +48,7 @@ const model = {
         return productValidate
     },    //Agregar Validar Imagen
 
-    validateCreate: (body, file) => {
-        //Validar Imagen
-        if(file){
-            body = {
-                ...body,
-                img: file.filename
-            }
-        } else {
-            body = {
-                ...body,
-                img: "default-img.jpg"
-            }
-        }
-
+    validateCreate: (body) => {
         //Parsear Strings a Numeros
         body.price = parseFloat(body.price)
         body.stock = parseInt(body.stock)
@@ -109,10 +88,10 @@ const model = {
 
     generated: data => Object({
         id: model.all().length == 0 ? 1 : model.all().pop().id + 1,
-        name: String(data.name),
+        name: data.name,
         category: data.category,
         description: data.description,
-        img: String(data.img),
+        img: data.files.map(f => file.create(f).id),
         stock: data.stock,
         size: data.size,
         color: data.color,
@@ -120,7 +99,7 @@ const model = {
         offert: data.offert ? true : false
     }),
 
-    create: data => {
+    create: (data) => {
         let all = model.all()
         let product = model.generated(data)
         all.push(product)
