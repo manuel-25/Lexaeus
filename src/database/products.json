@@ -150,7 +150,7 @@
     ],
     "color": "AMARILLO MOSTAZA",
     "price": 129.9,
-    "offert": false
+    "offert": true
   },
   {
     "id": 10,
@@ -451,24 +451,5 @@
     "color": "Negro",
     "price": 300,
     "offert": false
-  },
-  {
-    "id": 30,
-    "name": "borrar",
-    "category": 5,
-    "description": "sadad",
-    "img": [
-      1,
-      2,
-      3,
-      4
-    ],
-    "stock": null,
-    "size": [
-      "ASD"
-    ],
-    "color": "das",
-    "price": null,
-    "offert": true
   }
 ]

@@ -19,36 +19,23 @@
                         <section class="combos">
                             <p class="txtdetallecompra">Talle</p>
                             <select name="talle" class="comboestilo">
-                                <option value="1">Talle 1</option>
-                                <option value="2">Talle 2</option>
-                                <option value="3">Talle 3</option>
-                                <option value="4">Talle 4</option>
-                                <option value="5">Talle 5</option>
-                                <option value="6">Talle 6</option>
-                                <option value="7">Talle 7</option>
-                                <option value="8">Talle 8</option>
-                                <option value="9">Talle 9</option>
-                                <option value="10">Talle 10</option>
+                                <% product.size.forEach(e => { %>
+                                    <option value="<%= e %>"><%= e %></option>
+                               <% }) %> 
                             </select>
                         </section>
                         <section class="combos">
                             <p class="txtdetallecompra">Color</p>
                             <select name="color" class="comboestilo">
-                                <option value="Blanco">Blanco</option>
-                                <option value="Rojo">Rojo</option>
-                                <option value="Negro">Negro</option>
-                                <option value="Gris">Gris</option>
-                                <option value="Azul">Azul</option>
+                                <option value="<%= product.color %> "><%= product.color %> </option>
                             </select>
                         </section>
                         <section class="combos">
                             <p class="txtdetallecompra">Cantidad</p>
                             <select name="cantidad" class="comboestilo">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                <% for(let i = 1; i <= product.stock; i++) { %>
+                                    <option value="<%= i %>"><%= i %></option>
+                               <% } %> 
                             </select>
                         </section>
                         <form class="frmbotoncarrito" type="post">

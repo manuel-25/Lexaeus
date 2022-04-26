@@ -16,7 +16,7 @@ app.use(cookies())
 
 app.use(userLoggedMiddleware)
 
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static('./public'))
 app.use('/uploads', express.static(path.resolve(__dirname, './uploads')))
 app.use(method('m')) // ?m=PUT  || ?m=DELETE

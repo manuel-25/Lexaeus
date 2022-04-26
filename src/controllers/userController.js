@@ -34,7 +34,7 @@ const controller = {
             })
         }
 
-        //Validacion confirm password
+        //Validation confirm password
         if(req.body.password !== req.body.confirm){
             return res.render('users/register', {
                 errors: {
@@ -50,7 +50,7 @@ const controller = {
         delete req.body.confirm
         let userToCreate = req.body
 
-        //Validacion image
+        //Validation image
         if(req.file){
             userToCreate = {
                 ...userToCreate,
@@ -87,7 +87,7 @@ const controller = {
         
         if(userToLogin){
             let isOkPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
-            if(isOkPassword){
+            if(isOkPassword && userToLogin.isActive){
                 delete userToLogin.password
                 delete req.body.password
                 req.session.user = userToLogin
