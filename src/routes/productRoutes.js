@@ -8,36 +8,39 @@ const products = require('../controllers/productController');
 const authMiddleware = require('../middlewares/authMiddleware')
 const authAdminMiddleware = require('../middlewares/authAdminMiddleware');
 const userLoggedMiddleware = require('../middlewares/userLoggedMiddleware');
-const validateCreateProduct = require('../middlewares/validateCreateProduct')
+const { validateCreateForm } = require('../models/product')
 
 //Multer 
 const storage = require('../middlewares/multerProductMiddleware')
 const uploadFile = multer({ storage })
 
 
-//Mostrar Productos
-router.get("/category/:id", userLoggedMiddleware,products.getProducts)
-
-//Detalle de Product
-router.get("/detail/:id", products.detailProduct)
-
 
 //Formulario Crear Producto
-router.get("/create", products.create)
-// authMiddleware, authAdminMiddleware,            -------------------AGREGAR LUEGO
+router.get("/create", authMiddleware, authAdminMiddleware, products.create)
 
 //Procesar Crear Producto
-router.post('/create', uploadFile.single('img'), validateCreateProduct, products.processCreate)
+router.post('/create', uploadFile.any(), validateCreateForm, products.processCreate)
 
+//Mostrar Ofertas
+router.get("/sale", products.showSale)
+
+//Mostrar Productos
+router.get("/category/:id", products.show)        //userLoggedMiddleware??
+
+//Detalle de Product
+router.get("/detail/:id", products.detail)
 
 //Formulario Editar Producto
-router.get("/:id/edit", authMiddleware, authAdminMiddleware, products.update)
+router.get("/edit/:id", authMiddleware, authAdminMiddleware, products.update)
 
 //Procesar Editar Producto
-router.put('/:id/edit', products.processUpdate)
+router.put('/edit/:id', validateCreateForm, products.processUpdate)
+//uploadFile.single('img')
+
 
 //Procesar Eliminar Producto
-router.delete("/:id/edit", products.delete)
+router.delete("/category/:id", authMiddleware, authAdminMiddleware, products.delete)
 
 
 //Carrito

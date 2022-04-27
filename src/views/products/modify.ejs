@@ -1,103 +1,152 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
-    <%- include("../partials/head.ejs") %>
-        <link rel="stylesheet" href="/css/productModify.css">
-
-        <title>Modificar Producto</title>
-</head>
-
+<%- include("../partials/head") %>
 <body>
-    <%- include("../partials/header.ejs") %>
-        <main>
-            <section class="titulo">
-                <a href="/">Volver a Lexaeus</a>
-                <h1>Modificar Producto</h1>
+    <%- include('../partials/header') %>
+    <main>
+        <section class="main-container">
+            <section class="title-container">
+                <h1><%= locals.title ? title : null %></h1>
             </section>
-
-            <form method="POST" action="/products/<%= productoAModificar.id %>?_method=PUT">
-                <section class="superior">
-                    <section class="izquierda">
-
-                        <h2>Nombre</h2>
-
-                        <input type="text" name="nombre" class="campo" value="<%= productoAModificar.nombre %> ">
-
-                        <h2>Categoria</h2>
-
-                        <select name="categoria" class="campo" value="<%= productoAModificar.categoria %>">
-                
-                            <option value="1">Hombre</option>
-                            <option value="2">Mujer</option>
-                            <option value="3">Calzado</option>
-                            <option value="4">Accesorios</option>
-
-                        </select>
-
-                        <h2>Descripción</h2>
-
-                        <input type="text" name="descripcion" class="descr" value="<%= productoAModificar.descripcion %>">
-
-                    </section>
-
-                    <section class="derecha">
-                        <article class="TituloBotonImagen">
-                            <h2>Imagen</h2>
-                            <div class="file-select" id="src-file1">
-                                <input type="file" name="img" aria-label="Archivo">
+            <form action="/products/edit/<%= product ? product.id : ""%>?m=PUT" method="post">  <!-- enctype="multipart/form-data" -->
+                <section class="grid-layout">
+                    <section class="child-name">
+                        <label for="name">Nombre del producto</label>
+                        <input 
+                            type="text" 
+                            name="name" 
+                            value="<%= locals.product ? product.name : null %>"
+                            class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
+                        >
+                        <% if (locals.errors && errors.name) { %>
+                            <div class="text-danger">
+                                <%= errors.name.msg %> 
                             </div>
-                        </article>
+                        <% } %>
 
-                        <img src="<%= productoAModificar.img %>" alt="ImagenProducto" class="imagen">
+                        <select 
+							name="category" 
+							class="form-select <%= locals.errors && errors.category ? 'is-invalid' : null %>"
+						>
+						    <option value="">Elegi una Categoria</option>
+							<%  
+								let categories = ['Hombre', 'Mujer', 'Accesorios', 'Otros'];
+							%>
+							<% for (const [i, oneCategory] of categories.entries()) { %>
+							    <option
+                                    <% let categoryId = (i + 1)%>
+									value="<%= categoryId %>"
+                                    <% if (product) { %>
+                                        <%=(categoryId == product.category) ? 'selected' : null %> 
+                                    <% } %>
+								> <%= oneCategory %></option>
+							<% } %>
+						</select>
 
+                        <label>Descripción</label>
+                        <textarea 
+                            class="description" 
+                            name="description" 
+                            placeholder="Descripcion del producto.."
+                            class="form-control <%= locals.errors && errors.description ? 'is-invalid' : null %>"
+                        ><%= locals.product ? product.description : null %></textarea>
                     </section>
 
-                    <section class="detalles">
-                        <section>
-                            <h2>Stock</h2>
+                    <section class="child-image">
+                        <label for="img">Agregar Imagen</label>
+                        <div class="file-select">
+                            <input 
+                                type="file" 
+                                name="img" 
+                                aria-label="Archivo" class="form-control <%= locals.errors && errors.img ? 'is-invalid' : null %>">
 
-                            <input type="text" name="stock" value="<%= productoAModificar.stock %>">
+                                <% if (locals.errors && errors.img) { %>
+                                    <div class="text-danger">
+                                        <%= errors.img.msg %> 
+                                    </div>
+                                <% } %>
+                        </div>
+                        <% if (product) { %>
+                            <img src="/img/product/<%=product.img%>" alt="Imagen del Producto" class="imagen">
+                        <% } else { %>
+                            <img src="/img/product/default-img.jpg" alt="Imagen del Producto" class="imagen">
+                        <% } %>
+                     </section>
+                    <section class="child-detail">
+                        <section class="detail">
+                              <label for="stock">Stock</label>
+                            <input 
+                                type="text" 
+                                name="stock" 
+                                value="<%= locals.product ? product.stock : null %>"
+                                class="form-control <%= locals.errors && errors.stock ? 'is-invalid' : null %>"
+                            >
+
+                            <% if (locals.errors && errors.stock) { %>
+                                <div class="text-danger">
+                                    <%= errors.stock.msg %> 
+                                </div>
+                            <% } %>
+                        </section>
+                        <section class="detail">
+                            <label for="size">Talle</label>
+                                <input 
+                                    type="text" 
+                                    name="size"
+                                    placeholder="S M L XL"
+                                    value="<%= locals.product ? product.size : null %>"
+                                    class="form-control <%= locals.errors && errors.size ? 'is-invalid' : null %>"
+                                >
+
+                                <% if (locals.errors && errors.size) { %>
+                                    <div class="text-danger">
+                                        <%= errors.size.msg %> 
+                                    </div>
+                                <% } %>
+                        </section>
+                        <section class="detail">
+                            <label for="color">Color</label>
+                            <input 
+                                type="text" 
+                                name="color" 
+                                value="<%= locals.product ? product.color : null %>"
+                                class="form-control <%= locals.errors && errors.color ? 'is-invalid' : null %>"
+                            >
+
+                            <% if (locals.errors && errors.color) { %>
+                                <div class="text-danger">
+                                    <%= errors.color.msg %> 
+                                </div>
+                            <% } %>
+                        </section>
+                        <section class="detail">
+                            <label for="price">Precio</label>
+                            <input 
+                                type="text" 
+                                name="price"
+                                placeholder="$"
+                                value="<%= locals.product ? product.price : null %>"
+                                class="form-control <%= locals.errors && errors.price ? 'is-invalid' : null %>"
+                            >
+
+                            <% if (locals.errors && errors.price) { %>
+                                <div class="text-danger">
+                                    <%= errors.price.msg %> 
+                                </div>
+                            <% } %>
+                        </section>
+                        <section class="detail">
+                            <label for="offert">Oferta</label>
+                            <input type="checkbox" name="offert">
                         </section>
 
-                        <section>
-                            <h2>Talle</h2>
-
-                            <input type="text" name="talle" value="<%= productoAModificar.talle %>">
-                        </section>
-
-                        <section>
-                            <h2>Color</h2>
-
-                            <input type="text" name="color" value="<%= productoAModificar.color %>">
-                        </section>
                     </section>
-
                 </section>
-
-                <section class="inferior">
-                    <section class="precio">
-                        <h2>Precio</h2>
-
-                        <input type="text" name="precio" class="campo" value="<%= productoAModificar.precio %>">
-                    </section>
+                <section class="button-create">
+                    <button type="submit" class="btn-confirm">Editar</button>
+                    <button type="reset" class="btn-reset">Cancelar</button>
+                </section>
             </form>
-            <section class="botones">
-                <form method="post" action="/products/<%= productoAModificar.id %>?_method=DELETE">
-                    <button type="submit" class="botonCancelar">Eliminar Producto</button>
-                </form>
-                <button type="submit" class="botonConfirmar">Modificar Producto</button>
-            </section>
-            </section>
-
-        </main>
-        <%- include("../partials/footer.ejs") %>
+        </section>
+    </main>
+    <%- include("../partials/footer.ejs") %>
 </body>
-
 </html>

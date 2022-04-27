@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <%- include("../partials/head.ejs") %>
-
-        <link href="/css/register.css" rel="stylesheet">
-
-</head>
-
+<%- include("../partials/head.ejs") %>
 <body>
     <%- include("../partials/header.ejs") %>
         <main>
@@ -15,9 +6,7 @@
                 <form action="#" method="post" enctype="multipart/form-data">
                     
                     <div class="login-form">
-                        <h1>
-                            Registrate
-                        </h1>
+                        <h1><%= locals.title ? title : null %> </h1>
                         <fieldset> 
                             <legend class="dn"></legend>
                             <label class="dn" for="firstName">Nombre</label>

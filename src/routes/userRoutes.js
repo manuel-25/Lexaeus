@@ -4,8 +4,8 @@ const multer = require('multer')
 
 
 //Middlewares
-const validationsRegister = require('../middlewares/validateRegisterMiddleware')
-const validationsLogin = require('../middlewares/validateLoginMiddleware')
+const { validateRegisterForm } = require('../models/user')
+const { validateLoginForm } = require('../models/user')
 const guestMiddleware = require('../middlewares/guestMiddleware')
 const authMiddleware = require('../middlewares/authMiddleware')
 
@@ -22,7 +22,7 @@ const userController = require('../controllers/userController')
 router.get('/register', guestMiddleware, userController.register)
 
 //Procesar Registro
-router.post('/register', uploadFile.single('avatar'), validationsRegister, userController.processRegister)
+router.post('/register', uploadFile.single('avatar'), validateRegisterForm, userController.processRegister)
 //uploadFile siempre antes que validations
 
 
@@ -30,7 +30,7 @@ router.post('/register', uploadFile.single('avatar'), validationsRegister, userC
 router.get('/login', guestMiddleware, userController.login)
 
 //Procesar el Login
-router.post('/login', validationsLogin, userController.processLogin)
+router.post('/login', validateLoginForm, userController.processLogin)
 
 
 //Perfil de Usuario

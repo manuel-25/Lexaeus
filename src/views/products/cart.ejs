@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <%- include("../partials/head.ejs") %>
-    
-    <!-- Hoja de estilos Carrito -->
-    <link rel="stylesheet" href="/css/cart.css">
-
-</head>
+<%- include("../partials/head") %>
 <body>
     <%- include("../partials/header.ejs") %> 
     <main>
         <section class="checkout-pay" id="checkout-pay">
-            <h1>Bolsa de Compra(2)</h1>
+            <h1><%= locals.title ? title : null %> (2)</h1>
             <div class="line"></div>
             <button type="submit" class="btn-pay">FINALIZAR LA COMPRA</button>
         </section>

@@ -1,25 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
-
-    <link rel="stylesheet" href="/css/createProduct.css">
-    <%- include("../partials/head.ejs") %>
-        <title>Nuevo Producto</title>
-</head>
-
+<%- include("../partials/head") %>
 <body>
     <%- include("../partials/header.ejs") %>
     <main>
         <section class="main-container">
             <section class="title-container">
-                <h1>Nuevo Producto</h1>
+                <h1><%= locals.title ? title : null %> </h1>
             </section>
             <form action="/products/create" method="post" enctype="multipart/form-data">
                 <section class="grid-layout">
@@ -63,7 +48,9 @@
                             <input 
                                 type="file" 
                                 name="img" 
-                                aria-label="Archivo" class="form-control <%= locals.errors && errors.img ? 'is-invalid' : null %>">
+                                aria-label="Archivo" class="form-control <%= locals.errors && errors.img ? 'is-invalid' : null %>"
+                                multiple
+                            >
 
                                 <% if (locals.errors && errors.img) { %>
                                     <div class="text-danger">
@@ -71,7 +58,7 @@
                                     </div>
                                 <% } %>
                         </div>
-                        <!-- <img src="/img/products/default-img.jpg" alt="Imagen del Producto" class="imagen"> -->
+                        <img src="/img/products/default-img.jpg" alt="Imagen del Producto" class="imagen">
                      </section>
 
                     <section class="child-detail">
@@ -95,7 +82,8 @@
                             <label for="size">Talle</label>
                                 <input 
                                     type="text" 
-                                    name="size" 
+                                    name="size"
+                                    placeholder="S M L XL"
                                     value="<%= locals.oldData ? oldData.size : null %>"
                                     class="form-control <%= locals.errors && errors.size ? 'is-invalid' : null %>"
                                 >
@@ -132,15 +120,16 @@
                                 class="form-control <%= locals.errors && errors.price ? 'is-invalid' : null %>"
                                 value="<%= locals.oldData ? oldData.price : null %>"
                             >
-
                             <% if (locals.errors && errors.price) { %>
                                 <div class="text-danger">
                                     <%= errors.price.msg %> 
                                 </div>
                             <% } %>
-
                         </section>
-                    </section>
+                        <section class="detail">
+                            <label for="offert">Oferta</label>
+                            <input type="checkbox" name="offert">
+                        </section>
                 </section>
                 <section class="button-create">
                     <button type="submit" class="btn-confirm">Crear</button>

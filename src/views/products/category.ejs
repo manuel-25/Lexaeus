@@ -1,35 +1,37 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <%- include("../partials/head.ejs") %>
-
-        <link href="/css/home_sec.css" rel="stylesheet">
-</head>
-
+<%- include("../partials/head") %>
 <body>
     <%- include("../partials/header.ejs") %>
         <main>
             <section>
                 <% if (products.length > 0) { %>
-                    <h1>Productos</h1>
+                    <h1><%= locals.title ? title : 'Producto' %> </h1>
+
                     <% for(let i = 0; i < products.length; i++) { %>
                         <article>
                             <a class="a-homesecundario" href="/products/detail/<%= products[i].id %>">
-                                <img src=/img/products/<%=products[i].img %> alt="<%= products[i].description %>">
+                                <% if (products[i].image) { %>
+                                    <img src="/uploads/products/<%= products[i].image.url %>" alt="<%= products[i].description %>">
+                                <% } else {%>
+                                    <img src="/img/products/<%= products[i].img %>" alt="<%= products[i].description %>">
+                                <% } %>
                             </a>
                             <div>
                                 <p class="descr"><b><%= products[i].name %></b></p>
                                 <p class="precios">
                                     $ <%= products[i].price %>
                                 </p>
-                                <% if (locals.userLogged && locals.userLogged.admin) { %>
-                                    <a class="edit-button" href="/products/<%=products[i].id%>/edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <% if (locals.user && locals.user.isAdmin) { %>
+                                    <a class="edit-button" href="/products/edit/<%= products[i].id %>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <form action="/products/category/<%= products[i].category %>?m=DELETE" method="post">
+                                        <input type="hidden" name="id" value="<%= products[i].id %>">
+                                        <button type="submit"><i class="fa-solid fa-x"></i></button>
+                                    </form>
                                 <% } %>
                             </div>
                         </article>
                     <% } %>
 
+                    
                             <nav class="cambiopagina">
                                 <p><a href="#">Anterior</a> | <a href="#">Siguiente</a></p>
                             </nav>

@@ -1,3 +1,5 @@
 node_modules/
 Design
-src/database/
+public/img/products
+public/img/users
+src/uploads/

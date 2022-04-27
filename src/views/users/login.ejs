@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <%- include("../partials/head.ejs") %>
-
-        <link href="/css/login.css" rel="stylesheet">
-
-</head>
-
+<%- include("../partials/head") %>
 <body>
     <%- include("../partials/header.ejs") %>
         <main>
             <section class="login-container">
                 <form class="login-form" action="/users/login" method="post">
-                    <h1>
-                        Iniciar sesión
-                    </h1>
+                    <h1> <%= locals.title ? title : null %>  </h1>
                     <fieldset>
                         <legend class="dn">Email</legend>
                         <label class="dn" for="email">Email</label>
@@ -24,8 +13,8 @@
                         name="email" 
                         id="email" 
                         placeholder="Correo electronico"
-                        value="<%= locals.oldData ? oldData.email : null %>"
-                    >
+                        value="usuario@prueba.com"
+                    > <!-- value="<%= locals.oldData ? oldData.email : null %>" AGREGAR LUEGO-->
                     </fieldset>
 
                     <% if (locals.errors && errors.email) { %>
@@ -38,8 +27,9 @@
                     <fieldset>
                         <legend class="dn">Contraseña</legend>
                         <label class="dn" for="password">Contraseña</label>
-                        <input type="password" name="password" id="password" placeholder="Contraseña">
+                        <input type="password" name="password" id="password" placeholder="Contraseña" value="12345678"> 
                     </fieldset>
+                    <!-- BORRAR VALUE='12345678'   -->
 
                     <% if (locals.errors && errors.password) { %>
                         <p class="text-danger">

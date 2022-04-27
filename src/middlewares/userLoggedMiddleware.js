@@ -1,21 +1,20 @@
 const user = require('../models/user')
 
-
+// Saves user in session if logged 
 function userLoggedMiddleware(req, res, next) {
     res.locals.isLogged = false
 
     let emailInCookie = req.cookies.userEmail
-    let userFromCookie = user.findByField('email', emailInCookie)
+    let userFromCookie = user.search('email', emailInCookie)
 
     if(userFromCookie){
-        req.session.userLogged = userFromCookie
+        req.session.user = userFromCookie
     }
 
-    if(req.session.userLogged){
+    if(req.session.user){
         res.locals.isLogged = true
-        res.locals.userLogged = req.session.userLogged
+        res.locals.user = req.session.user
     }
-    
 
     next()
 }

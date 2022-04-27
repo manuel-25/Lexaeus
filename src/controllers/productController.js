@@ -1,84 +1,89 @@
 const product = require('../models/product')
-const fs = require('fs');
+const file = require('../models/file')
 const { validationResult } = require('express-validator');
 
 const controller = {
-    getProducts: (req, res) => {
-        categoryId = product.findByCategory(req.params.id)
-        console.log(res.locals)
-        res.render("products/category", { products: categoryId, id: req.params.id})
+    show: (req, res) => {
+        let result = product.findByCategory(req.params.id)
+        return result ? res.render("products/category", {
+            style: ['category'],
+            title: 'Categoria | '+ result[0].category,
+            products: result
+        }) : res.render("error", {
+            msg: "Producto no encontrado!"
+        })
     },
 
-    cart: (req, res) => {res.render("products/cart")},
-
-    detail: (req, res) => {res.render("products/detail")},
-
-    create: (req, res) => { res.render("products/create") },
-
-    update: (req, res) => {
-        res.render("products/modify", { productoAModificar: product.findByPk(req.params.id) }) 
+    showSale: (req, res) => {
+        let result = product.findByOffert()
+        res.render("products/category", {
+            style: ['category'],
+            title: 'Ofertas',
+            products: result.map(p => Object({...p, image: file.search('id',p.img[0])}))     // cambiar image por img =--------------
+        })
     },
 
-    detailProduct: (req, res) => {
+    cart: (req, res) => res.render("products/cart", {
+        style: ['cart'],
+        title: 'Bolsa de Compra'
+    }),
 
-        let productoDeseado = product.findByPk(req.params.id)
-        res.render("products/detail", { productoAMostrar: productoDeseado })
-    },
+    detail: (req, res) =>res.render("products/detail", {
+        style: ['producto'],
+        title: 'Detalle',
+        product: product.search("id", req.params.id)
+    }),
+
+    create: (req, res) => res.render("products/create", {
+        style: ['createProduct'],
+        title: 'Nuevo Producto'
+    }),
 
     processCreate: (req, res) => {
         const resultValidation = validationResult(req)
-
         if (resultValidation.errors.length > 0) {
 			return res.render('products/create', {
 				errors: resultValidation.mapped(),
-				oldData: req.body
+				oldData: req.body,
+                style: ['createProduct'],
+                title: 'Nuevo Producto'
 			})
 		}
 
-        //Validar Imagen
-        if(req.file){
-            req.body = {
-                ...req.body,
-                img: req.file.filename
-            }
-        } else {
-            req.body = {
-                ...req.body,
-                img: "default-img.jpg"
-            }
-        }
-
-        //Parsear Strings a Numeros
-        req.body.price = parseFloat(req.body.price)
-        req.body.stock = parseInt(req.body.stock)
-        req.body.category = parseInt(req.body.category)
-
-
-        //Validar size
-        req.body.size = req.body.size.toUpperCase()
-        if(req.body.size.includes(",")){
-            req.body.size = req.body.size.split(",")
-        } else {
-            req.body.size = req.body.size.split(" ")
-        }
-
+        req.body.files = req.files
+        req.body = product.validateCreate(req.body)
         product.create(req.body)
-        res.redirect('/products/create');
+        res.redirect('/products/create');                       // Redirigir a /products/detail/:id------------------------
     },
 
+    update: (req, res) => res.render("products/modify",{
+        style: ['createProduct'],
+        title: 'Actualizar',
+        product: product.search("id", req.params.id)
+    }),
+
     processUpdate: (req, res) => {
-        product.update(req, res);
+        const resultValidation = validationResult(req)
+        if (resultValidation.errors.length > 0) {
+			return res.render('products/modify', {
+				errors: resultValidation.mapped(),
+				oldData: req.body,
+                style: ['createProduct'],
+                title: 'Actualizar',
+                product: product.search("id", req.params.id)
+			})
+		}
+        
+        let validated = product.validateUpdate(req.body)
+        product.update(req.params.id, validated)
 
-        let urlARedireccionar = '/products/detail/' + req.params.id;
-
-        res.redirect(urlARedireccionar);
+        let url = '/products/detail/' + req.params.id
+        return res.redirect(url);
     },
 
     delete: (req, res) => {
-
-        product.delete(req, res);
-        res.redirect('/products');
-
+        product.delete(req.body.id)
+        res.redirect('/products/category/'+req.params.id)
     }
 }
 
