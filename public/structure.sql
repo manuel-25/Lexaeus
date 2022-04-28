@@ -17,15 +17,15 @@ CREATE TABLE IF NOT EXISTS Colors (
 CREATE TABLE IF NOT EXISTS Products (
     id INT AUTO_INCREMENT NOT NULL,
     PRIMARY KEY(id),
-    name VARCHAR(255),
+    name VARCHAR(255) NOT NULL,
     description VARCHAR(255),
     price DECIMAL(10,2),
     category_id INT NOT NULL,
     FOREIGN KEY (category_id) REFERENCES Category(id),
-    color_id INT,
+    color_id INT NOT NULL,
     FOREIGN KEY (color_id) REFERENCES Colors(id),
     stock INT,
-    offert VARCHAR(5) DEFAULT 'false',
+    offert VARCHAR(5) DEFAULT 'false' NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
