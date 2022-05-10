@@ -23,7 +23,7 @@ router.get("/create", authMiddleware, authAdminMiddleware, products.create)
 router.post('/create', uploadFile.any(), validateCreateForm, products.processCreate)
 
 //Mostrar Ofertas
-router.get("/sale", products.showSale)
+router.get("/sale", products.sale)
 
 //Mostrar Productos
 router.get("/category/:id", products.show)        //userLoggedMiddleware??

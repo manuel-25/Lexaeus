@@ -32,10 +32,10 @@ module.exports = (Sequelize, Datatype) => {
                 type: Datatype.STRING,
                 notNull: true
             },
-            created_at: {
+            createdAt: {
                 type: Datatype.DATE
             },
-            updated_at: {
+            updatedAt: {
                 type: Datatype.DATE
             }
         }

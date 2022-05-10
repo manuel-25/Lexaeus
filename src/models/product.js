@@ -2,11 +2,21 @@ const path = require('path')
 const fs = require('fs')
 const validator = require('express-validator')
 const file = require('./file')
+const db = require('../database/models')
 
 const model = {
     filename: path.resolve(__dirname, '..', 'database', 'products.json'),
+    products: null,
     read: () => fs.readFileSync(model.filename, 'utf-8'),
     all: () => JSON.parse(model.read()),
+    findAll: () => {
+        db.Product.findAll({
+            where: {id: 1}
+        })
+        .then(function(products){
+            
+        })
+    },
     write: (data) => fs.writeFileSync(model.filename, JSON.stringify(data, null, 2)),
     search: (prop, value) => model.all().find(element => element[prop] == value),   //Find By Field
 
@@ -85,6 +95,14 @@ const model = {
             return true
         })
     ],
+
+    generated2: data => Object({
+        name: data.name,
+        description: data.description,
+        category_id: data.category,
+        price: data.price,
+        stock: data.stock
+    }),
 
     generated: data => Object({
         id: model.all().length == 0 ? 1 : model.all().pop().id + 1,

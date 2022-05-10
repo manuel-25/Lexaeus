@@ -13,16 +13,11 @@ module.exports = (Sequelize, Datatype) => {
             description: {
                 type: Datatype.STRING
             },
+            category_id: {
+                type: Datatype.INTEGER
+            },
             price: {
                 type: Datatype.DECIMAL(10,2)
-            },
-            category_id: {                              //Foreign Key
-                type: Datatype.INTEGER,
-                notNull: true
-            },
-            color_id: {                                 //Foreign Key
-                type: Datatype.INTEGER,
-                notNull: true
             },
             stock: {
                 type: Datatype.INTEGER
@@ -31,18 +26,29 @@ module.exports = (Sequelize, Datatype) => {
                 type: Datatype.STRING,
                 notNull: true
             },
-            created_at: {
+            createdAt: {
                 type: Datatype.DATE
             },
-            updated_at: {
+            updatedAt: {
                 type: Datatype.DATE
             }
         }
     const config = {
-        timestamps: false,
+        timestamps: true,
+        paranoid: false             //sof delete?
         //tableName: 'products'
     }
 
     const Product = Sequelize.define(alias,cols,config)
+
+    Product.associate = function(models) {
+        Product.belongsTo(models.Category, {
+            as: 'categories',
+            foreignKey: 'category_id'
+        })
+    }
+
+    
+
     return Product
 }

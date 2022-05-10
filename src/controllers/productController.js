@@ -1,32 +1,58 @@
 const product = require('../models/product')
 const file = require('../models/file')
-const { validationResult } = require('express-validator');
+const { validationResult } = require('express-validator')
+const db = require('../database/models')
 
 const controller = {
     show: (req, res) => {
-        let result = product.findByCategory(req.params.id)
-        return result ? res.render("products/category", {
-            style: ['category'],
-            title: 'Categoria | '+ result[0].category,
-            products: result
-        }) : res.render("error", {
-            msg: "Producto no encontrado!"
+        let category_id = req.params.id
+        db.Product.findAll({
+            include: [{association: "categories"}],
+            where: {
+                category_id: category_id
+            }
         })
+        .then((products) => {
+            res.render("products/category", {
+                style: ['category'],
+                title: products[0].categories.name,
+                products: products
+            })
+        })
+        .catch((err) => console.log('error: '+err))
     },
 
-    showSale: (req, res) => {
-        let result = product.findByOffert()
-        res.render("products/category", {
-            style: ['category'],
-            title: 'Ofertas',
-            products: result.map(p => Object({...p, image: file.search('id',p.img[0])}))     // cambiar image por img =--------------
+    sale: (req, res) => {
+        db.Product.findAll({
+            where: {
+                offert: 'true'
+            }
         })
+        .then((products) => {
+            res.render("products/category", {
+                style: ['category'],
+                title: 'Ofertas',
+                products: products
+            })
+        })
+        .catch((err) => console.log('error: '+err))
     },
 
     cart: (req, res) => res.render("products/cart", {
         style: ['cart'],
         title: 'Bolsa de Compra'
     }),
+
+    detail2: (req, res) => {
+        db.Product.findByPk(req.params.id)
+        .then((products) => {
+            res.render("products/detail", {
+                style: ['producto'],
+                title: 'Detalle',
+                products: products
+            })
+        })
+    },
 
     detail: (req, res) =>res.render("products/detail", {
         style: ['producto'],

@@ -1,9 +1,9 @@
 -- --------CATEGORY--------
-INSERT INTO category VALUES(1, 'Hombre');
-INSERT INTO category VALUES(2, 'Mujer');
-INSERT INTO category VALUES(3, 'Accesorios');
-INSERT INTO category VALUES(4, 'Calzado');
-INSERT INTO category VALUES(5, 'Otros');
+INSERT INTO categories VALUES(1, 'Hombre');
+INSERT INTO categories VALUES(2, 'Mujer');
+INSERT INTO categories VALUES(3, 'Accesorios');
+INSERT INTO categories VALUES(4, 'Calzado');
+INSERT INTO categories VALUES(5, 'Otros');
 
 -- --------SIZES--------
 INSERT INTO sizes VALUES(1, 'Ropa', 'S');
