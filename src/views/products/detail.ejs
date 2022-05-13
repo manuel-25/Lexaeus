@@ -4,22 +4,22 @@
         <main>
             <section>
 
-                <% if (products) { %>
+                <% if (product) { %>
                     <article class="secimag">
-                        <img src="/img/products/<%= products.img %>" alt="Imagen del Producto" class="imagenprod">
+                        <img src="/img/products/<%= product.img %>" alt="Imagen del Producto" class="imagenprod">
                     </article>
                     <article class="detallescompra">
                         <section class="titulo">
-                            <p> <%= products.name %> </p>
+                            <p> <%= product.name %> </p>
                         </section>
                         <section class="precio">
-                            <p> <%= products.price %>$ </p>
+                            <p> <%= product.price %>$ </p>
                         </section>
 
                         <section class="combos">
                             <p class="txtdetallecompra">Talle</p>
                             <select name="talle" class="comboestilo">
-                                <% products.size.forEach(e => { %>
+                                <% product.size.forEach(e => { %>
                                     <option value="<%= e %>"><%= e %></option>
                                <% }) %> 
                             </select>
@@ -27,13 +27,13 @@
                         <section class="combos">
                             <p class="txtdetallecompra">Color</p>
                             <select name="color" class="comboestilo">
-                                <option value="<%= products.color %> "><%= products.color %> </option>
+                                <option value="<%= product.color %> "><%= product.color %> </option>
                             </select>
                         </section>
                         <section class="combos">
                             <p class="txtdetallecompra">Cantidad</p>
                             <select name="cantidad" class="comboestilo">
-                                <% for(let i = 1; i <= products.stock; i++) { %>
+                                <% for(let i = 1; i <= product.stock; i++) { %>
                                     <option value="<%= i %>"><%= i %></option>
                                <% } %> 
                             </select>
@@ -45,7 +45,7 @@
             </section>
             <h3>Descripcion</h3>
             <p class="descripcion">
-                <%= products.description %>
+                <%= product.description %>
             </p>
             <% } else {%>
                 <section class="titulo">

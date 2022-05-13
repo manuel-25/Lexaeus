@@ -73,3 +73,69 @@ INSERT INTO products(name, category_id, price, description, stock, color_id)
     VALUES('Saco Wonder', 2, 18699.90,
      'Saco largo a la rodilla confeccionado en satén, full bordado. Abierto adelante, su diseño bordado con canutillos y mostacillas en el frente, ruedo y mangas suman personalidad y aires folk a esta prenda protagonista de cualquier look. Podés combinarlo con jeans y diferentes estampas, en un estilismo de esencia bohemia e inspiración setentera',
       19, 11);
+
+
+
+-- --------PRODUCT SIZE--------
+INSERT INTO product_size(product_id, size_id) VALUES(1, 1);
+INSERT INTO product_size(product_id, size_id) VALUES(1, 2);
+INSERT INTO product_size(product_id, size_id) VALUES(1, 3);
+INSERT INTO product_size(product_id, size_id) VALUES(1, 4);
+
+INSERT INTO product_size(product_id, size_id) VALUES(2, 1);
+INSERT INTO product_size(product_id, size_id) VALUES(2, 2);
+INSERT INTO product_size(product_id, size_id) VALUES(2, 3);
+INSERT INTO product_size(product_id, size_id) VALUES(2, 4);
+
+INSERT INTO product_size(product_id, size_id) VALUES(3, 1);
+INSERT INTO product_size(product_id, size_id) VALUES(3, 2);
+INSERT INTO product_size(product_id, size_id) VALUES(3, 3);
+
+INSERT INTO product_size(product_id, size_id) VALUES(4, 1);
+INSERT INTO product_size(product_id, size_id) VALUES(4, 2);
+INSERT INTO product_size(product_id, size_id) VALUES(4, 3);
+INSERT INTO product_size(product_id, size_id) VALUES(4, 4);
+INSERT INTO product_size(product_id, size_id) VALUES(4, 5);
+
+INSERT INTO product_size(product_id, size_id) VALUES(5, 1);
+INSERT INTO product_size(product_id, size_id) VALUES(5, 2);
+INSERT INTO product_size(product_id, size_id) VALUES(5, 3);
+INSERT INTO product_size(product_id, size_id) VALUES(5, 4);
+
+INSERT INTO product_size(product_id, size_id) VALUES(6, 1);
+INSERT INTO product_size(product_id, size_id) VALUES(6, 1);
+
+INSERT INTO product_size(product_id, size_id) VALUES(7, 16);
+
+INSERT INTO product_size(product_id, size_id) VALUES(8, 1);
+INSERT INTO product_size(product_id, size_id) VALUES(8, 2);
+INSERT INTO product_size(product_id, size_id) VALUES(8, 3);
+INSERT INTO product_size(product_id, size_id) VALUES(8, 4);
+
+INSERT INTO product_size(product_id, size_id) VALUES(1, 1);
+INSERT INTO product_size(product_id, size_id) VALUES(1, 1);
+INSERT INTO product_size(product_id, size_id) VALUES(1, 1);
+INSERT INTO product_size(product_id, size_id) VALUES(1, 1);
+INSERT INTO product_size(product_id, size_id) VALUES(1, 1);
+
+
+-- --------FILES--------
+INSERT INTO files(url) VALUES('hombre1.jfif');
+INSERT INTO files(url) VALUES('hombre3.jfif');
+INSERT INTO files(url) VALUES('hombre2.jfif');
+INSERT INTO files(url) VALUES('ropa-mujer2.jpg');
+INSERT INTO files(url) VALUES('ropa-mujer4.jpg');
+INSERT INTO files(url) VALUES('ropa-mujer5.jpg');
+INSERT INTO files(url) VALUES('ropa-mujer6.jpg');
+INSERT INTO files(url) VALUES('ropa-mujer7.jpg');
+
+
+-- --------PRODUCT FILE--------
+INSERT INTO product_file(product_id, file_id) VALUES(1, 1);
+INSERT INTO product_file(product_id, file_id) VALUES(2, 2);
+INSERT INTO product_file(product_id, file_id) VALUES(3, 3);
+INSERT INTO product_file(product_id, file_id) VALUES(4, 4);
+INSERT INTO product_file(product_id, file_id) VALUES(5, 5);
+INSERT INTO product_file(product_id, file_id) VALUES(6, 6);
+INSERT INTO product_file(product_id, file_id) VALUES(7, 7);
+INSERT INTO product_file(product_id, file_id) VALUES(8, 8);

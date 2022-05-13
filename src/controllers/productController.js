@@ -7,12 +7,13 @@ const controller = {
     show: (req, res) => {
         let category_id = req.params.id
         db.Product.findAll({
-            include: [{association: "categories"}],
+            include: [{association: "categories"}, {association: "color"}, {association: "files"} ,{association: "sizes"}],
             where: {
                 category_id: category_id
-            }
+            },
         })
         .then((products) => {
+            //console.log(products[0].dataValues.sizes[0].dataValues.size)
             res.render("products/category", {
                 style: ['category'],
                 title: products[0].categories.name,
@@ -49,7 +50,7 @@ const controller = {
             res.render("products/detail", {
                 style: ['producto'],
                 title: 'Detalle',
-                products: products
+                product: products
             })
         })
     },

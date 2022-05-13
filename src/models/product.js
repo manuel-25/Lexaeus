@@ -9,14 +9,6 @@ const model = {
     products: null,
     read: () => fs.readFileSync(model.filename, 'utf-8'),
     all: () => JSON.parse(model.read()),
-    findAll: () => {
-        db.Product.findAll({
-            where: {id: 1}
-        })
-        .then(function(products){
-            
-        })
-    },
     write: (data) => fs.writeFileSync(model.filename, JSON.stringify(data, null, 2)),
     search: (prop, value) => model.all().find(element => element[prop] == value),   //Find By Field
 
@@ -60,9 +52,9 @@ const model = {
 
     validateCreate: (body) => {
         //Parsear Strings a Numeros
-        body.price = parseFloat(body.price)
-        body.stock = parseInt(body.stock)
-        body.category = parseInt(body.category)
+        //body.price = parseFloat(body.price)
+        //body.stock = parseInt(body.stock)
+        //body.category = parseInt(body.category)
 
         //Validar size
         body.size = body.size.toUpperCase()
