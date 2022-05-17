@@ -3,3 +3,5 @@ Design
 public/img/products
 public/img/users
 src/uploads/
+src/views/products/auxiliar.ejs
+public/css/auxiliar.css

@@ -68,6 +68,7 @@ main {
 }
 
 .image-container img{
+    height: auto;
     width: 100%;
 }
 

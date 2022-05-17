@@ -15,14 +15,14 @@
                                 </div>
                                 <div class="item-details">
                                     <h3 class="item-heading">
-                                        <a class="link" href=""><%= product.name %></a>
+                                        <a class="link" href="/products/detail/<%= product.id %>"><%= product.name %></a>
                                     </h3>
                                     <strong class="item-price">
                                         <span class="price-regular">$ <%= product.price %></span>
                                     </strong>
                                     <Ul class="list-swatches">
                                         <li class="swatch-item" style="background-color: beige;">
-                                            <a class="swatch" href="#"></a>
+                                            <a class="swatch" href="/products/detail/<%= product.id %>"></a>
                                         </li>
                                         <li class="swatch-item" style="background-color: black;">
                                             <a class="swatch" href="#"></a>
@@ -31,7 +31,7 @@
                                             <a class="swatch" href="#"></a>
                                         </li>
                                     </Ul>
-                                    <a href="#" class="cart-container">
+                                    <a href="/products/detail/<%= product.id %>" class="cart-container">
                                         <span class="cart-icon">
                                             <i class="fas fa-shopping-cart"></i>
                                         </span>
