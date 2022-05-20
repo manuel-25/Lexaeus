@@ -9,6 +9,10 @@ module.exports = (Sequelize, Datatype) => {
             name: {
                 type: Datatype.STRING,
                 notNull: true
+            },
+            hex: {
+                type: Datatype.STRING,
+                notNull: true
             }
         }
     const config = {

@@ -4,7 +4,8 @@ module.exports = (Sequelize, Datatype) => {
             id: {
                 type: Datatype.INTEGER,
                 primaryKey: true,
-                autoIncrement: true
+                autoIncrement: true,
+                allowNull: false
             },
             name: {
                 type: Datatype.STRING,
@@ -23,6 +24,10 @@ module.exports = (Sequelize, Datatype) => {
                 type: Datatype.INTEGER
             },
             offert: {
+                type: Datatype.STRING,
+                notNull: true
+            },
+            onList: {
                 type: Datatype.STRING,
                 notNull: true
             },

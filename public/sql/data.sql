@@ -24,20 +24,20 @@ INSERT INTO sizes VALUES(15, 'Calzado', '45');
 INSERT INTO sizes VALUES(16, 'Otros', 'Unico');
 
 -- --------COLORS--------
-INSERT INTO colors VALUES(1, 'Blanco');
-INSERT INTO colors VALUES(2, 'Negro');
-INSERT INTO colors VALUES(3, 'Azul');
-INSERT INTO colors VALUES(4, 'Marrón');
-INSERT INTO colors VALUES(5, 'Gris');
-INSERT INTO colors VALUES(6, 'Verde');
-INSERT INTO colors VALUES(7, 'Naranja');
-INSERT INTO colors VALUES(8, 'Rosa');
-INSERT INTO colors VALUES(9, 'Purpura');
-INSERT INTO colors VALUES(10, 'Rojo');
-INSERT INTO colors VALUES(11, 'Amarillo');
-INSERT INTO colors VALUES(12, 'Beige');
-INSERT INTO colors VALUES(13, 'Pastel');
-INSERT INTO colors VALUES(14, 'Celeste');
+INSERT INTO colors VALUES(1, 'Blanco', 'F9F6EE');
+INSERT INTO colors VALUES(2, 'Negro', '353839');
+INSERT INTO colors VALUES(3, 'Azul', '34568B');
+INSERT INTO colors VALUES(4, 'Marrón', '964B00');
+INSERT INTO colors VALUES(5, 'Gris', '808080');
+INSERT INTO colors VALUES(6, 'Verde', '88B04B');
+INSERT INTO colors VALUES(7, 'Naranja', 'FF6F61');
+INSERT INTO colors VALUES(8, 'Rosa', 'F7CAC9');
+INSERT INTO colors VALUES(9, 'Purpura', '6B5B95');
+INSERT INTO colors VALUES(10, 'Rojo', 'BC243C');
+INSERT INTO colors VALUES(11, 'Amarillo', 'EFC050');
+INSERT INTO colors VALUES(12, 'Beige', 'F5F5DC');
+INSERT INTO colors VALUES(13, 'Turquoise', '45B8AC');
+INSERT INTO colors VALUES(14, 'Celeste', '7FCDCD');
 
 -- --------PRODUCTS--------
 INSERT INTO products(name, category_id, price, description, stock, color_id) 

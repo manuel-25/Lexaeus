@@ -7,38 +7,45 @@
                     <h1 class="heading">Categoria <%= locals.title ? title : 'Producto' %> </h1>
                     <ul class="products-list">
                         <% products.forEach(product => { %>
-                        <li class="product-item">
-                            <a class="item" href="/products/detail/<%= product.id %>">
-                                <div class="image-container">
-                                    <img src="/img/products/<%= product.dataValues.files[0].dataValues.url %>">
-                                    <!--  AGREGAR SEGUNDA IMG -->
-                                </div>
-                                <div class="item-details">
-                                    <h3 class="item-heading">
-                                        <a class="link" href="/products/detail/<%= product.id %>"><%= product.name %></a>
-                                    </h3>
-                                    <strong class="item-price">
-                                        <span class="price-regular">$ <%= product.price %></span>
-                                    </strong>
-                                    <Ul class="list-swatches">
-                                        <li class="swatch-item" style="background-color: beige;">
-                                            <a class="swatch" href="/products/detail/<%= product.id %>"></a>
-                                        </li>
-                                        <li class="swatch-item" style="background-color: black;">
-                                            <a class="swatch" href="#"></a>
-                                        </li>
-                                        <li class="swatch-item" style="background-color: bisque;">
-                                            <a class="swatch" href="#"></a>
-                                        </li>
-                                    </Ul>
-                                    <a href="/products/detail/<%= product.id %>" class="cart-container">
-                                        <span class="cart-icon">
-                                            <i class="fas fa-shopping-cart"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </a>
-                        </li>
+                            <% if (product.onList) { %>
+                                <li class="product-item">
+                                    <article class="item">
+                                        <div class="image-container">
+                                            <a href="/products/detail/<%= product.id %>">
+                                                <% if (product.dataValues.files[0]) { %>
+                                                    <img src="/img/products/<%= product.dataValues.files[0].dataValues.url %>">
+                                                    <!--  AGREGAR SEGUNDA IMG -->
+                                                <% } %>
+                                            </a>
+                                        </div>
+                                        <div class="item-details">
+                                            <h3 class="item-heading">
+                                                <a class="link" href="/products/detail/<%= product.id %>"><%= product.name %></a>
+                                            </h3>
+                                            <strong class="item-price">
+                                                <span class="price-regular">$ <%= product.price %></span>
+                                            </strong>
+                                            <Ul class="list-swatches">
+                                                <% console.log(product.color.dataValues.hex) %>
+                                                <li class="swatch-item" style="background-color:aquamarine">
+                                                    <a class="swatch" href="/products/detail/<%= product.id %>"></a>
+                                                </li>
+                                                <li class="swatch-item" style="background-color:bisque">
+                                                    <a class="swatch" href="/products/detail/<%= product.id %>"></a>
+                                                </li>
+                                                <li class="swatch-item" style="background-color:black">
+                                                    <a class="swatch" href="/products/detail/<%= product.id %>"></a>
+                                                </li>
+                                            </Ul>
+                                            <a href="/products/detail/<%= product.id %>" class="cart-container">
+                                                <span class="cart-icon">
+                                                    <i class="fas fa-shopping-cart"></i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </article>
+                                </li>
+                            <% } %>
                         <% }) %> 
                     </ul>
                 </section>

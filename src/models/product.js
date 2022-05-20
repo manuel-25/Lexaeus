@@ -51,19 +51,30 @@ const model = {
     },    //Agregar Validar Imagen
 
     validateCreate: (body) => {
-        //Parsear Strings a Numeros
-        //body.price = parseFloat(body.price)
-        //body.stock = parseInt(body.stock)
-        //body.category = parseInt(body.category)
-
-        //Validar size
         body.size = body.size.toUpperCase()
         if(body.size.includes(",")){
             body.size = body.size.split(",")
         } else {
             body.size = body.size.split(" ")
         }
-        return body
+
+        let result = {
+            name: body.name,
+            description: body.description,
+            price: parseFloat(body.price),
+            category_id: parseInt(body.category),
+            color_id: 1,
+            stock: parseInt(body.stock),
+            offert: body.offert ? 'true' : 'false',
+            onList: body.onList ? 'true' : 'false'
+        }
+
+        result.files = []
+        body.files.forEach(file => {
+            result.files.push(file.filename)
+        })
+
+        return result
     },
 
     validateCreateForm: [

@@ -78,9 +78,28 @@ const controller = {
 		}
 
         req.body.files = req.files
-        req.body = product.validateCreate(req.body)
-        product.create(req.body)
-        res.redirect('/products/create');                       // Redirigir a /products/detail/:id------------------------
+        let result = product.validateCreate(req.body)
+        let files = result.files
+        delete result.files
+        console.log(result)
+
+        db.Product.create(
+                result
+        )
+        .then((products) => {
+            files.forEach(file => {
+                db.File.create({
+                    url: file
+                })
+                .then((file) => {
+                    console.log(file)
+                })
+            })
+        })
+        .catch((err) => console.log(err))
+
+
+        res.redirect('/products/create')
     },
 
     update: (req, res) => res.render("products/modify",{

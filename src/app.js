@@ -23,7 +23,7 @@ app.use(method('m')) // ?m=PUT  || ?m=DELETE
 
 //Seteo Puerto
 app.set("port", 3000);
-app.listen(app.get("port"), () => console.log("Servidor Corriendo"));
+app.listen(app.get("port"), () => console.log("Servidor Corriendo en puerto " + app.get("port")));
 
 // Template Engine
 app.set('view engine', 'ejs');    
