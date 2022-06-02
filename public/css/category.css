@@ -69,6 +69,7 @@ main {
 
 .image-container img{
     height: auto;
+    max-height: 350px;
     width: 100%;
 }
 

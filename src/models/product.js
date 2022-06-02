@@ -66,12 +66,12 @@ const model = {
             color_id: 1,
             stock: parseInt(body.stock),
             offert: body.offert ? 'true' : 'false',
-            onList: body.onList ? 'true' : 'false'
+            onList: body.onList ? 'true' : 'false',
+            files: []
         }
 
-        result.files = []
         body.files.forEach(file => {
-            result.files.push(file.filename)
+            result.files.push(Object({url: file.filename}))
         })
 
         return result

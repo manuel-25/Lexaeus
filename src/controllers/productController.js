@@ -2,6 +2,7 @@ const product = require('../models/product')
 const file = require('../models/file')
 const { validationResult } = require('express-validator')
 const db = require('../database/models')
+const { sequelize } = require('../database/models')
 
 const controller = {
     show: (req, res) => {
@@ -79,25 +80,15 @@ const controller = {
 
         req.body.files = req.files
         let result = product.validateCreate(req.body)
-        let files = result.files
-        delete result.files
-        console.log(result)
+        console.log(Object({
+            ...result
+        }))
 
-        db.Product.create(
-                result
-        )
-        .then((products) => {
-            files.forEach(file => {
-                db.File.create({
-                    url: file
-                })
-                .then((file) => {
-                    console.log(file)
-                })
-            })
+        db.Product.create({
+                ...result
+        }, {
+            include: [{association: "files"}]
         })
-        .catch((err) => console.log(err))
-
 
         res.redirect('/products/create')
     },

@@ -40,8 +40,8 @@ module.exports = (Sequelize, Datatype) => {
         }
     const config = {
         timestamps: true,
-        paranoid: false             //sof delete?
-        //tableName: 'products'
+        paranoid: false,             //sof delete?
+        tableName: 'products'
     }
 
     const Product = Sequelize.define(alias,cols,config)
@@ -73,7 +73,6 @@ module.exports = (Sequelize, Datatype) => {
             timestamps: false
         })
     }
-
 
     return Product
 }
