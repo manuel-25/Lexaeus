@@ -58,5 +58,95 @@
     "avatar": "1650919264703images.jfif",
     "isAdmin": false,
     "isActive": true
+  },
+  {
+    "id": 11,
+    "firstName": "asd",
+    "lastName": "asd",
+    "email": "usuario@prueba.com",
+    "password": "$2a$10$qdiW3PBNZZi5TmCNMvHeVu50nozIXjh6PaQZUr989GY5cub1e.vR6",
+    "avatar": "undefined",
+    "isAdmin": false,
+    "isActive": true
+  },
+  {
+    "id": 12,
+    "firstName": "asdsad",
+    "lastName": "asdasd",
+    "email": "asdas@sdas.com",
+    "password": "$2a$10$EvwKk..WXipTVYwuFBiAU.19EyGbx3kG/S3mgcK8W.eHq2ERe7zQ6",
+    "avatar": "undefined",
+    "isAdmin": false,
+    "isActive": true
+  },
+  {
+    "id": 13,
+    "firstName": "asad",
+    "lastName": "asd",
+    "email": "usuario@prueba.com",
+    "password": "$2a$10$zZ.j2YVL8p4.MamMZ7.5Ee/Dg3enKUteevU5/UdNqQEz27dp0uTXK",
+    "avatar": "undefined",
+    "isAdmin": false,
+    "isActive": true
+  },
+  {
+    "id": 14,
+    "firstName": "sadsad",
+    "lastName": "asd",
+    "email": "usuario@prueba.com",
+    "password": "$2a$10$PLBoKmYr5Bv73dZHz5HFgOgyUkxca/GVBjTQkr/HHgx/72xdMWiqe",
+    "avatar": "undefined",
+    "isAdmin": false,
+    "isActive": true
+  },
+  {
+    "id": 15,
+    "firstName": "asdasd",
+    "lastName": "asdasd",
+    "email": "usuario@prueba.com",
+    "password": "$2a$10$Eh9kLTxiiY.rZtzNIxf15.zNmlZXUtgLWH.bGMMQtq0zpkR2L0pSa",
+    "avatar": "undefined",
+    "isAdmin": false,
+    "isActive": true
+  },
+  {
+    "id": 16,
+    "firstName": "sad",
+    "lastName": "asd",
+    "email": "usuario@prueba.com",
+    "password": "$2a$10$B8MnhO9UMXhJ6SmWf3L6h.rJAMma9iTAKDUsQcGCKigrOa1Bu5/5y",
+    "avatar": "undefined",
+    "isAdmin": false,
+    "isActive": true
+  },
+  {
+    "id": 17,
+    "firstName": "asdas",
+    "lastName": "dasd",
+    "email": "usuario@prueba.com",
+    "password": "$2a$10$PFCxpqrd2zXudWrfYUvk/OT5AOT.qJLm1dTm0kw07Abt.Ifr9GoL6",
+    "avatar": "undefined",
+    "isAdmin": false,
+    "isActive": true
+  },
+  {
+    "id": 18,
+    "firstName": "adsad",
+    "lastName": "asdasd",
+    "email": "usuario@prueba.com",
+    "password": "$2a$10$u3s1mX.F9Ja4eNQ4jZSCnOSl3VpyTfSvpgYxibrUXC/n6Q8DpPQkC",
+    "avatar": "undefined",
+    "isAdmin": false,
+    "isActive": true
+  },
+  {
+    "id": 19,
+    "firstName": "asdasda",
+    "lastName": "asda",
+    "email": "usuario1@prueba.com",
+    "password": "$2a$10$OxiLk2Tc6XXDLlpva5zz7uEHMWowDj1Ow/wDMojfVgcjq5qD6hL4e",
+    "avatar": "undefined",
+    "isAdmin": false,
+    "isActive": true
   }
 ]

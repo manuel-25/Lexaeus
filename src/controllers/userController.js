@@ -1,6 +1,6 @@
 const user = require('../models/user')
 const bcrypt = require('bcryptjs')
-const { validationResult } = require('express-validator');
+const { validationResult, body } = require('express-validator');
 const db = require('./../database/models')
 
 const controller = {
@@ -21,38 +21,52 @@ const controller = {
 		}
 
         //Validacion email already in use
-        let userInDB = user.search('email', req.body.email)
-        if(userInDB) {
-            return res.render('users/register', {
-                errors: {
-                    email: {
-                        msg: 'Este email ya esta registrado'
-                    }
-                },
-                oldData: req.body,
-                style: ['register'],
-                title: 'Registrate'
-            })
-        }
+        db.User.findOne({ 
+            where: { email: req.body.email }
+        })
+        .then((data) => {
+            let userInDB
+            data ? userInDB = data.dataValues.email : null
+            if(userInDB === req.body.email) {
+                return res.render('users/register', {
+                    errors: {
+                        email: {
+                            msg: 'Este email ya esta registrado'
+                        }
+                    },
+                    oldData: req.body,
+                    style: ['register'],
+                    title: 'Registrate'
+                })
+            }
+            //Validate passwords
+            if(req.body.password !== req.body.confirm){
+                return res.render('users/register', {
+                    errors: {
+                        password: {
+                            msg: 'Las Contraseñas no coinciden'
+                        }
+                    },
+                    oldData: req.body,
+                    style: ['register'],
+                    title: 'Registrate'
+                })
+            }
+            delete req.body.confirm
+            req.body.password = bcrypt.hashSync(req.body.password, 10)
 
-        //Validation confirm password
-        if(req.body.password !== req.body.confirm){
-            return res.render('users/register', {
-                errors: {
-                    password: {
-                        msg: 'Las Contraseñas no coinciden'
-                    }
-                },
-                oldData: req.body,
-                style: ['register'],
-                title: 'Registrate'
+            //Create user with req.body
+            db.User.create({
+                ...req.body
             })
-        }
-        delete req.body.confirm
-        let userToCreate = req.body
+
+            return res.redirect('/users/login')
+        })
+        .catch(err => console.log(err))
+        
 
         //Validation image
-        if(req.file){
+        /*if(req.file){
             userToCreate = {
                 ...userToCreate,
                 avatar: req.file.filename
@@ -62,10 +76,7 @@ const controller = {
                 ...userToCreate,
                 avatar: 'default-img.jpg'
             }
-        }
-
-        user.create(userToCreate)
-        return res.redirect('/users/login')
+        }*/
     },
 
     login: (req, res) => res.render("users/login", {
@@ -84,31 +95,35 @@ const controller = {
 			})
 		}
 
-        let userToLogin = user.search('email', req.body.email)
-        
-        if(userToLogin){
-            let isOkPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
-            if(isOkPassword && userToLogin.isActive){
+        db.User.findOne({ 
+            where: { email: req.body.email }
+        })
+        .then((data) => {
+            let userToLogin
+            data ? userToLogin = data.dataValues : null
+            if(userToLogin){
+                let isOkPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
+                if(!isOkPassword || !userToLogin.isActive){
+                    return res.render('users/login', {
+                        errors: {
+                            email: {
+                                msg: 'Credenciales invalidas'
+                            }
+                        },oldData: req.body,
+                        style: ['login'],
+                        title: 'Iniciar sesión'
+                    })
+                }
                 delete userToLogin.password
                 delete req.body.password
                 req.session.user = userToLogin
-            } else {
-                return res.render('users/login', {
-                    errors: {
-                        email: {
-                            msg: 'Credenciales invalidas'
-                        }
-                    },oldData: req.body,
-                    style: ['login'],
-                    title: 'Iniciar sesión'
-                })
-            }
-        }
 
-        if(req.body.remember_user){
-            res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60 * 24 * 30})
-        }
-        return res.redirect('/users/profile')
+                if(req.body.remember_user){
+                    res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60 * 24 * 30})
+                }
+                return res.redirect('/users/profile')
+            }
+        })
     },
     
     profile: (req, res) => res.render('users/profile', {

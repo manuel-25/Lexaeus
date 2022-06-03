@@ -20,7 +20,7 @@ module.exports = (Sequelize, Datatype) => {
                 type: Datatype.STRING,
                 notNull: true
             },
-            img_id: {                                 //Foreign Key
+            image_id: {
                 type: Datatype.INTEGER,
                 notNull: true
             },
@@ -41,10 +41,17 @@ module.exports = (Sequelize, Datatype) => {
         }
     const config = {
         timestamps: false,
-        //tableName: 'users'
     }
 
     const User = Sequelize.define(alias,cols,config)
+
+    User.associate = function(models) {
+        User.belongsTo(models.Image, {
+            as: 'images',
+            foreignKey: 'image_id'
+        })
+    }
+
     return User
 }
 

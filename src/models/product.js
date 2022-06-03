@@ -57,6 +57,7 @@ const model = {
         } else {
             body.size = body.size.split(" ")
         }
+        console.log(body.size)
 
         let result = {
             name: body.name,
@@ -67,12 +68,17 @@ const model = {
             stock: parseInt(body.stock),
             offert: body.offert ? 'true' : 'false',
             onList: body.onList ? 'true' : 'false',
-            files: []
+            files: []/*,
+            sizes: []*/
         }
 
         body.files.forEach(file => {
             result.files.push(Object({url: file.filename}))
         })
+
+        /*body.size.forEach(file => {
+            result.sizes.push(Object({url: file.filename}))
+        })*/
 
         return result
     },
@@ -98,35 +104,6 @@ const model = {
             return true
         })
     ],
-
-    generated2: data => Object({
-        name: data.name,
-        description: data.description,
-        category_id: data.category,
-        price: data.price,
-        stock: data.stock
-    }),
-
-    generated: data => Object({
-        id: model.all().length == 0 ? 1 : model.all().pop().id + 1,
-        name: data.name,
-        category: data.category,
-        description: data.description,
-        img: data.files.map(f => file.create(f).id),
-        stock: data.stock,
-        size: data.size,
-        color: data.color,
-        price: data.price,
-        offert: data.offert ? true : false
-    }),
-
-    create: (data) => {
-        let all = model.all()
-        let product = model.generated(data)
-        all.push(product)
-        model.write(all)
-        return product
-    },
 
     update: (id, data) => {
         let allProducts = model.all()

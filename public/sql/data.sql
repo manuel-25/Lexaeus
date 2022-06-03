@@ -139,3 +139,11 @@ INSERT INTO product_file(product_id, file_id) VALUES(5, 5);
 INSERT INTO product_file(product_id, file_id) VALUES(6, 6);
 INSERT INTO product_file(product_id, file_id) VALUES(7, 7);
 INSERT INTO product_file(product_id, file_id) VALUES(8, 8);
+
+
+-- --------Images--------
+INSERT INTO image VALUES(1, '1649721449937_imgavatars.jfif');
+
+-- --------USERS--------
+INSERT INTO users(firstName, lastName, email, password, image_id, isAdmin, isActive) 
+    VALUES('usuario', 'prueba', 'usuario@prueba.com', "$2a$10$fO39Ybhdb/HgXV30h3T.Wum/areExDc65TWPv64Q1Mo88A43F4Jhy", 1, 'true', 'true');

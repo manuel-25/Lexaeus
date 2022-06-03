@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS product_color (
 );
 
 -- ------USERS------
-CREATE TABLE IF NOT EXISTS images (
+CREATE TABLE IF NOT EXISTS image (
     id INT AUTO_INCREMENT NOT NULL,
     PRIMARY KEY(id),
     url VARCHAR(255) DEFAULT 'default-img.jpg'
@@ -90,8 +90,8 @@ CREATE TABLE IF NOT EXISTS users (
     lastName VARCHAR(255),
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255),
-    image_id INT NOT NULL,
-    FOREIGN KEY (image_id) REFERENCES images(id),
+    image_id INT,
+    FOREIGN KEY (image_id) REFERENCES image(id),
     isAdmin VARCHAR(5) DEFAULT 'false',
     isActive VARCHAR(5) DEFAULT 'true',
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

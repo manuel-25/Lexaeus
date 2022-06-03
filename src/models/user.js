@@ -9,23 +9,11 @@ const model = {
     all: () => JSON.parse(model.read()),
     write: (data) => fs.writeFileSync(model.filename, JSON.stringify(data, null, 2)),
     search: (prop, value) => model.all().find(element => element[prop] == value),   //Find By Field
-    generated: data => Object({
-        id: model.all().length == 0 ? 1 : model.all().pop().id + 1,
-        firstName: String(data.firstName),
-        lastName: String(data.lastName),
-        email: String(data.email),
-        password: bcrypt.hashSync(data.password, 10),
-        avatar: String(data.avatar),
-        isAdmin: false,
-        isActive: true
-    }),
-    create: data => {
-        let all = model.all()
-        let user = model.generated(data)
-        all.push(user)
-        model.write(all)
-        return user
+
+    encryptPassword: data => {
+        return bcrypt.hashSync(data, 10)
     },
+    
     validateRegisterForm: [
         validator.body('firstName').notEmpty().withMessage('Tienes que escribir el Nombre'),
         validator.body('lastName').notEmpty().withMessage('Tienes que escribir el Apellido'),

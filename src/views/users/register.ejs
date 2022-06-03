@@ -92,22 +92,6 @@
                             >
                         </fieldset>
 
-                        <fieldset>
-                            <legend class="avatar">Foto de perfil</legend>
-                            <input
-                                type="file" 
-                                name="avatar"
-                                id="avatar"
-                                class="form-control <%= locals.errors && errors.avatar ? 'is-invalid' : null %>"
-                            >
-                        </fieldset>
-
-                        <% if (locals.errors && errors.avatar) { %>
-                            <div class="text-danger">
-                                *<%= errors.avatar.msg %>
-                            </div>
-                        <% } %>
-
                         <div class="login-buttons">
                             <legend class="dn">Botones del Formulario</legend>
                             <button class="login-button" type="submit">Registrarse</button>

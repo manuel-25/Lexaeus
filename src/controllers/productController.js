@@ -80,9 +80,6 @@ const controller = {
 
         req.body.files = req.files
         let result = product.validateCreate(req.body)
-        console.log(Object({
-            ...result
-        }))
 
         db.Product.create({
                 ...result
