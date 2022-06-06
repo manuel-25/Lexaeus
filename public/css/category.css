@@ -21,7 +21,7 @@ main {
     font-family: 'Mulish', sans-serif;
     height: 100%;
     width: 100%;
-    background-color: #FAF6ED;
+    background-color: #FFF;
 }
 
 .main-section {
@@ -53,9 +53,13 @@ main {
 }
 
 .product-item {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+
     display: inline-block;
     margin-bottom: 20px;
-    background-color: #fff;
+    background-color: #FAF6ED;
 }
 
 .product-item >* {
@@ -68,8 +72,7 @@ main {
 }
 
 .image-container img{
-    height: auto;
-    max-height: 350px;
+    height: 250px;
     width: 100%;
 }
 
