@@ -79,7 +79,7 @@
 
                         </section>
                         <section class="detail">
-                            <label for="size">Talle</label>
+                                <label for="size">Talles</label>
                                 <input 
                                     type="text" 
                                     name="size"
@@ -97,18 +97,18 @@
                         </section>
                         <section class="detail">
                             <label for="color">Color</label>
-                            <input 
-                                type="text" 
-                                name="color" 
-                                value="<%= locals.oldData ? oldData.color : null %>"
-                                class="form-control <%= locals.errors && errors.color ? 'is-invalid' : null %>"
-                            >
-
-                            <% if (locals.errors && errors.color) { %>
-                                <div class="text-danger">
-                                    <%= errors.color.msg %> 
-                                </div>
-                            <% } %>
+                            <select name="color" required>
+                                <% colors.forEach(color => { %>
+                                    <option value="<%= color.id %>"><%=color.name%></option>
+                                <% }) %>
+                            </select>
+                        
+                            <label for="color2">Color Secundario</label>
+                            <select name="color2" required>
+                                <% colors.forEach(color => { %>
+                                    <option value="<%= color.id %>"><%=color.name%></option>
+                                <% }) %>
+                            </select>
 
                         </section>
                         <section class="detail">

@@ -14,7 +14,16 @@ module.exports = (Sequelize, Datatype) => {
             description: {
                 type: Datatype.STRING
             },
+            sizes: {
+                type: Datatype.STRING
+            },
             category_id: {
+                type: Datatype.INTEGER
+            },
+            color_id: {
+                type: Datatype.INTEGER
+            },
+            color2_id: {
                 type: Datatype.INTEGER
             },
             price: {
@@ -54,15 +63,8 @@ module.exports = (Sequelize, Datatype) => {
 
         Product.belongsTo(models.Color, {
             as: 'color',
-            foreignKey: 'color_id'
-        })
-
-        Product.belongsToMany(models.Size, {
-            as: 'sizes',                                //Como se llamara el objeto que contiene los datos
-            through: 'product_size',
-            foreignKey: 'product_id',
-            otherKey: 'size_id',
-            timestamps: false
+            foreignKey: 'color_id',
+            otherKey: 'color2_id'
         })
 
         Product.belongsToMany(models.File, {

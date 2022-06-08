@@ -21,11 +21,14 @@ CREATE TABLE IF NOT EXISTS products (
     name VARCHAR(255) NOT NULL,
     description VARCHAR(255),
     price DECIMAL(10,2),
+    sizes VARCHAR(255),
     category_id INT NOT NULL,
     FOREIGN KEY (category_id) REFERENCES Categories(id),
     color_id INT NOT NULL,
     FOREIGN KEY (color_id) REFERENCES Colors(id),
-    stock INT,
+    color2_id INT,
+    FOREIGN KEY (color2_id) REFERENCES Colors(id),
+    stock INT, 
     offert VARCHAR(5) DEFAULT 'false' NOT NULL,
     onList VARCHAR(5) DEFAULT 'false' NOT NULL,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -57,24 +60,24 @@ CREATE TABLE IF NOT EXISTS sizes (
     size VARCHAR(255)
 );
 
-CREATE TABLE IF NOT EXISTS product_size (
+/*CREATE TABLE IF NOT EXISTS product_size (
     id INT AUTO_INCREMENT,
     PRIMARY KEY(id),
     product_id INT NOT NULL,
     size_id INT NOT NULL,
     FOREIGN KEY (product_id) REFERENCES Products(id),
     FOREIGN KEY (size_id) REFERENCES Sizes(id)
-);
+);*/
 
 -- ------PRODUCTCOLORS------
-CREATE TABLE IF NOT EXISTS product_color (
+/*CREATE TABLE IF NOT EXISTS product_color (
     id INT AUTO_INCREMENT,
     PRIMARY KEY(id),
     product_id INT NOT NULL,
     color_id INT NOT NULL,
     FOREIGN KEY (product_id) REFERENCES Products(id),
     FOREIGN KEY (color_id) REFERENCES Colors(id)
-);
+);*/
 
 -- ------USERS------
 CREATE TABLE IF NOT EXISTS image (

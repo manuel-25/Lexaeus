@@ -8,7 +8,7 @@ const controller = {
     show: (req, res) => {
         let category_id = req.params.id
         db.Product.findAll({
-            include: [{association: "categories"}, {association: "color"}, {association: "files"} ,{association: "sizes"}],
+            include: [{association: "categories"}, {association: "color"}, {association: "files"}],
             where: {
                 category_id: category_id
             },
@@ -62,10 +62,17 @@ const controller = {
         product: product.search("id", req.params.id)
     }),
 
-    create: (req, res) => res.render("products/create", {
-        style: ['createProduct'],
-        title: 'Nuevo Producto'
-    }),
+    create: (req, res) => {
+        db.Color.findAll({raw:true})
+        .then((colors) => {
+            res.render("products/create", {
+                style: ['createProduct'],
+                title: 'Nuevo Producto',
+                colors: colors
+            })
+        })
+        .catch(err => res.send(err))
+    },
 
     processCreate: (req, res) => {
         const resultValidation = validationResult(req)
@@ -74,7 +81,7 @@ const controller = {
 				errors: resultValidation.mapped(),
 				oldData: req.body,
                 style: ['createProduct'],
-                title: 'Nuevo Producto'
+                title: 'Nuevo Producto',
 			})
 		}
 
