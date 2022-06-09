@@ -1,4 +1,5 @@
 const user = require('../models/user')
+const db = require('./../database/models')
 
 // Saves user in session if logged 
 function userLoggedMiddleware(req, res, next) {
@@ -7,6 +8,7 @@ function userLoggedMiddleware(req, res, next) {
     let emailInCookie = req.cookies.userEmail
     let userFromCookie = user.search('email', emailInCookie)
 
+
     if(userFromCookie){
         req.session.user = userFromCookie
     }
@@ -14,6 +16,7 @@ function userLoggedMiddleware(req, res, next) {
     if(req.session.user){
         res.locals.isLogged = true
         res.locals.user = req.session.user
+        res.locals.isAdmin = req.session.isAdmin
     }
 
     next()

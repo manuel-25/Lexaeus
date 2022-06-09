@@ -116,7 +116,10 @@ const controller = {
                 }
                 delete userToLogin.password
                 delete req.body.password
+
+                //console.log(userToLogin)
                 req.session.user = userToLogin
+                userToLogin.isAdmin == 'true' ? req.session.isAdmin = 'true' : req.session.isAdmin = 'false'
 
                 if(req.body.remember_user){
                     res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60 * 24 * 30})

@@ -8,7 +8,7 @@ const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 
 //Middlewares
 app.use(session({
-    secret: 'Mensaje secreto ;)',
+    secret: 'Mensaje secreto ;) dgfsdfdadfaetawfszsdfasdefsdf',
     resave: false,
     saveUninitialized: false
 }))
