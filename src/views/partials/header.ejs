@@ -13,7 +13,8 @@
         </h1>
         <section class="main-header-right-bar">
             <% let user = locals.user %>
-            <% if (locals.user) { %>
+            <% console.log(user) %>
+            <% if (user) { %>
                 <% if (user.isAdmin == 'true') { %>
                      <a class="profile" href="/products/create">Create</a> 
                 <% } %>

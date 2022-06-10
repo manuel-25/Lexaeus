@@ -6,17 +6,17 @@ function userLoggedMiddleware(req, res, next) {
     db.User.findOne({
         where:{
             email: req.cookies && req.cookies.userEmail ? req.cookies.userEmail : null
-        }
+        } 
     })
     .then(user => {
         let logged = user
     
         if(req.session && req.session.user){
-            res.locals.isLogged = true
+            logged = req.session.user
         }
-
+        
         res.locals.user = logged
-    
+
         next()
     })
     .catch(err => res.render(err))
