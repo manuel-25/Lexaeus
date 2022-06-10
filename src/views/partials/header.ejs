@@ -12,13 +12,9 @@
             <a class="logo-header" href="/">Lexaeus</a>
         </h1>
         <section class="main-header-right-bar">
-            <% //console.log('Is logged: ' + (locals.isLogged == 'true')) %>
-            <% //console.log('Is admin: ' + (locals.isAdmin == 'true')) %>
-            <% let aux = locals.user; console.log(locals.user ? aux.firstName : null) %>
             <% let user = locals.user %>
-
             <% if (locals.user) { %>
-                <% if (locals.isAdmin) { %>
+                <% if (user.isAdmin == 'true') { %>
                      <a class="profile" href="/products/create">Create</a> 
                 <% } %>
                 <a class="profile" href="/users/profile">Profile</a>
