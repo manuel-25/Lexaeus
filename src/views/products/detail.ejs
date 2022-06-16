@@ -1,76 +1,184 @@
 <%- include("../partials/head") %>
 <body>
     <%- include("../partials/header.ejs") %>
-        <main>
-            <section>
-
-                <% if (product) { %>
-                    <article class="secimag">
-                        <img src="/img/products/<%= product.img %>" alt="Imagen del Producto" class="imagenprod">
-                    </article>
-                    <article class="detallescompra">
-                        <section class="titulo">
-                            <p> <%= product.name %> </p>
-                        </section>
-                        <section class="precio">
-                            <p> <%= product.price %>$ </p>
-                        </section>
-
-                        <section class="combos">
-                            <p class="txtdetallecompra">Talle</p>
-                            <select name="talle" class="comboestilo">
-                                <% product.size.forEach(e => { %>
-                                    <option value="<%= e %>"><%= e %></option>
-                               <% }) %> 
-                            </select>
-                        </section>
-                        <section class="combos">
-                            <p class="txtdetallecompra">Color</p>
-                            <select name="color" class="comboestilo">
-                                <option value="<%= product.color %> "><%= product.color %> </option>
-                            </select>
-                        </section>
-                        <section class="combos">
-                            <p class="txtdetallecompra">Cantidad</p>
-                            <select name="cantidad" class="comboestilo">
-                                <% for(let i = 1; i <= product.stock; i++) { %>
-                                    <option value="<%= i %>"><%= i %></option>
-                               <% } %> 
-                            </select>
-                        </section>
-                        <form class="frmbotoncarrito" type="post">
-                            <button type="submit" class="boton"><a class="a-productdetail" href="/products/cart">Agregar al Carrito</a></button>
-                        </form>
-                    </article>
+    <main>
+        <% let product%>
+        <% rawProduct ? product = rawProduct.dataValues : null%>
+        <% console.log() %>
+        <% if(product) { %>
+            <section class="main-section">
+                <article class="detail">
+                    <div class="image-container">
+                        <img class="primary-img" src="/img/products/<%= product.files[0].dataValues.url %>">
+                        <img class="secondary-img" src="/img/products/<%= product.files[1] ? product.files[1].dataValues.url : product.files[0].dataValues.url %>">
+                    </div>
+                    <div class="detail-content">
+                        <div class="product-name-price">
+                            <h1><%= product.name %></h1>
+                            <span> <%= product.price %> $</span>
+                            <Ul class="colors">
+                                <li class="primary-color" style="background-color:  #<%= product.color.dataValues.hex %>"></li>
+                                <li class="secondary-color" style="background-color: #<%= product.color.dataValues.hex %>"></li>
+                            </Ul>
+                        </div>
+                        <div class="detail-buttons">
+                            <div class="select-container">
+                                <% let sizesArray = [] %>
+                                <% sizesArray = product.sizes.split(" ") %>
+                                <select>
+                                    <optgroup label="Talles">
+                                        <% sizesArray.forEach(size => { %>
+                                            <option value="size"><%= size %></option>
+                                        <% }) %>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <button class="cart-button">Añadir</button>
+                        </div>
+                        <div class="description-content"> <%= product.description %></div>
+                    </div>
+                </article>
             </section>
-            <h3>Descripcion</h3>
-            <p class="descripcion">
-                <%= product.description %>
-            </p>
-            <% } else {%>
-                <section class="titulo">
-                    <p>Error, producto no encontrado</p>
-                </section>
-            <% } %>
-                <h2>Te puede Interesar</h2>
-                    <section class="tepuedeinteresar">
-                        <article>
-                            <img src="/img/products/imagen_2.jpg" alt="Producto2" class="artimg">
-                            <p class="arttxt">$9999.99</p>
+            <section class="recomendation-content">
+                <h3 class="recomendation-heading"> También te puede gustar </h3>
+                <ul class="products-list">
+                    <li class="product-item">
+                        <article class="item">
+                            <div class="image-container">
+                                <a href="/products/detail/">
+                                        <img src="/img/products/hombre3.jfif">
+                                </a>
+                            </div>
+                            <div class="item-details">
+                                <h3 class="item-heading">
+                                    <a class="link" href="/products/detail/">Nombre del Producto</a>
+                                </h3>
+                                <strong class="item-price">
+                                    <span class="price-regular">$ 3.49</span>
+                                </strong>
+                                <Ul class="list-swatches">
+                                    <li class="swatch-item" style="background-color:aquamarine">
+                                        <a class="swatch" href="/products/detail/"></a>
+                                    </li>
+                                    <li class="swatch-item" style="background-color:bisque">
+                                        <a class="swatch" href="/products/detail/"></a>
+                                    </li>
+                                    <li class="swatch-item" style="background-color:black">
+                                        <a class="swatch" href="/products/detail/"></a>
+                                    </li>
+                                </Ul>
+                                <a href="/products/detail/" class="cart-container">
+                                    <span class="cart-icon">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </span>
+                                </a>
+                            </div>
                         </article>
-
-                        <article>
-                            <img src="/img/products/imagen_3.jpg" alt="Producto3" class="artimg">
-                            <p class="arttxt">$9999.99</p>
+                    </li>
+                    <li class="product-item">
+                        <article class="item">
+                            <div class="image-container">
+                                <a href="/products/detail/">
+                                        <img src="/img/products/hombre3.jfif">
+                                </a>
+                            </div>
+                            <div class="item-details">
+                                <h3 class="item-heading">
+                                    <a class="link" href="/products/detail/">Nombre del Producto</a>
+                                </h3>
+                                <strong class="item-price">
+                                    <span class="price-regular">$ 3.49</span>
+                                </strong>
+                                <Ul class="list-swatches">
+                                    <li class="swatch-item" style="background-color:aquamarine">
+                                        <a class="swatch" href="/products/detail/"></a>
+                                    </li>
+                                    <li class="swatch-item" style="background-color:bisque">
+                                        <a class="swatch" href="/products/detail/"></a>
+                                    </li>
+                                    <li class="swatch-item" style="background-color:black">
+                                        <a class="swatch" href="/products/detail/"></a>
+                                    </li>
+                                </Ul>
+                                <a href="/products/detail/" class="cart-container">
+                                    <span class="cart-icon">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </span>
+                                </a>
+                            </div>
                         </article>
-
-                        <article>
-                            <img src="/img/products/imagen_4.jpg" alt="Producto4" class="artimg">
-                            <p class="arttxt">$9999.99</p>
+                    </li>
+                    <li class="product-item">
+                        <article class="item">
+                            <div class="image-container">
+                                <a href="/products/detail/">
+                                        <img src="/img/products/hombre3.jfif">
+                                </a>
+                            </div>
+                            <div class="item-details">
+                                <h3 class="item-heading">
+                                    <a class="link" href="/products/detail/">Nombre del Producto</a>
+                                </h3>
+                                <strong class="item-price">
+                                    <span class="price-regular">$ 3.49</span>
+                                </strong>
+                                <Ul class="list-swatches">
+                                    <li class="swatch-item" style="background-color:aquamarine">
+                                        <a class="swatch" href="/products/detail/"></a>
+                                    </li>
+                                    <li class="swatch-item" style="background-color:bisque">
+                                        <a class="swatch" href="/products/detail/"></a>
+                                    </li>
+                                    <li class="swatch-item" style="background-color:black">
+                                        <a class="swatch" href="/products/detail/"></a>
+                                    </li>
+                                </Ul>
+                                <a href="/products/detail/" class="cart-container">
+                                    <span class="cart-icon">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </span>
+                                </a>
+                            </div>
                         </article>
-                    </section>
-        </main>
-        <%- include("../partials/footer.ejs") %>
+                    </li>
+                    <li class="product-item">
+                        <article class="item">
+                            <div class="image-container">
+                                <a href="/products/detail/">
+                                        <img src="/img/products/hombre3.jfif">
+                                </a>
+                            </div>
+                            <div class="item-details">
+                                <h3 class="item-heading">
+                                    <a class="link" href="/products/detail/">Nombre del Producto</a>
+                                </h3>
+                                <strong class="item-price">
+                                    <span class="price-regular">$ 3.49</span>
+                                </strong>
+                                <Ul class="list-swatches">
+                                    <li class="swatch-item" style="background-color:aquamarine">
+                                        <a class="swatch" href="/products/detail/"></a>
+                                    </li>
+                                    <li class="swatch-item" style="background-color:bisque">
+                                        <a class="swatch" href="/products/detail/"></a>
+                                    </li>
+                                    <li class="swatch-item" style="background-color:black">
+                                        <a class="swatch" href="/products/detail/"></a>
+                                    </li>
+                                </Ul>
+                                <a href="/products/detail/" class="cart-container">
+                                    <span class="cart-icon">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </article>
+                    </li>
+    
+                </ul>
+            </section>
+        <% } %>
+    </main>
+    <%- include("../partials/footer.ejs") %>
 </body>
-
 </html>

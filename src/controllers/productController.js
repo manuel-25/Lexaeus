@@ -14,7 +14,6 @@ const controller = {
             },
         })
         .then((products) => {
-            //console.log(products[0].dataValues.sizes[0].dataValues.size)
             res.render("products/category", {
                 style: ['category'],
                 title: products[0].categories.name,
@@ -45,22 +44,21 @@ const controller = {
         title: 'Bolsa de Compra'
     }),
 
-    detail2: (req, res) => {
-        db.Product.findByPk(req.params.id)
+    detail: (req, res) => {
+        db.Product.findOne({
+            include: [{association: "color"}, {association: "files"}],
+            where: {
+                id: req.params.id
+            }
+        })
         .then((products) => {
             res.render("products/detail", {
-                style: ['producto'],
+                style: ['detail'],
                 title: 'Detalle',
-                product: products
+                rawProduct: products
             })
         })
     },
-
-    detail: (req, res) =>res.render("products/detail", {
-        style: ['producto'],
-        title: 'Detalle',
-        product: product.search("id", req.params.id)
-    }),
 
     create: (req, res) => {
         db.Color.findAll({raw:true})

@@ -84,7 +84,6 @@ const model = {
         })
 
 
-        console.log(result)
         return result
     },
 
