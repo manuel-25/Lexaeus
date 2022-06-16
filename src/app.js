@@ -21,7 +21,7 @@ app.use(express.static('./public'))
 app.use('/uploads', express.static(path.resolve(__dirname, './uploads')))
 app.use(method('m')) // ?m=PUT  || ?m=DELETE
 
-//Seteo Puerto
+//Set Port
 app.set("port", 3000);
 app.listen(app.get("port"), () => console.log("Servidor Corriendo en puerto " + app.get("port")));
 
