@@ -8,7 +8,7 @@
         <% if(product) { %>
             <section class="main-section">
                 <article class="detail">
-                    <div class="image-container">
+                    <div class="images-container">
                         <img class="primary-img" src="/img/products/<%= product.files[0].dataValues.url %>">
                         <img class="secondary-img" src="/img/products/<%= product.files[1] ? product.files[1].dataValues.url : product.files[0].dataValues.url %>">
                     </div>
