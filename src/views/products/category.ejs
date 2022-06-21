@@ -8,7 +8,7 @@
                     <h1 class="heading">Categoria <%= locals.title ? title : 'Producto' %> </h1>
                     <ul class="products-list">
                         <% products.forEach(product => { %>
-                            <% if (product.onList) { %>
+                            <% if (product.onList === 'true') { %>
                                 <li class="product-item">
                                     <article class="item">
                                         <div class="image-container">
@@ -43,10 +43,10 @@
                                         <% if (user && user.isAdmin == 'true') { %>
                                             <div class="admin-controls">
                                                 <a href="/products/edit/<%= product.id %>" class="edit-container">
-                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    <i class="fa-solid fa-pen-to-square" id="edit-btn"></i>
                                                 </a>
                                                 <a href="#" class="delete-container">
-                                                    <i class="fa-solid fa-x"></i>
+                                                    <i class="fa-solid fa-x" id="delete-btn"></i>
                                                 </a>
                                             </div>
                                         <% } %>

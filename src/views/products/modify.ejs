@@ -35,7 +35,7 @@
                                     <% let categoryId = (i + 1)%>
 									value="<%= categoryId %>"
                                     <% if (product) { %>
-                                        <%=(categoryId == product.category) ? 'selected' : null %> 
+                                        <%=(categoryId == product.category_id) ? 'selected' : null %> 
                                     <% } %>
 								> <%= oneCategory %></option>
 							<% } %>
@@ -64,11 +64,15 @@
                                     </div>
                                 <% } %>
                         </div>
-                        <% if (product) { %>
-                            <img src="/img/product/<%=product.img%>" alt="Imagen del Producto" class="imagen">
-                        <% } else { %>
-                            <img src="/img/product/default-img.jpg" alt="Imagen del Producto" class="imagen">
-                        <% } %>
+                        <div class="images-container">
+                            <% if (product && product.files) { %>
+                                <% for( let index = 0; index < product.files.length; index++ ) { %>
+                                    <img src="/img/products/<%= product.files[index].url %>" alt="Imagen del Producto" class="imagen">
+                                <% } %>
+                            <% } else { %>
+                                <img src="/img/products/default-img.jpg" alt="Imagen del Producto" class="imagen">
+                            <% } %>
+                        </div>
                      </section>
                     <section class="child-detail">
                         <section class="detail">
@@ -102,21 +106,23 @@
                                     </div>
                                 <% } %>
                         </section>
+
                         <section class="detail">
                             <label for="color">Color</label>
-                            <input 
-                                type="text" 
-                                name="color" 
-                                value="<%= locals.product ? product.color.name : null %>"
-                                class="form-control <%= locals.errors && errors.color ? 'is-invalid' : null %>"
-                            >
-
-                            <% if (locals.errors && errors.color) { %>
-                                <div class="text-danger">
-                                    <%= errors.color.msg %> 
-                                </div>
-                            <% } %>
+                            <select name="color" required>
+                                <% colors.forEach(color => { %>
+                                    <option value="<%= color.id %>" <%= product.color_id == color.id ? 'selected' : null %>> <%=color.name%> </option>
+                                <% }) %>
+                            </select>
+                        
+                            <label for="color2">Color Secundario</label>
+                            <select name="color2" required>
+                                <% colors.forEach(color => { %>
+                                    <option value="<%= color.id %>" <%= product.color_id == color.id ? 'selected' : null %>> <%=color.name%> </option>
+                                <% }) %>
+                            </select>
                         </section>
+
                         <section class="detail">
                             <label for="price">Precio</label>
                             <input 
@@ -135,7 +141,9 @@
                         </section>
                         <section class="detail">
                             <label for="offert">Oferta</label>
-                            <input type="checkbox" name="offert">
+                            <input type="checkbox" name="offert" <%= product.offert === 'true' ? 'checked' : null %>>
+                            <label for="onList">Mostrar Producto</label>
+                            <input type="checkbox" name="onList" <%= product.onList === 'true' ? 'checked' : null %>>
                         </section>
 
                     </section>
