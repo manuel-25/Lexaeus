@@ -12,11 +12,10 @@ function userLoggedMiddleware(req, res, next) {
         let logged = user
     
         if(req.session && req.session.user){
-            res.locals.isLogged = true
+            logged = req.session.user
         }
-
         res.locals.user = logged
-    
+
         next()
     })
     .catch(err => res.render(err))
