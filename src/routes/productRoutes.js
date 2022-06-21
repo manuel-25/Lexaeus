@@ -29,13 +29,13 @@ router.get("/sale", products.sale)
 router.get("/category/:id", products.show)        //userLoggedMiddleware??
 
 //Detalle de Product
-router.get("/detail/:id", products.detail)
+router.get("/detail/:category/:id", products.detail)
 
 //Formulario Editar Producto
-router.get("/edit/:id", authMiddleware, authAdminMiddleware, products.update)
+router.get("/edit/:category/:id", authMiddleware, authAdminMiddleware, products.update)
 
 //Procesar Editar Producto
-router.put('/edit/:id', validateCreateForm, products.processUpdate)
+router.put('/edit/:category/:id', validateCreateForm, products.processUpdate)
 //uploadFile.single('img')
 
 

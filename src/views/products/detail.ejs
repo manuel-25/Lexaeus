@@ -4,7 +4,6 @@
     <main>
         <% let product%>
         <% rawProduct ? product = rawProduct.dataValues : null%>
-        <% console.log() %>
         <% if(product) { %>
             <section class="main-section">
                 <article class="detail">
@@ -41,141 +40,57 @@
             </section>
             <section class="recomendation-content">
                 <h3 class="recomendation-heading"> También te puede gustar </h3>
-                <ul class="products-list">
-                    <li class="product-item">
-                        <article class="item">
-                            <div class="image-container">
-                                <a href="/products/detail/">
-                                        <img src="/img/products/hombre3.jfif">
-                                </a>
-                            </div>
-                            <div class="item-details">
-                                <h3 class="item-heading">
-                                    <a class="link" href="/products/detail/">Nombre del Producto</a>
-                                </h3>
-                                <strong class="item-price">
-                                    <span class="price-regular">$ 3.49</span>
-                                </strong>
-                                <Ul class="list-swatches">
-                                    <li class="swatch-item" style="background-color:aquamarine">
-                                        <a class="swatch" href="/products/detail/"></a>
-                                    </li>
-                                    <li class="swatch-item" style="background-color:bisque">
-                                        <a class="swatch" href="/products/detail/"></a>
-                                    </li>
-                                    <li class="swatch-item" style="background-color:black">
-                                        <a class="swatch" href="/products/detail/"></a>
-                                    </li>
-                                </Ul>
-                                <a href="/products/detail/" class="cart-container">
-                                    <span class="cart-icon">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        </article>
-                    </li>
-                    <li class="product-item">
-                        <article class="item">
-                            <div class="image-container">
-                                <a href="/products/detail/">
-                                        <img src="/img/products/hombre3.jfif">
-                                </a>
-                            </div>
-                            <div class="item-details">
-                                <h3 class="item-heading">
-                                    <a class="link" href="/products/detail/">Nombre del Producto</a>
-                                </h3>
-                                <strong class="item-price">
-                                    <span class="price-regular">$ 3.49</span>
-                                </strong>
-                                <Ul class="list-swatches">
-                                    <li class="swatch-item" style="background-color:aquamarine">
-                                        <a class="swatch" href="/products/detail/"></a>
-                                    </li>
-                                    <li class="swatch-item" style="background-color:bisque">
-                                        <a class="swatch" href="/products/detail/"></a>
-                                    </li>
-                                    <li class="swatch-item" style="background-color:black">
-                                        <a class="swatch" href="/products/detail/"></a>
-                                    </li>
-                                </Ul>
-                                <a href="/products/detail/" class="cart-container">
-                                    <span class="cart-icon">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        </article>
-                    </li>
-                    <li class="product-item">
-                        <article class="item">
-                            <div class="image-container">
-                                <a href="/products/detail/">
-                                        <img src="/img/products/hombre3.jfif">
-                                </a>
-                            </div>
-                            <div class="item-details">
-                                <h3 class="item-heading">
-                                    <a class="link" href="/products/detail/">Nombre del Producto</a>
-                                </h3>
-                                <strong class="item-price">
-                                    <span class="price-regular">$ 3.49</span>
-                                </strong>
-                                <Ul class="list-swatches">
-                                    <li class="swatch-item" style="background-color:aquamarine">
-                                        <a class="swatch" href="/products/detail/"></a>
-                                    </li>
-                                    <li class="swatch-item" style="background-color:bisque">
-                                        <a class="swatch" href="/products/detail/"></a>
-                                    </li>
-                                    <li class="swatch-item" style="background-color:black">
-                                        <a class="swatch" href="/products/detail/"></a>
-                                    </li>
-                                </Ul>
-                                <a href="/products/detail/" class="cart-container">
-                                    <span class="cart-icon">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        </article>
-                    </li>
-                    <li class="product-item">
-                        <article class="item">
-                            <div class="image-container">
-                                <a href="/products/detail/">
-                                        <img src="/img/products/hombre3.jfif">
-                                </a>
-                            </div>
-                            <div class="item-details">
-                                <h3 class="item-heading">
-                                    <a class="link" href="/products/detail/">Nombre del Producto</a>
-                                </h3>
-                                <strong class="item-price">
-                                    <span class="price-regular">$ 3.49</span>
-                                </strong>
-                                <Ul class="list-swatches">
-                                    <li class="swatch-item" style="background-color:aquamarine">
-                                        <a class="swatch" href="/products/detail/"></a>
-                                    </li>
-                                    <li class="swatch-item" style="background-color:bisque">
-                                        <a class="swatch" href="/products/detail/"></a>
-                                    </li>
-                                    <li class="swatch-item" style="background-color:black">
-                                        <a class="swatch" href="/products/detail/"></a>
-                                    </li>
-                                </Ul>
-                                <a href="/products/detail/" class="cart-container">
-                                    <span class="cart-icon">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        </article>
-                    </li>
-    
-                </ul>
+                <% if (allProducts) { %>
+                    <ul class="products-list">
+                        <% let min = 1; max = allProducts.length; let randomArray = [] %>
+                        <% const random = (min, max) => Math.floor(Math.random() * (max - min)) + min %>
+                        <%  let randomNumber = random(min,max); %>
+                        
+                        <% while( randomArray.length < 4 ) { %>
+                            <% randomNumber != product.id ? randomArray.push(randomNumber) : null%>
+                            <% randomNumber = random(min,max) %>
+                        <% } %>
+
+                        <% for( let i = 0; i < randomArray.length; i++ ) { %>
+                            <% let productArray = allProducts[randomArray[i]] %>
+                            <li class="product-item">
+                                <article class="item">
+                                    <div class="image-container">
+                                        <a href="/products/detail/<%= productArray.category_id %>/<%= productArray.id %>">
+                                            <% if (productArray.dataValues.files[0]) { %>
+                                                <img src="/img/products/<%= productArray.dataValues.files[0].dataValues.url %>">
+                                                <!--  AGREGAR SEGUNDA IMG -->
+                                            <% } %>
+                                        </a>
+                                    </div>
+                                    <div class="item-details">
+                                        <h3 class="item-heading">
+                                            <a class="link" href="/products/detail/"> <%= productArray.name %> </a>
+                                        </h3>
+                                        <strong class="item-price">
+                                            <span class="price-regular"> <%= productArray.price %> $ </span>
+                                        </strong>
+                                        <Ul class="list-swatches">
+                                            <li class="swatch-item" style="background-color:#<%= productArray.color.dataValues.hex %>"">
+                                                <a class="swatch" href="/products/detail/<%= product.category_id %>/<%= product.id %>"></a>
+                                            </li>
+                                            <li class="swatch-item" style="background-color:#<%= productArray.color.dataValues.hex %>"">
+                                                <a class="swatch" href="/products/detail/<%= productArray.category_id %>/<%= product.id %>"></a>
+                                            </li>
+                                        </Ul>
+                                        <a href="/products/detail/<%= product.category_id %>/<%= product.id %>"" class="cart-container">
+                                            <span class="cart-icon">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </article>
+                            </li>
+                        <% } %>
+                    </ul>     
+                <% } else { %>
+                    <p> No se han encontrado productos</p>
+                <% } %>
             </section>
         <% } %>
     </main>

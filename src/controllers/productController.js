@@ -45,17 +45,26 @@ const controller = {
     }),
 
     detail: (req, res) => {
-        db.Product.findOne({
+        let category_id = req.params.category
+        let allProductsPromise = db.Product.findAll({
+            include: [{association: "categories"}, {association: "color"}, {association: "files"}],
+            where: {
+                category_id: category_id
+            },
+        })
+        let oneProductPromise = db.Product.findOne({
             include: [{association: "color"}, {association: "files"} ],
             where: {
                 id: req.params.id
             }
         })
-        .then((products) => {
+        Promise.all([allProductsPromise, oneProductPromise])
+        .then((values) => {
             res.render("products/detail", {
                 style: ['detail'],
                 title: 'Detalle',
-                rawProduct: products
+                rawProduct: values[1],
+                allProducts: values[0]
             })
         })
         .catch(err => res.render("error", {error: err}))
