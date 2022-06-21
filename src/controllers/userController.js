@@ -13,7 +13,7 @@ const controller = {
         const resultValidation = validationResult(req)
         if (resultValidation.errors.length > 0) {
 			return res.render('users/register', {
-				errors: resultValidation.mapped(),	//.mapped() convierte el Array en un Objeto literal
+				errors: resultValidation.mapped(),
 				oldData: req.body,
                 style: ['register'],
                 title: 'Registrate'
@@ -62,7 +62,7 @@ const controller = {
 
             return res.redirect('/users/login')
         })
-        .catch(err => console.log(err))
+        .catch(err => res.render("error", {error: err}))
         
 
         //Validation image
@@ -125,6 +125,7 @@ const controller = {
                 return res.redirect('/users/profile')
             }
         })
+        .catch(err => res.render("error", {error: err}))
     },
     
     profile: (req, res) => res.render('users/profile', {

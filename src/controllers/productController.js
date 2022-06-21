@@ -20,7 +20,7 @@ const controller = {
                 products: products
             })
         })
-        .catch((err) => console.log('error: '+err))
+        .catch(err => res.render("error", {error: err}))
     },
 
     sale: (req, res) => {
@@ -36,7 +36,7 @@ const controller = {
                 products: products
             })
         })
-        .catch((err) => console.log('error: '+err))
+        .catch(err => res.render("error", {error: err}))
     },
 
     cart: (req, res) => res.render("products/cart", {
@@ -58,6 +58,7 @@ const controller = {
                 rawProduct: products
             })
         })
+        .catch(err => res.render("error", {error: err}))
     },
 
     create: (req, res) => {
@@ -69,7 +70,7 @@ const controller = {
                 colors: colors
             })
         })
-        .catch(err => res.send(err))
+        .catch(err => res.render("error", {error: err}))
     },
 
     processCreate: (req, res) => {
@@ -96,19 +97,23 @@ const controller = {
     },
 
     update: (req, res) => {
-        db.Product.findOne({
+        let colorPromise = db.Color.findAll({raw:true})
+        let productPromise = db.Product.findOne({
             include: [{association: "color"}, {association: "files"} ],
             where: {
                 id: req.params.id
             }
         })
-        .then((product) => {
+        Promise.all([productPromise, colorPromise])
+        .then((values) => {
             res.render("products/modify",{
                 style: ['createProduct'],
                 title: 'Editar',
-                product: product
+                product: values[0],
+                colors: values[1]
             })
         })
+        .catch(err => res.render("error", {error: err}))
     },
 
     processUpdate: (req, res) => {
