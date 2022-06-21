@@ -92,7 +92,7 @@
                                     type="text" 
                                     name="size"
                                     placeholder="S M L XL"
-                                    value="<%= locals.product ? product.size : null %>"
+                                    value="<%= locals.product ? product.sizes : null %>"
                                     class="form-control <%= locals.errors && errors.size ? 'is-invalid' : null %>"
                                 >
 
@@ -107,7 +107,7 @@
                             <input 
                                 type="text" 
                                 name="color" 
-                                value="<%= locals.product ? product.color : null %>"
+                                value="<%= locals.product ? product.color.name : null %>"
                                 class="form-control <%= locals.errors && errors.color ? 'is-invalid' : null %>"
                             >
 

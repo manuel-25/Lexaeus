@@ -46,7 +46,7 @@ const controller = {
 
     detail: (req, res) => {
         db.Product.findOne({
-            include: [{association: "color"}, {association: "files"}],
+            include: [{association: "color"}, {association: "files"} ],
             where: {
                 id: req.params.id
             }
@@ -95,11 +95,21 @@ const controller = {
         res.redirect('/products/create')
     },
 
-    update: (req, res) => res.render("products/modify",{
-        style: ['createProduct'],
-        title: 'Actualizar',
-        product: product.search("id", req.params.id)
-    }),
+    update: (req, res) => {
+        db.Product.findOne({
+            include: [{association: "color"}, {association: "files"} ],
+            where: {
+                id: req.params.id
+            }
+        })
+        .then((product) => {
+            res.render("products/modify",{
+                style: ['createProduct'],
+                title: 'Editar',
+                product: product
+            })
+        })
+    },
 
     processUpdate: (req, res) => {
         const resultValidation = validationResult(req)

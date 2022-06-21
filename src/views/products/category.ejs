@@ -2,6 +2,7 @@
 <body>
     <%- include("../partials/header.ejs") %>
         <main>
+            <% let user = locals.user %>
             <% if (products.length > 0) { %>
                 <section class="main-section">
                     <h1 class="heading">Categoria <%= locals.title ? title : 'Producto' %> </h1>
@@ -26,13 +27,10 @@
                                                 <span class="price-regular">$ <%= product.price %></span>
                                             </strong>
                                             <Ul class="list-swatches">
-                                                <li class="swatch-item" style="background-color:aquamarine">
+                                                <li class="swatch-item" style="background-color:#<%= product.color.dataValues.hex %>"">
                                                     <a class="swatch" href="/products/detail/<%= product.id %>"></a>
                                                 </li>
-                                                <li class="swatch-item" style="background-color:bisque">
-                                                    <a class="swatch" href="/products/detail/<%= product.id %>"></a>
-                                                </li>
-                                                <li class="swatch-item" style="background-color:black">
+                                                <li class="swatch-item" style="background-color:#<%= product.color.dataValues.hex %>"">
                                                     <a class="swatch" href="/products/detail/<%= product.id %>"></a>
                                                 </li>
                                             </Ul>
@@ -42,6 +40,16 @@
                                                 </span>
                                             </a>
                                         </div>
+                                        <% if (user && user.isAdmin == 'true') { %>
+                                            <div class="admin-controls">
+                                                <a href="/products/edit/<%= product.id %>" class="edit-container">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </a>
+                                                <a href="#" class="delete-container">
+                                                    <i class="fa-solid fa-x"></i>
+                                                </a>
+                                            </div>
+                                        <% } %>
                                     </article>
                                 </li>
                             <% } %>
