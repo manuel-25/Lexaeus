@@ -40,66 +40,126 @@ INSERT INTO colors VALUES(13, 'Turquoise', '45B8AC');
 INSERT INTO colors VALUES(14, 'Celeste', '7FCDCD');
 
 -- --------PRODUCTS--------
-INSERT INTO products(name, category_id, price, description, sizes, stock, color_id) 
-    VALUES('Camisa micro print', 1, 3390, 'Camisa micro print', 'S M' , 10, 3);
+INSERT INTO products(name, category_id, price, description, sizes, stock, onlist, color_id, color2_id) 
+    VALUES('Camiseta Relaxed Fit', 1, 2400,'Camiseta en punto de algodón suave con motivo. Modelo de corte relajado con cuello redondo y mangas cortas.',
+      'S M L XL XXL' , 20, 'true', 6, 1);
 
-INSERT INTO products(name, category_id, price, description, sizes, stock, color_id) 
-    VALUES('Malla print', 1, 2790, 'Traje de baño print', 'S M L XL', 7, 1);
+INSERT INTO products(name, category_id, price, description, sizes, stock, onlist, color_id, color2_id) 
+    VALUES('Pantalón corto Regular Fit', 1, 1790, 'Pantalón corto en tejido sudadera de mezcla de algodón. Modelo con cintura elástica y cordón de ajuste, bolsillos al bies, un bolsillo trasero abierto y bajos enrollados sin rematar.',
+     'S M L XL XXL' , 20, 'true', 5, 5);
 
-INSERT INTO products(name, category_id, price, description, sizes, stock, color_id) 
-    VALUES('Camisa print', 1, 4890.9, 'Camisa Print de Verano', 'S', 10, 3);
+INSERT INTO products(name, category_id, price, description, sizes, stock, onlist, color_id, color2_id) 
+    VALUES('Chinos cortos de algodón Regular Fit', 1, 6400, 'Pantalón corto en sarga de algodón con elástico en la parte posterior de la pretina y cordón de ajuste oculto delante. Modelo de corte estándar con cierre de cremallera con botón, bolsillos al bies y bolsillos insertados detrás.',
+     'XS S M L XL XXL' , 20, 'true', 12, 12);
 
-INSERT INTO products(name, category_id, price, description, sizes, stock, color_id) 
-    VALUES('Babucha Leopard Velavet', 2, 12000, 
-    'Pantalon confeccionado en velvet de estampa, de calce confortable y ajuste con elástico en la cintura y los puños. Un ítem personal y canchero, para sumar comodidad y máximo estilo a tus outfits',
-     'S M L', 2, 5);
+INSERT INTO products(name, category_id, price, description, sizes, stock, onlist, color_id, color2_id) 
+    VALUES('Camisa Slim Fit Easy-iron', 1, 14995, 'Camisa de tela con acabado de planchado fácil. Modelo de manga larga con perilla y botón, cuello inglés con tapeta clásica, puños ajustables con botón y bajo ligeramente redondeado. Pinzas y canesú en la espalda. Corte ajustado con hombros más estrechos y cintura entallada para una silueta depurada.',
+     'XS S M L XL XXL' , 20, 'true', 1, 1);
 
-INSERT INTO products(name, category_id, price, description, sizes, stock, color_id) 
-    VALUES('Buzo Kamala', 2, 34000, 
-    'Buzo mangas 3/4 confeccionado en velvet, con cuello redondo pronunciado y diseños de bordados en lentejuelas a contratono, que protagonizan la prenda y suman brillo y aires boho. Matcheá con una bijou a tono con las lentejuelas para sumar impacto', 
-     'S M L', 5, 1);
+INSERT INTO products(name, category_id, price, description, sizes, stock, onlist, color_id, color2_id) 
+    VALUES('Bañador estampado', 1, 9500, 'Bañador estampado a la rodilla con elástico revestido y cordón de ajuste en la cintura, bolsillos laterales y bolsillo insertado con cierre autoadherente detrás. Pantaloncillo interior en malla suave.',
+     'XS S M L XL XXL' , 20, 'true', 13, 14);
 
-INSERT INTO products(name, category_id, price, description, sizes, stock, color_id) 
-    VALUES('Vestido Oni Print Pink!', 2, 16500, 
-    'Vestido largo midi, confeccionado en viscosa estampada con detalles de lúrex. El escote en V tiene detalle de volados, que se repite en la terminación de las mangas 3/4 y en el ruedo. Lleva viso y lazo para ajustar la cintura en la misma tela',
-     'S L', 6, 8);
+INSERT INTO products(name, category_id, price, description, sizes, stock, onlist, color_id, color2_id) 
+    VALUES('Camiseta oversize de algodón', 1, 5400, 'Camiseta oversize en punto de algodón. Modelo de manga corta con hombros caídos y cuello redondo en punto de canalé.',
+     'XS S M L XL XXL' , 20, 'true', 2, 2);
 
-INSERT INTO products(name, category_id, price, description, sizes, stock, color_id) 
-    VALUES('Saco Tanzania Otis Short', 2, 9900.90,
-     'Saco corto confeccionado en viscosa con detalles de lúrex y velvet bordado con lentejuelas. Las mangas, largas y amplias, ajustan en los puños generando efecto baloon. Cierra con cordón a tono terminado en tassels. Una prenda hit de la temporada, que suma funk y personalidad a cualquier outfit.',
-     ' M L XL XXL', 20, 12);
+INSERT INTO products(name, category_id, price, description, sizes, stock, onlist, color_id, color2_id) 
+    VALUES('Vaquero corto denim Regular', 1, 20400, 'Vaquero corto de cinco bolsillos en denim de algodón con detalles maxidesgastados. Modelo de cintura estándar con cierre de cremallera con botón y perneras hasta la rodilla con bajos sin rematar.',
+     'XS S M L XL XXL' , 20, 'true', 3, 3);
 
-INSERT INTO products(name, category_id, price, description, sizes, stock, color_id) 
-    VALUES('Saco Wonder', 2, 18699.90,
-     'Saco largo a la rodilla confeccionado en satén, full bordado. Abierto adelante, su diseño bordado con canutillos y mostacillas en el frente, ruedo y mangas suman personalidad y aires folk a esta prenda protagonista de cualquier look. Podés combinarlo con jeans y diferentes estampas, en un estilismo de esencia bohemia e inspiración setentera',
-     'S M L XL', 19, 11);
+INSERT INTO products(name, category_id, price, description, sizes, stock, onlist, color_id, color2_id) 
+    VALUES('Joggers en mezcla de lino Relaxed Fit', 1, 9749, 'Joggers en mezcla de lino y algodón con cierre decorativo y elástico revestido con cordón de ajuste en la cintura. Modelo de corte relajado con bolsillos al bies y bolsillos abiertos detrás.',
+     'XS S M L XL XXL' , 20, 'true', 1, 1);
+
+INSERT INTO products(name, category_id, price, description, sizes, stock, onlist, color_id, color2_id) 
+    VALUES('Bañador estampado RM', 1, 4000, 'Bañador estampado con cintura elástica y cordón de ajuste, bolsillos al bies y un bolsillo trasero con cierre autoadherente. Pantaloncillo interior de malla.',
+     'XS S M L XL XXL' , 20, 'true', 2, 8);
+
+INSERT INTO products(name, category_id, price, description, sizes, stock, onlist, color_id, color2_id) 
+    VALUES('Camiseta Regular Fit Nirvana', 1, 8000, 'Camiseta en punto suave de algodón con cuello redondo y motivo estampado delante.',
+     'XS S M L XL' , 20, 'true', 2, 3);
+
 
 
 -- --------FILES--------
-INSERT INTO files(url) VALUES('hombre1.jfif');
-INSERT INTO files(url) VALUES('hombre3.jfif');
-INSERT INTO files(url) VALUES('hombre2.jfif');
-INSERT INTO files(url) VALUES('ropa-mujer2.jpg');
-INSERT INTO files(url) VALUES('ropa-mujer4.jpg');
-INSERT INTO files(url) VALUES('ropa-mujer5.jpg');
-INSERT INTO files(url) VALUES('ropa-mujer6.jpg');
-INSERT INTO files(url) VALUES('ropa-mujer7.jpg');
+INSERT INTO files(url) VALUES('hmgoepprod (1).jpg');
+INSERT INTO files(url) VALUES('hmgoepprod (2).jpg');
+INSERT INTO files(url) VALUES('hmgoepprod.jpg');
+
+INSERT INTO files(url) VALUES('Pantalón corto Regular Fit.jpg');
+INSERT INTO files(url) VALUES('Pantalón corto Regular Fit2.jpg');
+INSERT INTO files(url) VALUES('Pantalón corto Regular Fit3.jpg');
+
+INSERT INTO files(url) VALUES('Chinos cortos de algodón Regular Fit.jpg');
+INSERT INTO files(url) VALUES('Chinos cortos de algodón Regular Fit2.jpg');
+INSERT INTO files(url) VALUES('Chinos cortos de algodón Regular Fit3.jpg');
+
+INSERT INTO files(url) VALUES('Camisa Slim Fit Easy-iron.jpg');
+INSERT INTO files(url) VALUES('Camisa Slim Fit Easy-iron2.jpg');
+INSERT INTO files(url) VALUES('Camisa Slim Fit Easy-iron3.jpg');
+
+INSERT INTO files(url) VALUES('Bañador estampado.jpg');
+INSERT INTO files(url) VALUES('Bañador estampado2.jpg');
+INSERT INTO files(url) VALUES('Bañador estampado3.jpg');
+
+INSERT INTO files(url) VALUES('Camiseta oversize de algodón.jpg');
+INSERT INTO files(url) VALUES('Camiseta oversize de algodón2.jpg');
+INSERT INTO files(url) VALUES('Camiseta oversize de algodón3.jpg');
+
+INSERT INTO files(url) VALUES('Vaquero corto denim Regular.jpg');
+INSERT INTO files(url) VALUES('Vaquero corto denim Regular2.jpg');
+INSERT INTO files(url) VALUES('Vaquero corto denim Regular3.jpg');
+
+INSERT INTO files(url) VALUES('Joggers en mezcla de lino Relaxed Fit.jpg');
+INSERT INTO files(url) VALUES('Joggers en mezcla de lino Relaxed Fit3.jpg');
+
+INSERT INTO files(url) VALUES('Bañador estampadoRM.jpg');
+INSERT INTO files(url) VALUES('Bañador estampadoRM2.jpg');
+INSERT INTO files(url) VALUES('Bañador estampadoRM3.jpg');
+
+INSERT INTO files(url) VALUES('Camiseta Regular Fit Nirvana.jpg');
+INSERT INTO files(url) VALUES('Camiseta Regular Fit Nirvana2.jpg');
+INSERT INTO files(url) VALUES('Camiseta Regular Fit Nirvana3.jpg');
+
 
 
 -- --------PRODUCT FILE--------
 INSERT INTO product_file(product_id, file_id) VALUES(1, 1);
-INSERT INTO product_file(product_id, file_id) VALUES(2, 2);
-INSERT INTO product_file(product_id, file_id) VALUES(3, 3);
-INSERT INTO product_file(product_id, file_id) VALUES(4, 4);
-INSERT INTO product_file(product_id, file_id) VALUES(5, 5);
-INSERT INTO product_file(product_id, file_id) VALUES(6, 6);
-INSERT INTO product_file(product_id, file_id) VALUES(7, 7);
-INSERT INTO product_file(product_id, file_id) VALUES(8, 8);
+INSERT INTO product_file(product_id, file_id) VALUES(1, 2);
+INSERT INTO product_file(product_id, file_id) VALUES(1, 3);
 
+INSERT INTO product_file(product_id, file_id) VALUES(2, 4);
+INSERT INTO product_file(product_id, file_id) VALUES(2, 5);
+INSERT INTO product_file(product_id, file_id) VALUES(2, 6);
 
--- --------Images--------
-INSERT INTO image VALUES(1, '1649721449937_imgavatars.jfif');
+INSERT INTO product_file(product_id, file_id) VALUES(3, 7);
+INSERT INTO product_file(product_id, file_id) VALUES(3, 8);
+INSERT INTO product_file(product_id, file_id) VALUES(3, 9);
 
--- --------USERS--------
-INSERT INTO users(firstName, lastName, email, password, image_id, isAdmin, isActive) 
-    VALUES('usuario', 'prueba', 'usuario@prueba.com', "$2a$10$fO39Ybhdb/HgXV30h3T.Wum/areExDc65TWPv64Q1Mo88A43F4Jhy", 1, 'true', 'true');
+INSERT INTO product_file(product_id, file_id) VALUES(4, 10);
+INSERT INTO product_file(product_id, file_id) VALUES(4, 11);
+INSERT INTO product_file(product_id, file_id) VALUES(4, 12);
+
+INSERT INTO product_file(product_id, file_id) VALUES(5, 13);
+INSERT INTO product_file(product_id, file_id) VALUES(5, 14);
+INSERT INTO product_file(product_id, file_id) VALUES(5, 15);
+
+INSERT INTO product_file(product_id, file_id) VALUES(6, 16);
+INSERT INTO product_file(product_id, file_id) VALUES(6, 17);
+INSERT INTO product_file(product_id, file_id) VALUES(6, 18);
+
+INSERT INTO product_file(product_id, file_id) VALUES(7, 19);
+INSERT INTO product_file(product_id, file_id) VALUES(7, 20);
+INSERT INTO product_file(product_id, file_id) VALUES(7, 21);
+
+INSERT INTO product_file(product_id, file_id) VALUES(8, 22);
+INSERT INTO product_file(product_id, file_id) VALUES(8, 23);
+
+INSERT INTO product_file(product_id, file_id) VALUES(9, 24);
+INSERT INTO product_file(product_id, file_id) VALUES(9, 25);
+INSERT INTO product_file(product_id, file_id) VALUES(9, 26);
+
+INSERT INTO product_file(product_id, file_id) VALUES(10, 26);
+INSERT INTO product_file(product_id, file_id) VALUES(10, 27);
+INSERT INTO product_file(product_id, file_id) VALUES(10, 28);
