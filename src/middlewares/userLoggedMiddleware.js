@@ -6,7 +6,7 @@ function userLoggedMiddleware(req, res, next) {
     db.User.findOne({
         where:{
             email: req.cookies && req.cookies.userEmail ? req.cookies.userEmail : null
-        }
+        } 
     })
     .then(user => {
         let logged = user
@@ -14,6 +14,7 @@ function userLoggedMiddleware(req, res, next) {
         if(req.session && req.session.user){
             logged = req.session.user
         }
+
         res.locals.user = logged
 
         next()
