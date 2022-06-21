@@ -74,6 +74,14 @@ input{
     height: 200px;
 }
 
+.images-container {
+    display: flex;
+}
+
+.images-container img {
+    padding-right: 5px;
+}
+
 .file-select input{
     border: none;
     outline: none;
