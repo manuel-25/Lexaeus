@@ -127,12 +127,23 @@ const controller = {
         })
         .catch(err => res.render("error", {error: err}))
     },
-    
-    profile: (req, res) => res.render('users/profile', {
-        style: ['profile'],
-        title: 'Perfil',
-        user: req.session.user
-    }),
+
+    profile: (req, res) => {
+        db.User.findOne({
+            where: {
+                id: req.session.user.id
+            },
+            include: [{association: "images"}]
+        })
+        .then(user => {
+            res.render('users/profile', {
+                style: ['profile'],
+                title: 'Perfil',
+                user: user
+            })
+        })
+        .catch(err => res.render("error", {error: err}))
+    },
 
     updateProfile: (req, res) => {                          //refactor
         user.editar(req, res);
@@ -143,6 +154,7 @@ const controller = {
     logout: (req, res) => {
         res.clearCookie('userEmail')
         req.session.destroy()
+        
         return res.redirect('/users/login')
     }
 }

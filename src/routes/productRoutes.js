@@ -35,12 +35,12 @@ router.get("/detail/:category/:id", products.detail)
 router.get("/edit/:category/:id", authMiddleware, authAdminMiddleware, products.update)
 
 //Procesar Editar Producto
-router.put('/edit/:category/:id', validateCreateForm, products.processUpdate)
+router.put("/edit/:category/:id", validateCreateForm, authMiddleware, authAdminMiddleware, products.processUpdate)
 //uploadFile.single('img')
 
 
 //Procesar Eliminar Producto
-router.delete("/category/:id", authMiddleware, authAdminMiddleware, products.delete)
+router.delete("/delete/:category/:id", authMiddleware, authAdminMiddleware, products.delete)
 
 
 //Carrito

@@ -6,7 +6,7 @@
             <section class="title-container">
                 <h1><%= locals.title ? title : null %></h1>
             </section>
-            <form action="/products/edit/<%= product ? product.id : ""%>?m=PUT" method="post">  <!-- enctype="multipart/form-data" -->
+            <form action="/products/edit/<%= product.category_id %>/<%= product.id %>?m=PUT" method="post">
                 <section class="grid-layout">
                     <section class="child-name">
                         <label for="name">Nombre del producto</label>
@@ -107,21 +107,23 @@
                                 <% } %>
                         </section>
 
-                        <section class="detail">
-                            <label for="color">Color</label>
-                            <select name="color" required>
-                                <% colors.forEach(color => { %>
-                                    <option value="<%= color.id %>" <%= product.color_id == color.id ? 'selected' : null %>> <%=color.name%> </option>
-                                <% }) %>
-                            </select>
-                        
-                            <label for="color2">Color Secundario</label>
-                            <select name="color2" required>
-                                <% colors.forEach(color => { %>
-                                    <option value="<%= color.id %>" <%= product.color_id == color.id ? 'selected' : null %>> <%=color.name%> </option>
-                                <% }) %>
-                            </select>
-                        </section>
+                        <% if( typeof(colors) !="undefined") {%>
+                            <section class="detail">
+                                <label for="color">Color</label>
+                                <select name="color" required>
+                                    <% colors.forEach(color => { %>
+                                        <option value="<%= color.id %>" <%= product.color_id == color.id ? 'selected' : null %>> <%=color.name%> </option>
+                                    <% }) %>
+                                </select>
+                            
+                                <label for="color2">Color Secundario</label>
+                                <select name="color2" required>
+                                    <% colors.forEach(color => { %>
+                                        <option value="<%= color.id %>" <%= product.color_id == color.id ? 'selected' : null %>> <%=color.name%> </option>
+                                    <% }) %>
+                                </select>
+                            </section>
+                        <% } %>
 
                         <section class="detail">
                             <label for="price">Precio</label>

@@ -4,6 +4,7 @@ const db = require('./../database/models')
 // Saves user in session if logged 
 function userLoggedMiddleware(req, res, next) {
     db.User.findOne({
+        logging: false,
         where:{
             email: req.cookies && req.cookies.userEmail ? req.cookies.userEmail : null
         } 

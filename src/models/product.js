@@ -26,32 +26,43 @@ const model = {
 
     findByOffert: () => model.all().filter(e => e.offert ),
 
-    validateUpdate: (data) => {
-        let productValidate = JSON.parse(JSON.stringify(data))
-        
-        //Parsear Strings a Numeros
-        productValidate.price = parseFloat(data.price)
-        productValidate.stock = parseInt(data.stock)
-        productValidate.category = parseInt(data.category)
+    validateUpdate: (body) => {
+        let sizesResult = ""
+        body.size = body.size.toUpperCase()
+        body.size.includes(" ") ? body.size = body.size.split(" ") : body.size
 
-        if(productValidate.category && !Number.isInteger(productValidate.category)){
-            data.category = 4
-        }
-
-
-        //Validar size
-        productValidate.size = data.size.toUpperCase()
-        if(productValidate.size.includes(",")){
-            productValidate.size = data.size.split(",")
+        if(typeof body.size !== 'string'){
+            body.size.forEach((e) => {
+                sizesResult = sizesResult + e + " "
+            })
+            sizesResult = sizesResult.trim()
         } else {
-            productValidate.size = data.size.split(" ")
+            sizesResult = body.size
         }
 
-        return productValidate
-    },    //Agregar Validar Imagen
+        let result = {
+            name: body.name,
+            description: body.description,
+            price: parseFloat(body.price),
+            category_id: parseInt(body.category),
+            color_id: body.color,
+            color2_id: body.color2,
+            stock: parseInt(body.stock),
+            offert: body.offert ? 'true' : 'false',
+            onList: body.onList ? 'true' : 'false',
+            //files: [],
+            sizes: sizesResult
+        }
 
-    validateCreate: (body) => {
-        
+        /*body.files.forEach(file => {
+            result.files.push(Object({url: file.filename}))
+        })*/
+
+
+        return result
+    },
+
+    validate: (body) => {
         let sizesResult = ""
         body.size = body.size.toUpperCase()
         body.size.includes(" ") ? body.size = body.size.split(" ") : body.size

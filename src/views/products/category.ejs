@@ -16,6 +16,8 @@
                                                 <% if (product.dataValues.files[0]) { %>
                                                     <img src="/img/products/<%= product.dataValues.files[0].dataValues.url %>">
                                                     <!--  AGREGAR SEGUNDA IMG -->
+                                                <% } else { %>
+                                                    <img src="/img/products/default-img.jpg">
                                                 <% } %>
                                             </a>
                                         </div>
@@ -27,10 +29,10 @@
                                                 <span class="price-regular">$ <%= product.price %></span>
                                             </strong>
                                             <Ul class="list-swatches">
-                                                <li class="swatch-item" style="background-color:#<%= product.color.dataValues.hex %>"">
+                                                <li class="swatch-item" style="background-color:#<%= product.color.dataValues.hex %>">
                                                     <a class="swatch" href="/products/detail/<%= product.category_id %>/<%= product.id %>"></a>
                                                 </li>
-                                                <li class="swatch-item" style="background-color:#<%= product.color.dataValues.hex %>"">
+                                                <li class="swatch-item" style="background-color:#<%= product.color.dataValues.hex %>">
                                                     <a class="swatch" href="/products/detail/<%= product.category_id %>/<%= product.id %>"></a>
                                                 </li>
                                             </Ul>
@@ -45,9 +47,9 @@
                                                 <a href="/products/edit/<%= product.category_id %>/<%= product.id %>" class="edit-container">
                                                     <i class="fa-solid fa-pen-to-square" id="edit-btn"></i>
                                                 </a>
-                                                <a href="#" class="delete-container">
-                                                    <i class="fa-solid fa-x" id="delete-btn"></i>
-                                                </a>
+                                                <form action="/products/delete/<%= product.category_id %>/<%= product.id %>?m=DELETE" method="post">
+                                                    <button type="submit" id="delete-btn"><i class="fa-solid fa-x" id="delete-btn"></i></button>
+                                                </form>
                                             </div>
                                         <% } %>
                                     </article>

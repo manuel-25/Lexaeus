@@ -5,7 +5,6 @@ module.exports = {
     "database": "lexaeus_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
-    //,logging: false
   },
   "test": {
     "username": "root",
