@@ -90,9 +90,11 @@ const model = {
             sizes: sizesResult
         }
 
-        body.files.forEach(file => {
-            result.files.push(Object({url: file.filename}))
-        })
+        if (body.files != undefined) {
+            body.files.forEach(file => {
+                result.files.push(Object({url: file.filename}))
+            })
+        }
 
 
         return result

@@ -109,8 +109,9 @@ const controller = {
         }, {
             include: [{association: "files"}]
         })
-
-        res.redirect('/products/create')
+        .then(product => {
+            res.redirect('/products/create')
+        })
     },
 
     update: (req, res) => {
