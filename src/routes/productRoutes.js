@@ -1,13 +1,13 @@
-const express = require("express");
-const router = express.Router();
+const express = require("express")
+const router = express.Router()
 const multer = require('multer')
 
 
 //Middlewares
-const products = require('../controllers/productController');
+const products = require('../controllers/productController')
 const authMiddleware = require('../middlewares/authMiddleware')
-const authAdminMiddleware = require('../middlewares/authAdminMiddleware');
-const userLoggedMiddleware = require('../middlewares/userLoggedMiddleware');
+const authAdminMiddleware = require('../middlewares/authAdminMiddleware')
+const userLoggedMiddleware = require('../middlewares/userLoggedMiddleware')
 const { validateCreateForm } = require('../models/product')
 
 //Multer 
@@ -26,7 +26,7 @@ router.post('/create', uploadFile.any(), validateCreateForm, products.processCre
 router.get("/sale", products.sale)
 
 //Mostrar Productos
-router.get("/category/:id", products.show)        //userLoggedMiddleware??
+router.get("/category/:id", products.list)
 
 //Detalle de Product
 router.get("/detail/:category/:id", products.detail)
@@ -38,13 +38,12 @@ router.get("/edit/:category/:id", authMiddleware, authAdminMiddleware, products.
 router.put("/edit/:category/:id", validateCreateForm, authMiddleware, authAdminMiddleware, products.processUpdate)
 //uploadFile.single('img')
 
-
 //Procesar Eliminar Producto
 router.delete("/delete/:category/:id", authMiddleware, authAdminMiddleware, products.delete)
 
-
 //Carrito
 router.get("/cart", userLoggedMiddleware, products.cart)
+
 
 
 module.exports = router;

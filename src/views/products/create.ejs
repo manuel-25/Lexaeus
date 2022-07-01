@@ -25,11 +25,9 @@
 
                         <label for="category">Categoria</label>
                         <select name="category" required>
-                            <option value="1">Hombre</option>
-                            <option value="2">Mujer</option>
-                            <option value="3">Accesorios</option>
-                            <option value="4">Calzado</option>
-                            <option value="5">Otros</option>
+                            <% for( let i = 0; i < categories.length; i++ ) { %>
+                                <option value="<%= i + 1 %>"><%= categories[i].name %></option>
+                            <% } %>
                         </select>
 
 
@@ -95,22 +93,24 @@
                                 <% } %>
 
                         </section>
-                        <section class="detail">
-                            <label for="color">Color</label>
-                            <select name="color" required>
-                                <% colors.forEach(color => { %>
-                                    <option value="<%= color.id %>"><%=color.name%></option>
-                                <% }) %>
-                            </select>
-                        
-                            <label for="color2">Color Secundario</label>
-                            <select name="color2" required>
-                                <% colors.forEach(color => { %>
-                                    <option value="<%= color.id %>"><%=color.name%></option>
-                                <% }) %>
-                            </select>
+                        <% if( typeof(colors) !="undefined") {%>
+                            <section class="detail">
+                                <label for="color">Color</label>
+                                <select name="color" required>
+                                    <% colors.forEach(color => { %>
+                                        <option value="<%= color.id %>"><%=color.name%></option>
+                                    <% }) %>
+                                </select>
+                            
+                                <label for="color2">Color Secundario</label>
+                                <select name="color2" required>
+                                    <% colors.forEach(color => { %>
+                                        <option value="<%= color.id %>"><%=color.name%></option>
+                                    <% }) %>
+                                </select>
+                            </section>
+                        <% } %>
 
-                        </section>
                         <section class="detail">
                             <label for="price">Precio</label>
                             <input 

@@ -34,8 +34,10 @@ app.set('views', __dirname + '/views');
 const mainRoutes = require('./routes/indexRoutes')
 const userRoutes = require('./routes/userRoutes')
 const productRoutes = require('./routes/productRoutes')
+const apiRoutes = require('./routes/apiRoutes')
 
 app.use('/', mainRoutes)
 app.use('/users', userRoutes)
 app.use('/products', productRoutes)
+app.use('/api', apiRoutes)
 

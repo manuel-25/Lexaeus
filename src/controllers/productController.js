@@ -1,15 +1,13 @@
 const product = require('../models/product')
-const file = require('../models/file')
 const { validationResult } = require('express-validator')
 const db = require('../database/models')
-const { sequelize } = require('../database/models')
 
 const controller = {
-    show: (req, res) => {
+    list: (req, res) => {
         let category_id = req.params.id
         db.Product.findAll({
             logging: false,
-            include: [{association: "categories"}, {association: "color"}, {association: "files"}],
+            include: [{association: "categories"}, {association: "color"}, {association: "color2"}, {association: "files"}],
             where: {
                 category_id: category_id
             },
@@ -21,7 +19,12 @@ const controller = {
                 products: products
             })
         })
-        .catch(err => res.render("error", {error: err}))
+        .catch(err => {
+            console.log(err)
+            res.render("products/category", {
+                style: ['category'],
+            })
+        })
     },
 
     sale: (req, res) => {
@@ -48,13 +51,14 @@ const controller = {
     detail: (req, res) => {
         let category_id = req.params.category
         let allProductsPromise = db.Product.findAll({
-            include: [{association: "categories"}, {association: "color"}, {association: "files"}],
+            logging: false,
+            include: [{association: "categories"}, {association: "color"}, {association: "color2"}, {association: "files"}],
             where: {
                 category_id: category_id
             },
         })
         let oneProductPromise = db.Product.findOne({
-            include: [{association: "color"}, {association: "files"} ],
+            include: [{association: "color"}, {association: "color2"}, {association: "files"} ],
             where: {
                 id: req.params.id
             }
@@ -72,12 +76,15 @@ const controller = {
     },
 
     create: (req, res) => {
-        db.Color.findAll({raw:true})
-        .then((colors) => {
+        let colorPromise = db.Color.findAll({raw:true})
+        let categoryPromise = db.Category.findAll({raw:true})
+        Promise.all([colorPromise, categoryPromise])
+        .then((values) => {
             res.render("products/create", {
                 style: ['createProduct'],
                 title: 'Nuevo Producto',
-                colors: colors
+                colors: values[0],
+                categories: values[1]
             })
         })
         .catch(err => res.render("error", {error: err}))
@@ -114,13 +121,15 @@ const controller = {
                 id: req.params.id
             }
         })
-        Promise.all([productPromise, colorPromise])
+        let categoryPromise = db.Category.findAll({raw:true})
+        Promise.all([productPromise, colorPromise, categoryPromise])
         .then((values) => {
             res.render("products/modify",{
                 style: ['createProduct'],
                 title: 'Editar',
                 product: values[0],
-                colors: values[1]
+                colors: values[1],
+                categories: values[2]
             })
         })
         .catch(err => res.render("error", {error: err}))

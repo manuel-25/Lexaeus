@@ -3,9 +3,9 @@
     <%- include("../partials/header.ejs") %>
         <main>
             <% let user = locals.user %>
-            <% if (products.length > 0) { %>
+            <% if (typeof products != "undefined") { %>
                 <section class="main-section">
-                    <h1 class="heading">Categoria <%= locals.title ? title : 'Producto' %> </h1>
+                    <h1 class="heading"><%= locals.title ? title : 'No encontrado' %> </h1>
                     <ul class="products-list">
                         <% products.forEach(product => { %>
                             <% if (product.onList === 'true') { %>
@@ -32,7 +32,7 @@
                                                 <li class="swatch-item" style="background-color:#<%= product.color.dataValues.hex %>">
                                                     <a class="swatch" href="/products/detail/<%= product.category_id %>/<%= product.id %>"></a>
                                                 </li>
-                                                <li class="swatch-item" style="background-color:#<%= product.color.dataValues.hex %>">
+                                                <li class="swatch-item" style="background-color:#<%= product.color2.dataValues.hex %>">
                                                     <a class="swatch" href="/products/detail/<%= product.category_id %>/<%= product.id %>"></a>
                                                 </li>
                                             </Ul>

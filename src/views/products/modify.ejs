@@ -22,24 +22,13 @@
                             </div>
                         <% } %>
 
-                        <select 
-							name="category" 
-							class="form-select <%= locals.errors && errors.category ? 'is-invalid' : null %>"
-						>
-						    <option value="">Elegi una Categoria</option>
-							<%  
-								let categories = ['Hombre', 'Mujer', 'Accesorios', 'Otros'];
-							%>
-							<% for (const [i, oneCategory] of categories.entries()) { %>
-							    <option
-                                    <% let categoryId = (i + 1)%>
-									value="<%= categoryId %>"
-                                    <% if (product) { %>
-                                        <%=(categoryId == product.category_id) ? 'selected' : null %> 
-                                    <% } %>
-								> <%= oneCategory %></option>
-							<% } %>
-						</select>
+                        <select name="category" class="form-select <%= locals.errors && errors.category ? 'is-invalid' : null %>">
+                            <option value="">Elegi una Categoria</option>
+                            <% for( let i = 1; i <= categories.length; i++ ) { %>
+                                <% console.log(i) %>
+                                <option value="<%= i %>" <%= product.category_id === i ? 'selected' : null %>><%= categories[i-1].name %></option>
+                            <% } %>
+                        </select>
 
                         <label>Descripción</label>
                         <textarea 
@@ -119,7 +108,7 @@
                                 <label for="color2">Color Secundario</label>
                                 <select name="color2" required>
                                     <% colors.forEach(color => { %>
-                                        <option value="<%= color.id %>" <%= product.color_id == color.id ? 'selected' : null %>> <%=color.name%> </option>
+                                        <option value="<%= color.id %>" <%= product.color2_id == color.id ? 'selected' : null %>> <%=color.name%> </option>
                                     <% }) %>
                                 </select>
                             </section>

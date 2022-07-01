@@ -56,8 +56,8 @@ main {
     width: 100%;
     max-width: 300px;
     height: auto;
-
     display: inline-block;
+    max-inline-size: 45%;
     margin-bottom: 20px;
     background-color: #FAF6ED;
 }
@@ -190,6 +190,10 @@ main {
         line-height: 28px;
     }
 
+    .product-item {
+        max-inline-size: 30%;
+    }
+
     .nav-page {
         font-size: 18px;
     }
@@ -203,6 +207,10 @@ main {
     .heading{
         font-size: 26px;
         line-height: 28px;
+    }
+
+    .product-item {
+        max-inline-size: 22%;
     }
 
     .nav-page {

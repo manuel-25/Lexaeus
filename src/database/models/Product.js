@@ -63,8 +63,12 @@ module.exports = (Sequelize, Datatype) => {
 
         Product.belongsTo(models.Color, {
             as: 'color',
-            foreignKey: 'color_id',
-            otherKey: 'color2_id'
+            foreignKey: 'color_id'
+        })
+
+        Product.belongsTo(models.Color, {
+            as: 'color2',
+            foreignKey: 'color2_id'
         })
 
         Product.belongsToMany(models.File, {

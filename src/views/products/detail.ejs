@@ -17,7 +17,7 @@
                             <span> <%= product.price %> $</span>
                             <Ul class="colors">
                                 <li class="primary-color" style="background-color:  #<%= product.color.dataValues.hex %>"></li>
-                                <li class="secondary-color" style="background-color: #<%= product.color.dataValues.hex %>"></li>
+                                <li class="secondary-color" style="background-color: #<%= product.color2.dataValues.hex %>"></li>
                             </Ul>
                         </div>
                         <div class="detail-buttons">
@@ -47,7 +47,9 @@
                         <%  let randomNumber = random(min,max); %>
                         
                         <% while( randomArray.length < 4 ) { %>
-                            <% randomNumber != product.id ? randomArray.push(randomNumber) : null%>
+                            <% if ((randomNumber != product.id) && (!randomArray.includes(randomNumber))) { %>
+                                <% randomArray.push(randomNumber) %>
+                            <% } %>
                             <% randomNumber = random(min,max) %>
                         <% } %>
 
@@ -74,7 +76,7 @@
                                             <li class="swatch-item" style="background-color:#<%= productArray.color.dataValues.hex %>">
                                                 <a class="swatch" href="/products/detail/<%= product.category_id %>/<%= product.id %>"></a>
                                             </li>
-                                            <li class="swatch-item" style="background-color:#<%= productArray.color.dataValues.hex %>">
+                                            <li class="swatch-item" style="background-color:#<%= productArray.color2.dataValues.hex %>">
                                                 <a class="swatch" href="/products/detail/<%= productArray.category_id %>/<%= product.id %>"></a>
                                             </li>
                                         </Ul>
