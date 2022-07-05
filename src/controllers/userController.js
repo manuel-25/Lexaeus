@@ -1,4 +1,3 @@
-const user = require('../models/user')
 const bcrypt = require('bcryptjs')
 const { validationResult, body } = require('express-validator');
 const db = require('./../database/models')
@@ -143,12 +142,6 @@ const controller = {
             })
         })
         .catch(err => res.render("error", {error: err}))
-    },
-
-    updateProfile: (req, res) => {                          //refactor
-        user.editar(req, res);
-        let urlARedireccionar = '/users/profile';
-        res.redirect(urlARedireccionar);
     },
 
     logout: (req, res) => {

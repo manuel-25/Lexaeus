@@ -22,8 +22,8 @@ const userController = require('../controllers/userController')
 router.get('/register', guestMiddleware, userController.register)
 
 //Procesar Registro
-router.post('/register', uploadFile.single('avatar'), validateRegisterForm, userController.processRegister)
-//uploadFile siempre antes que validations
+router.post('/register', uploadFile.single('avatar'), validateRegisterForm ,userController.processRegister)
+//uploadFile siempre antes que validations (validateRegisterForm)
 
 
 //Formulario de Login
@@ -38,10 +38,6 @@ router.get('/profile', authMiddleware, userController.profile)
 
 //Formulario Editar Perfil          -------> HACER
 //router.get(/profile/edit, userController.profileEdit)
-
-//Procesar Editar Perfil
-router.put("/profile/edit", userController.updateProfile)
-
 
 // Logout
 router.get('/logout/', userController.logout)

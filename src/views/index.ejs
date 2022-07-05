@@ -10,9 +10,11 @@
     <%- include("./partials/header.ejs") %> 
     <main class="main">
         <section class="banner-container">
-            <a class="left-chevron" href="#"><i class="fas fa-chevron-left"></i></a>
-            <img class="main-banner" src="/img/banner-3.jpg" alt="Banner">
-            <a class="right-chevron" href="#"><i class="fas fa-chevron-right"></i></a>
+            <div class="image-banner-container">
+                <a class="left-chevron" href="#"><i class="fas fa-chevron-left"></i></a>
+                <img class="banner" src="/img/banner-3.jpg" alt="Banner">
+                <a class="right-chevron" href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
         </section>
         
         <section class="categorias-container">
@@ -76,6 +78,6 @@
         </section>
     </main>
     <%- include("./partials/footer.ejs") %> 
-    
+    <script src='/js/indexRoulette.js'></script>
 </body>
 </html>

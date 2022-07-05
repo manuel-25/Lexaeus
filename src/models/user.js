@@ -1,75 +1,24 @@
 const path = require('path')
-const fs = require('fs') //Leer y escribir archivo .json
 const bcrypt = require('bcryptjs')
 const validator = require('express-validator')
 
 const model = {
-    filename: path.resolve(__dirname, '..', 'database', 'users.json'),
-    read: () => fs.readFileSync(model.filename, 'utf-8'),
-    all: () => JSON.parse(model.read()),
-    write: (data) => fs.writeFileSync(model.filename, JSON.stringify(data, null, 2)),
-    search: (prop, value) => model.all().find(element => element[prop] == value),   //Find By Field
-
     encryptPassword: data => {
         return bcrypt.hashSync(data, 10)
     },
     
     validateRegisterForm: [
-        validator.body('firstName').notEmpty().withMessage('Tienes que escribir el Nombre'),
-        validator.body('lastName').notEmpty().withMessage('Tienes que escribir el Apellido'),
-        validator.body('email').notEmpty().withMessage('Tienes que escribir el Email').bail().isEmail().withMessage('Invalid Email'),
-        validator.body('password').notEmpty().withMessage('Tienes que escribir una contraseña').bail()
-        .isLength({min: 8}).withMessage('Min 8 characters'),
-        validator.body('avatar').custom((value, {req}) =>{
-            let file = req.file
-            let acceptedExtensions = ['.jpg', '.gif', '.png', '.jfif', '.jpeg']
-            if(!file){
-                //throw new Error('Tienes que subir una imagen') 
-            } else {
-                let fileExtension = path.extname(file.originalname)
-                if(!acceptedExtensions.includes(fileExtension)){
-                    throw new Error(`Las extensiones permitidas son ${acceptedExtensions.join(', ')}`)
-                }
-            }
-            return true
-        })
+        validator.body('firstName').notEmpty().withMessage('El nombre es obligatorio'),
+        validator.body('lastName').notEmpty().withMessage('El apellido es obligatorio'),
+        validator.body('email').notEmpty().withMessage('El email es obligatorio').bail().isEmail().withMessage('Email invalido'),
+        validator.body('password').notEmpty().withMessage('La contraseña es obligatoria').bail()
+        .isLength({min: 8}).withMessage('Minimo 8 caracteres')
     ],
     validateLoginForm: [
-        validator.body('email').notEmpty().withMessage('Tienes que escribir el Email').bail().isEmail().withMessage('Invalid Email'),
-        validator.body('password').notEmpty().withMessage('Tienes que escribir una contraseña')
-            .bail().isLength({min: 3}).withMessage('Min 8 characters')
-    ],
-
-    generateId: function() {
-        let allUsers = model.all()
-        let lastUser = allUsers.pop()
-        if(lastUser){
-            return lastUser.id + 1
-        }
-        return 1
-    },
-
-    delete: function(id){
-        let allUsers = model.all()
-        let finalUsers = allUsers.filter(oneUser => oneUser.id !== id)
-        fs.writeFileSync(model.filename, JSON.stringify(finalUsers, null, ' '))
-        return true
-    },
-
-    editar: (req, res) => {                                                 //refactor
-        let usuarioAEditar = model.mostrar(req.params.idPerfil);
-
-        usuarioAEditar.image = '/img/users/' + req.file.filename;
-
-        let all = model.listar()
-
-        for (let i = 0; i < all.length; i++) {
-            if (all[i].id == req.params.idPerfil) {
-                all[i] = usuarioAEditar;
-            }
-        }
-        fs.writeFileSync(path.resolve(__dirname, '..', 'database', 'users.json'), JSON.stringify(all, null, 2));
-    }
+        validator.body('email').notEmpty().withMessage('El email es obligatorio').bail().isEmail().withMessage('Invalid Email'),
+        validator.body('password').notEmpty().withMessage('La contraseña es obligatoria')
+            .bail().isLength({min: 3}).withMessage('Minimo 8 caracteres')
+    ]
 }
 
 module.exports = model

@@ -30,10 +30,10 @@ main{
 }
 
 .login-form fieldset{
-    display: flex;
+    display: block;
     justify-content: left;
     align-content: left;
-    margin: 2rem 0;
+    margin: 2rem 0 0 0;
     border: none;
     outline: none;
 }
@@ -53,6 +53,7 @@ main{
     gap: 1rem;
     border: none;
     outline: none;
+    margin-top: 2rem;
 }
 
 .login-buttons button{
@@ -118,6 +119,6 @@ a{
     color:#ec930d;
     font-size: 12px;
     padding: 0;
-    margin: 0;
+    margin-top: 5px;
     max-width: 100%;
 }

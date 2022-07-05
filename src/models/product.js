@@ -1,7 +1,6 @@
 const path = require('path')
 const fs = require('fs')
 const validator = require('express-validator')
-const file = require('./file')
 const db = require('../database/models')
 
 const model = {

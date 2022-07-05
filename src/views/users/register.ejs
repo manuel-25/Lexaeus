@@ -4,11 +4,9 @@
         <main>
             <section class="login-container">
                 <form action="#" method="post" enctype="multipart/form-data">
-                    
                     <div class="login-form">
                         <h1><%= locals.title ? title : null %> </h1>
                         <fieldset> 
-                            <legend class="dn"></legend>
                             <label class="dn" for="firstName">Nombre</label>
                             <input
                                 type="text" 
@@ -16,17 +14,16 @@
                                 id="firstName"
                                 class="form-control <%= locals.errors && errors.fullName ? 'is-invalid' : null %>"
                                 value="<%= locals.oldData ? oldData.firstName : null %>"
-                                placeholder="Nombre" required
+                                placeholder="Nombre"
                             >
                             <% if (locals.errors && errors.firstName) { %>
                                 <div class="text-danger">
                                     *<%= errors.firstName.msg %> 
                                 </div>
                             <% } %>
-                        </fieldset>
+                        </fieldset> <% console.log(locals.errors) %>
 
                         <fieldset>
-                            <legend class="dn"></legend>
                             <label class="dn" for="lastName">Apellido</label>
                             <input 
                                 type="text" 
@@ -34,7 +31,7 @@
                                 id="lastName"
                                 class="form-control <%= locals.errors && errors.lastName ? 'is-invalid' : null %>"
                                 value="<%= locals.oldData ? oldData.lastName : null %>"
-                                placeholder="Apellido" required
+                                placeholder="Apellido"
                             >
                             <% if (locals.errors && errors.lastName) { %>
                                 <div class="text-danger">
@@ -44,7 +41,6 @@
                         </fieldset>
 
                         <fieldset>
-                            <legend class="dn">Email</legend>
                             <label class="dn" for="clave">Email</label>
                             <input 
                                 type="text" 
@@ -52,43 +48,40 @@
                                 id="email"
                                 class="form-control <%= locals.errors && errors.email ? 'is-invalid' : null %>"
                                 value="<%= locals.oldData ? oldData.email : null %>"
-                                placeholder="Direccion de Correo Electronico" required
+                                placeholder="Direccion de Correo Electronico"
                             >
+                            <% if (locals.errors && errors.email) { %>
+                                <div class="text-danger">
+                                    *<%= errors.email.msg %>
+                                </div>
+                            <% } %>
                         </fieldset>
 
-                        <% if (locals.errors && errors.email) { %>
-                            <div class="text-danger">
-                                *<%= errors.email.msg %>
-                            </div>
-                        <% } %>
 
                         <fieldset>
-                            <legend class="dn">Contraseña</legend>
                             <label class="dn" for="password">Contraseña</label>
                             <input 
                                 type="password" 
                                 name="password" 
                                 id="password" 
                                 class="form-control <%= locals.errors && errors.password ? 'is-invalid' : null %>"
-                                placeholder="Contraseña" required
+                                placeholder="Contraseña"
                             >
+                            <% if (locals.errors && errors.password) { %>
+                                <div class="text-danger">
+                                    *<%= errors.password.msg %>
+                                </div>
+                            <% } %>
                         </fieldset>
 
-                        <% if (locals.errors && errors.password) { %>
-                            <div class="text-danger">
-                                *<%= errors.password.msg %>
-                            </div>
-                        <% } %>
-
                         <fieldset>
-                            <legend class="dn">Confirmar Contraseña</legend>
                             <label class="dn" for="confirm">Confirmar Contraseña</label>
                             <input 
                                 type="password" 
                                 name="confirm" 
                                 id="cconfirm" 
                                 class="form-control <%= locals.errors && errors.confirm ? 'is-invalid' : null %>"
-                                placeholder="Confirmar Contraseña" required
+                                placeholder="Confirmar Contraseña"
                             >
                         </fieldset>
 

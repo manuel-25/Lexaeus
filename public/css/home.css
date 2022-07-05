@@ -4,42 +4,59 @@
     box-sizing: border-box;
 }
 
+:root {
+    --size-divisor: 2;
+}
+
 .main{
     font-family: 'Mulish', sans-serif;
     background-color: #FAF6ED;
+    padding: 0 20px 0 20px;
 }
 
 .banner-container{
     position: relative;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0 20px 0;
+}
+
+.image-banner-container {
+    width: 100%;
+}
+
+.banner{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
 .banner-container a{
     position: absolute;
     top: 45%;
-    font-size: 40px;
+    font-size: 15px;
     color: #FAF6ED;
+    color: black;
 }
 
 .left-chevron{
-    left: 2%;
+    left: 5%;
 }
 
 .right-chevron{
-    right: 2%;
-}
-
-.main-banner{
-    width: 100vw;
-    height: 60vh;
-    object-fit: cover;
+    right: 5%;
 }
 
 .categorias-container{
-    padding: 30px 50px 30px 50px;
+    padding: 30px 0 30px 0;
 }
 
 .categorias-container article{
+    width: calc(100% / var(--size-divisor) - 4px * var(--size-divisor));
+    display: inline-block;
+
+    height: 100%;
     margin-bottom: 30px;
     position: relative;
     overflow: hidden;
