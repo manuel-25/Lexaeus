@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <%- include("./partials/head.ejs") %>
-
     <link href="/css/home.css" rel="stylesheet">
-
 </head>
 <body>
     <%- include("./partials/header.ejs") %> 
     <main class="main">
         <section class="banner-container">
-            <div class="image-banner-container">
-                <a class="left-chevron" href="#"><i class="fas fa-chevron-left"></i></a>
-                <img class="banner" src="/img/banner-3.jpg" alt="Banner">
-                <a class="right-chevron" href="#"><i class="fas fa-chevron-right"></i></a>
+            <div class="image-container">
+                <div class="chevron-container">
+                    <i class="fas fa-chevron-left"></i>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <img class="banner" src="/img/modern green coming soon (Banner (Landscape)).png" alt="Banner">
             </div>
         </section>
         
@@ -27,21 +27,21 @@
 
             <article class="article-accesorios">
                 <section class="textbanner">
-                    <a class="text-btn" >Accesorios</a>
+                    <a class="text-btn" href="/products/category/3">Accesorios</a>
                 </section>
-                <a class="accesorios" href="/products/category"><img src="/img/accesorios.jpg"></a>
+                <a class="accesorios" href="/products/category/3"><img src="/img/accesorios.jpg"></a>
             </article>
 
             <article class="article-hombre">
                 <section class="textbanner">
-                    <a class="text-btn" >Hombre</a>
+                    <a class="text-btn" href="/products/category/1">Hombre</a>
                 </section>
                 <a class="hombre" href="/products/category/1"><img src="/img/hombre.jpg"></a>
             </article>
 
             <article class="article-mujer">
                 <section class="textbanner">
-                    <a class="text-btn" >Mujer</a>
+                    <a class="text-btn" href="/products/category/2">Mujer</a>
                 </section>
                 <a class="hombre" href="/products/category/2"><img src="/img/mujer.jpg"></a>
             </article>

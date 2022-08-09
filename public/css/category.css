@@ -76,9 +76,9 @@ main {
     width: 100%;
 }
 
-.image-container:hover img{
-    /*display: none;*/
-}
+/*.image-container:hover img{
+    display: none;
+}*/
 
 .image-container:hover #onHover{
     display: inline-block;
